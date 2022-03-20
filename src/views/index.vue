@@ -16,7 +16,7 @@
               </ul>
             </li>
             <li>
-              <span>Blog</span>
+              <span><router-link to='/blog'>Blog</router-link></span>
               <ul class="son-list">
                 <li>Blog List Page</li>
                 <li>Search Results</li>

@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Destination from '../views/Destination.vue'
-import app from '../firebase'
+import app from '../firebase/index'
 import NotFound from '@/components/NotFound.vue'
 import { getAuth } from 'firebase/auth';
+import layout from "../views/index"; // 主页
 
 const auth = getAuth(app)
 
@@ -10,10 +10,15 @@ const routes = [
   {
     path: '/',
     name: 'Destination',
-    component: Destination,
-    meta: {
-      reqiresAuth: true
-    }
+    component: layout,
+    redirect: '/index',
+    children: [
+      {
+        path: '/index',
+        name: 'index',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Homepage/index/index'),
+      }
+    ]
   },
   {
     path: '/about',

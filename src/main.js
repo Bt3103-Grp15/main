@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 
 import { Dropdown, Menu } from 'ant-design-vue';
-import NavBar from '@/components/NavBar.vue'
+import NavBar from '@/components/NavBar.vue';
+import Header from '@/components/Header.vue';
 require('vue-ionicons/ionicons.css')
 
 import { QuillEditor } from '@vueup/vue-quill'
@@ -16,6 +17,7 @@ const app = createApp(App).use(store).use(router)
 app.component('Dropdown', Dropdown)
 app.component('Menu', Menu)
 app.component('NavBar', NavBar)
+app.component('Header', Header)
 app.component('QuillEditor', QuillEditor)
 
 app.mount('#app')

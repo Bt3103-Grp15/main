@@ -1,5 +1,5 @@
 <template>
-	<NavBar/>
+	<header></header>
   <main class="login">
 		<section class="form">
           <form class="login" @submit.prevent="login">

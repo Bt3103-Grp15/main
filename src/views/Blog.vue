@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <NavBar/>
-  </div>
+  <header><Header/></header>
   <div class="home">
     <div v-for="blog in blogs" :key="blog.id">
       <div class="blog">
@@ -19,11 +17,7 @@
 
 <script>
 import { ref } from 'vue'
-import NavBar from '@/components/NavBar.vue'
 export default {
-  components: {
-    NavBar,
-  },
   setup() {
     const blogs = ref([
       { title: 'Why Coffee is Better than Tea', id: 1 },
@@ -37,7 +31,15 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+header {
+    height: auto;
+    width:100%;
+    background: #f2f2f2;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+  }
 
 </style>

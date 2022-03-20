@@ -1,6 +1,6 @@
 <template>
-    
-    <UserHeader :name="userName" imgpath=""/>
+    <div><header><Header/></header></div>
+    <div><UserHeader :name="userName" imgpath=""/></div>
     <div class="container">
         <sectionHeader title="My Account" instruction="View and edit your personal info below. "/>
         <hr/>
@@ -54,5 +54,15 @@ hr {
     width: 90%;
     color: gray;
     size: 1;
+}
+
+header {
+    height: auto;
+    width:100%;
+    background: #f2f2f2;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
 }
 </style>

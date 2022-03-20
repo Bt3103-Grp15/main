@@ -1,5 +1,5 @@
 <template>
-  <NavBar/>
+<header><Header/></header>
   <h1>{{value}}</h1>
   <div id="input">
     <QuillEditor theme="snow" toolbar="full" v-model:content="value"/>
@@ -46,5 +46,15 @@ button {
   align-content: center;
   padding:50px;
   height:500px;
+}
+
+header {
+    height: auto;
+    width:100%;
+    background: #f2f2f2;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
 }
 </style>>

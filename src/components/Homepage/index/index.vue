@@ -96,7 +96,7 @@ const list = [
     .top-search{
         height: 500px;
         width: 100%;
-        background: url(../../assets/image/5bfb6f_26f1a5c736e544e09c63c82a4c792645_mv2_d_3839_1306_s_2.jpeg);
+        // background: url(../../assets/image/5bfb6f_26f1a5c736e544e09c63c82a4c792645_mv2_d_3839_1306_s_2.jpeg);
         background-size: cover;
         padding-top: 56px;
         display: flex;
@@ -115,7 +115,7 @@ const list = [
             height: 68px;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 5px;
-            border: 1px solid rgb(61 155 233);
+            border: 1px solid rgb(61, 155, 233);
             display: flex;
             align-items: center;
             padding-right: 50px;
@@ -157,7 +157,7 @@ const list = [
                     height: 318px;
                     width: 318px;
                     margin-right: 13px;
-                    background: url(../../assets/image/63a0e8_950d68896707457a8e53f332ee0c1024_mv2.jpeg);
+                    // background: url(../../assets/image/63a0e8_950d68896707457a8e53f332ee0c1024_mv2.jpeg);
                     // padding-bottom: 10px;
                     padding-top: 178px;
                     padding-left: 30px;

@@ -6,13 +6,9 @@
 </template>
 
 <script>
-export default{
-  components: {
-  },
-  setup() {
-    
-  },
-}
+// export default{
+
+// }
 </script>
 
 

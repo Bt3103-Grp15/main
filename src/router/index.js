@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import app from '../firebase/index'
 import NotFound from '@/components/NotFound.vue'
 import { getAuth } from 'firebase/auth';
-import layout from "../views/index"; // 主页
+import layout from "@/views/index.vue"; // 主页
 
 const auth = getAuth(app)
 

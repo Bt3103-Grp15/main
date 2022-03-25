@@ -1,11 +1,10 @@
 <template>
-	<header></header>
   <main class="login">
 		<section class="form">
           <form class="login" @submit.prevent="login">
             <h2>Login</h2>
-            <router-link to="/register">Register</router-link>
-            <input 
+            <router-link to="/layout/register">Register</router-link>
+            <input
                 type="email"
                 placeholder="Email address"
                 v-model="login_form.email" required/>

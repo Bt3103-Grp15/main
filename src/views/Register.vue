@@ -1,12 +1,11 @@
 <template>
-	<NavBar/>
   <main class="register">
       <section class="form">
 
           <form class="register" @submit.prevent="register">
             <h2>Register</h2>
-            <router-link to="/login">Login</router-link>
-            <input 
+            <router-link to="/layout/login">Login</router-link>
+            <input
                 type="email"
                 placeholder="Email address"
                 v-model="register_form.email" />

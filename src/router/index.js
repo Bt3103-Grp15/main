@@ -2,24 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import app from '../firebase/index'
 import NotFound from '@/components/NotFound.vue'
 import { getAuth } from 'firebase/auth';
-import layout from "@/views/index.vue"; // 主页
+import layout from "@/layout"; // 主页
 
 const auth = getAuth(app)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Destination',
-    component: layout,
-    redirect: '/index',
-    children: [
-      {
-        path: '/index',
-        name: 'index',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Homepage/index/index'),
-      }
-    ]
-  },
   {
     path: '/about',
     name: 'About',
@@ -27,16 +14,6 @@ const routes = [
     meta: {
       reqiresAuth: true
     }
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import( '../views/Login.vue'),
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: () => import( '../views/Register.vue'),
   },
   {
     path: '/createBlog',
@@ -49,10 +26,47 @@ const routes = [
     component: NotFound
   },
   {
-    path: '/profile',
-    name: 'Profile',
-    component: () => import( '../views/Profile.vue')
-  },
+    path: '/layout',
+    name: 'layout',
+    component: layout,
+    children: [
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: () => import( '../views/Profile.vue')
+      },
+      {
+        path: 'blog',
+        name: 'blog',
+        component: () => import( '../views/Blog.vue'),
+      },
+      {
+        path: 'register',
+        name: 'Register',
+        component: () => import( '../views/Register.vue'),
+      },
+      {
+        path: 'login',
+        name: 'Login',
+        component: () => import( '../views/Login.vue'),
+      },
+      {
+        path: 'index',
+        name: 'index',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Destination/index.vue'),
+      },
+      {
+        path: 'attractionListPage',
+        name: 'attractionListPage',
+        component: () => import(/* webpackChunkName: "about" */ '../views/attractionListPage'),
+      },
+      {
+        path: 'blogListPage',
+        name: 'blogListPage',
+        component: () => import(/* webpackChunkName: "about" */ '../views/blogListPage'),
+      },
+    ]
+  }
 ]
 
 const router = createRouter({

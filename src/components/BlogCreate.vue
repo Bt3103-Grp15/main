@@ -1,5 +1,5 @@
 <template>
-<header><Header/></header>
+  <NavBar/>
   <h1>{{value}}</h1>
   <div id="input">
     <QuillEditor theme="snow" toolbar="full" v-model:content="value"/>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { collection, addDoc, getFirestore } from "firebase/firestore"; 
+import { collection, addDoc, getFirestore } from "firebase/firestore";
 import { ref } from 'vue';
 import app from '@/firebase/index.js'
 const db = getFirestore(app);
@@ -25,7 +25,6 @@ export default {
   async submit() {
     try {
       const docRef = await addDoc(collection(db, "users"), {
-        
     });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -46,15 +45,5 @@ button {
   align-content: center;
   padding:50px;
   height:500px;
-}
-
-header {
-    height: auto;
-    width:100%;
-    background: #f2f2f2;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 0;
 }
 </style>>

@@ -10,7 +10,6 @@ export default {
   name: "App",
   components: {
   },
-  
   setup() {
     const store = useStore()
 

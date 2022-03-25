@@ -1,6 +1,6 @@
 <template>
-    <div><header><Header/></header></div>
-    <div><UserHeader :name="userName" imgpath=""/></div>
+    
+    <UserHeader :name="userName" imgpath=""/>
     <div class="container">
         <sectionHeader title="My Account" instruction="View and edit your personal info below. "/>
         <hr/>
@@ -12,26 +12,19 @@
         <hr/>
   </div>
 
-    <MyBlogs :blogs="blogs" v-for="(blogs,index) in bloglist" :key="index"/>
 </template>
 
 <script>
 import DisplayNameForm from '../components/ProfileComponents/DisplayNameForm.vue'
 import sectionHeader from '../components/ProfileComponents/sectionHeader.vue'
 import UserHeader from '../components/ProfileComponents/UserHeader.vue'
-import MyBlogs from "../components/ProfileComponents/MyBlogs.vue"
 
 
 export default {
     name: 'Profile',
-    props: ["blogs"],
     data () {
         return {
-            userName : "ba",
-            bloglist: [
-                { bimage: "hongkong1.jpeg", title: "First Blog" , description: "description: the detailed description of my first trip to Hong Kong", date: "Dec 11 2022", username: "korey"},
-                { bimage: "hongkong2.jpeg", title: "Second Blog", description: "description: the detailed description of my second trip to Hong Kong", date: "Jan 23 2021", username: "dai"},
-            ]
+            userName : "ba"
         }
     },
     methods: {
@@ -44,7 +37,6 @@ export default {
         UserHeader,
         sectionHeader,
         DisplayNameForm,
-        MyBlogs,
 }
     
 }
@@ -63,16 +55,4 @@ hr {
     color: gray;
     size: 1;
 }
-
-header {
-    height: auto;
-    width:100%;
-    background: #f2f2f2;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 0;
-}
-
-
 </style>

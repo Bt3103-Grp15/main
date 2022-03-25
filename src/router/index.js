@@ -65,6 +65,11 @@ const routes = [
         name: 'blogListPage',
         component: () => import(/* webpackChunkName: "about" */ '../views/blogListPage'),
       },
+      {
+        path: 'cityPage',
+        name: 'cityPage',
+        component: () => import(/* webpackChunkName: "about" */ '../views/cityPage'),
+      }
     ]
   }
 ]

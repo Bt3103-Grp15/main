@@ -133,8 +133,8 @@ const menuList = [
     level: '3',
     child: [
       {
-        name: 'trip-plan-list',
-        label: 'Trip Plan List',
+        name: 'cityPage',
+        label: 'City Page',
         level: '3-1',
       },
       {

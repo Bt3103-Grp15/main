@@ -3,7 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import { Dropdown, Menu } from 'ant-design-vue';
+import { Dropdown, DropdownButton, Menu, MenuItem, SubMenu } from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
 import NavBar from '@/components/NavBar.vue'
 import './assets/reset.css'
 import './assets/style.less'
@@ -15,11 +16,9 @@ import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 
-const app = createApp(App).use(store).use(router)
+const app = createApp(App).use(store).use(router).use(Dropdown).use(DropdownButton).use(Menu).use(MenuItem).use(SubMenu)
 
-app.component('Dropdown', Dropdown)
 app.component('svg-icon', SvgIcon)
-app.component('Menu', Menu)
 app.component('NavBar', NavBar)
 app.component('QuillEditor', QuillEditor)
 

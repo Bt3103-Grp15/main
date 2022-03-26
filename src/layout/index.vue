@@ -2,16 +2,15 @@
   <div class="layout">
     <header>
       <div class="logo">
-        <h2>
-          WExplorer
-        </h2>
+        <h2>WExplorer</h2>
       </div>
       <nav>
         <h2>
           <ul class="nav-list">
             <li
               v-for="(item, index) in menuList"
-              :key="index" :class="{ active : (wordKey === item.level) }"
+              :key="index"
+              :class="{ active: wordKey === item.level }"
               @click="jumpPage(item.name, item.level)"
             >
               <span>{{ item.label }}</span>
@@ -19,10 +18,10 @@
                 <li
                   v-for="(menu, key) in item.child"
                   :key="key"
-                  :class="{ active : (wordKey === menu.level) }"
+                  :class="{ active: wordKey === menu.level }"
                   @click.stop="jumpPage(menu.name, menu.level)"
                 >
-                {{ menu.label }}
+                  {{ menu.label }}
                 </li>
               </ul>
             </li>
@@ -33,9 +32,7 @@
         <span></span>
         <span class="Sign" @click="jumpPage('Login')">
           <svg-icon class="svg-icon" iconClass="touxiang"></svg-icon>
-          <span>
-            Sign In
-          </span>
+          <span> Sign In </span>
         </span>
       </div>
     </header>
@@ -72,15 +69,25 @@
           <img src="../assets/image/chongwutubiao04.png" mode="" />
         </div>
         <div>
-          <h2>
-            WExplorer
-          </h2>
+          <h2>WExplorer</h2>
         </div>
         <div class="logo-list">
-          <img src="../assets/image/01ab6619093f45388d66736ec22e5885.png" alt="">
-          <img src="../assets/image/23fd2a2be53141ed810f4d3dcdcd01fa.png" alt="">
-          <img src="../assets/image/81af6121f84c41a5b4391d7d37fce12a.png" alt="">
-          <img src="../assets/image/9c486556465843c5850fabfd68dfae49.png" alt="">
+          <img
+            src="../assets/image/01ab6619093f45388d66736ec22e5885.png"
+            alt=""
+          />
+          <img
+            src="../assets/image/23fd2a2be53141ed810f4d3dcdcd01fa.png"
+            alt=""
+          />
+          <img
+            src="../assets/image/81af6121f84c41a5b4391d7d37fce12a.png"
+            alt=""
+          />
+          <img
+            src="../assets/image/9c486556465843c5850fabfd68dfae49.png"
+            alt=""
+          />
         </div>
       </div>
     </footer>
@@ -91,72 +98,72 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-const router = useRouter()
+const router = useRouter();
 const menuList = [
   {
-    name: 'index',
-    label: 'Destination',
-    level: '1',
+    name: "index",
+    label: "Destination",
+    level: "1",
     child: [
       {
-        name: 'indivAttractionPager',
-        label: 'Indiv Attraction Pager',
-        level: '1-1',
-      }
-    ]
+        name: "indivAttractionPager",
+        label: "Indiv Attraction Pager",
+        level: "1-1",
+      },
+    ],
   },
   {
-    name: 'blog',
-    label: 'Blog',
-    level: '2',
+    name: "blog",
+    label: "Blog",
+    level: "2",
     child: [
       {
-        name: 'blogListPage',
-        label: 'Blog List Page',
-        level: '2-1',
+        name: "blogListPage",
+        label: "Blog List Page",
+        level: "2-1",
       },
       {
-        name: 'indivAttractionPager',
-        label: 'Search Results',
-        level: '2-2',
+        name: "indivAttractionPager",
+        label: "Search Results",
+        level: "2-2",
       },
       {
-        name: 'indivBlogPage',
-        label: 'Indiv Blog Page',
-        level: '2-3',
-      }
-    ]
+        name: "indivBlogPage",
+        label: "Indiv Blog Page",
+        level: "2-3",
+      },
+    ],
   },
   {
-    name: 'blog',
-    label: 'Routes',
-    level: '3',
+    name: "blog",
+    label: "Routes",
+    level: "3",
     child: [
       {
-        name: 'cityPage',
-        label: 'City Page',
-        level: '3-1',
+        name: "cityPage",
+        label: "City Page",
+        level: "3-1",
       },
       {
-        name: 'indivAttractionPager',
-        label: 'Design Routes',
-        level: '3-2',
+        name: "indivAttractionPager",
+        label: "Design Routes",
+        level: "3-2",
       },
       {
-        name: 'indivBlogPage',
-        label: 'Indiv Route Page',
-        level: '3-3',
-      }
-    ]
-  }
-]
-const wordKey = ref('1')
+        name: "indivBlogPage",
+        label: "Indiv Route Page",
+        level: "3-3",
+      },
+    ],
+  },
+];
+const wordKey = ref("1");
 const jumpPage = (name, index) => {
   router.push({
-    name
-  })
-  wordKey.value = index
-}
+    name,
+  });
+  wordKey.value = index;
+};
 </script>
 
 
@@ -169,13 +176,13 @@ const jumpPage = (name, index) => {
   padding-top: 105px;
   header {
     height: auto;
-    width:100%;
+    width: 100%;
     background: #f2f2f2;
     display: flex;
     align-items: center;
     position: fixed;
     top: 0;
-    z-index: 99999999  ;
+    z-index: 99999999;
     .logo {
       width: 376px;
       font-weight: bold;
@@ -185,7 +192,7 @@ const jumpPage = (name, index) => {
       align-items: center;
       padding-left: 30px;
     }
-    .nav-list{
+    .nav-list {
       display: flex;
       li {
         width: 238px;
@@ -194,7 +201,7 @@ const jumpPage = (name, index) => {
         text-align: center;
         cursor: pointer;
         line-height: 50px;
-        color: rgb(133,133,133);
+        color: rgb(133, 133, 133);
         border-top: 4px solid #f2f2f2;
         position: relative;
         &.active {
@@ -203,7 +210,7 @@ const jumpPage = (name, index) => {
         }
         &:hover {
           border-top: 4px solid #000;
-          .son-list  {
+          .son-list {
             display: block;
           }
         }
@@ -214,18 +221,18 @@ const jumpPage = (name, index) => {
         background: #fff;
         display: none;
         transform: translateX(-50%);
-        &:hover  {
+        &:hover {
           display: block;
         }
         li {
-          border-top: 4px solid #fff ;
+          border-top: 4px solid #fff;
           padding: 10px !important;
           min-width: 238px;
           width: auto;
           height: auto;
           // word-break: keep-all;
-          white-space:nowrap;
-          &:hover  {
+          white-space: nowrap;
+          &:hover {
             border-top: 4px solid #000 !important;
           }
         }
@@ -243,14 +250,15 @@ const jumpPage = (name, index) => {
     background: #5581b0;
     height: 279px;
     color: #fff;
-    font-family: avenir-lt-w01_85-heavy1475544,avenir-lt-w05_85-heavy,sans-serif;
+    font-family: avenir-lt-w01_85-heavy1475544, avenir-lt-w05_85-heavy,
+      sans-serif;
     // font-weight: 700;
     letter-spacing: 0.2em;
     h2 {
       > div {
         display: flex;
         padding-bottom: 5px;
-        &.second{
+        &.second {
           > div.item {
             font-size: 15px !important;
           }
@@ -272,7 +280,6 @@ const jumpPage = (name, index) => {
           width: 61px;
           margin-right: 10px;
         }
-
       }
       h2 {
         font-size: 25px;

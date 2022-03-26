@@ -2,12 +2,10 @@
   <div class="blogListPage">
     <div class="type-area">
       <div class="search-block">
-        <input placeholder="search here..." type="text">
+        <input placeholder="search here..." type="text" />
       </div>
       <div class="title-block">
-        <h2>
-          All Results for "Hong Kong"
-        </h2>
+        <h2>All Results for "Hong Kong"</h2>
       </div>
       <div class="selects-box">
         <div class="select-block">
@@ -50,16 +48,17 @@
       <div class="blog-list">
         <div class="blog-itme">
           <div class="blog-img">
-            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="">
+            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="" />
           </div>
           <div class="blog-right">
             <div class="title-block">
-              <h2>
-                The First-Timer’s Travel Guide to Hong Kong
-              </h2>
+              <h2>The First-Timer’s Travel Guide to Hong Kong</h2>
             </div>
             <div class="content">
-              Hong Kong is perhaps the one country we’ve visited more times than we can remember. Its proximity makes it an ideal destination. You’d think the city would lose its lustre after all those visits, yet every trip seems to bring with it the promise ...
+              Hong Kong is perhaps the one country we’ve visited more times than
+              we can remember. Its proximity makes it an ideal destination.
+              You’d think the city would lose its lustre after all those visits,
+              yet every trip seems to bring with it the promise ...
             </div>
             <div class="option">
               <div class="user">
@@ -81,16 +80,17 @@
         </div>
         <div class="blog-itme">
           <div class="blog-img">
-            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="">
+            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="" />
           </div>
           <div class="blog-right">
             <div class="title-block">
-              <h2>
-                The First-Timer’s Travel Guide to Hong Kong
-              </h2>
+              <h2>The First-Timer’s Travel Guide to Hong Kong</h2>
             </div>
             <div class="content">
-              Hong Kong is perhaps the one country we’ve visited more times than we can remember. Its proximity makes it an ideal destination. You’d think the city would lose its lustre after all those visits, yet every trip seems to bring with it the promise ...
+              Hong Kong is perhaps the one country we’ve visited more times than
+              we can remember. Its proximity makes it an ideal destination.
+              You’d think the city would lose its lustre after all those visits,
+              yet every trip seems to bring with it the promise ...
             </div>
             <div class="option">
               <div class="user">
@@ -112,16 +112,17 @@
         </div>
         <div class="blog-itme">
           <div class="blog-img">
-            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="">
+            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="" />
           </div>
           <div class="blog-right">
             <div class="title-block">
-              <h2>
-                The First-Timer’s Travel Guide to Hong Kong
-              </h2>
+              <h2>The First-Timer’s Travel Guide to Hong Kong</h2>
             </div>
             <div class="content">
-              Hong Kong is perhaps the one country we’ve visited more times than we can remember. Its proximity makes it an ideal destination. You’d think the city would lose its lustre after all those visits, yet every trip seems to bring with it the promise ...
+              Hong Kong is perhaps the one country we’ve visited more times than
+              we can remember. Its proximity makes it an ideal destination.
+              You’d think the city would lose its lustre after all those visits,
+              yet every trip seems to bring with it the promise ...
             </div>
             <div class="option">
               <div class="user">
@@ -143,16 +144,17 @@
         </div>
         <div class="blog-itme">
           <div class="blog-img">
-            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="">
+            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="" />
           </div>
           <div class="blog-right">
             <div class="title-block">
-              <h2>
-                The First-Timer’s Travel Guide to Hong Kong
-              </h2>
+              <h2>The First-Timer’s Travel Guide to Hong Kong</h2>
             </div>
             <div class="content">
-              Hong Kong is perhaps the one country we’ve visited more times than we can remember. Its proximity makes it an ideal destination. You’d think the city would lose its lustre after all those visits, yet every trip seems to bring with it the promise ...
+              Hong Kong is perhaps the one country we’ve visited more times than
+              we can remember. Its proximity makes it an ideal destination.
+              You’d think the city would lose its lustre after all those visits,
+              yet every trip seems to bring with it the promise ...
             </div>
             <div class="option">
               <div class="user">
@@ -182,7 +184,8 @@
 
 <style lang="less" scoped>
 .blogListPage {
-  background: url(../../assets/image/11062b_61151d0087ad418fa801687a88c78716_mv2.jpeg) no-repeat;
+  background: url(../../assets/image/11062b_61151d0087ad418fa801687a88c78716_mv2.jpeg)
+    no-repeat;
   background-size: 100% 2000px;
   position: relative;
   height: 2000px;
@@ -191,7 +194,7 @@
     width: 980px;
     margin: 0 auto;
   }
-  .search-block  {
+  .search-block {
     width: 500px;
     height: 64px;
     background: #fff;
@@ -206,7 +209,7 @@
       flex: 1;
       background: #fff;
       /*去除阴影*/
-      box-shadow:none;
+      box-shadow: none;
       /*聚焦input的蓝色边框*/
       outline: none;
       /*textarea 禁止拖拽*/
@@ -216,7 +219,7 @@
       /*常用于IOS下移除原生样式*/
       -webkit-appearance: none;
       /*点击高亮的颜色*/
-      -webkit-tap-highlight-color:rgba(0,0,0,0);
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       // background: red;
     }
   }
@@ -230,9 +233,9 @@
       width: 212px;
       display: flex;
       background: #fff;
-      border: 2px solid rgba(0,0,0, 0.4);
+      border: 2px solid rgba(0, 0, 0, 0.4);
       &:hover {
-        border: 2px solid rgb(0,0,0);
+        border: 2px solid rgb(0, 0, 0);
       }
       select {
         padding-left: 10px;
@@ -243,13 +246,12 @@
         border: none;
         font-size: 14px;
         letter-spacing: normal !important;
-        overflow:hidden;
-        text-overflow:ellipsis;
-        -webkit-line-clamp:1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
         word-break: break-all;
-        -webkit-box-orient:vertical;
+        -webkit-box-orient: vertical;
         display: -webkit-box;
-
       }
     }
   }
@@ -281,7 +283,7 @@
           padding-top: 20px;
           letter-spacing: normal !important;
         }
-        .option{
+        .option {
           padding-top: 40px;
           display: flex;
           align-items: center;

@@ -1,5 +1,4 @@
 <template>
-  <NavBar/>
   <h1>{{value}}</h1>
   <div id="input">
     <QuillEditor theme="snow" toolbar="full" v-model:content="value"/>

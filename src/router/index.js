@@ -18,7 +18,7 @@ const routes = [
   {
     path: '/createBlog',
     name: 'BlogCreate',
-    component: () => import( '../components/BlogCreate.vue'),
+    component: () => import( '../views/blogCreate/index.vue'),
   },
   {
     path: '/:catchAll(.*)',

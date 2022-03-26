@@ -21,6 +21,5 @@ const app = createApp(App).use(store).use(router).use(Dropdown).use(DropdownButt
 app.component('svg-icon', SvgIcon)
 app.component('NavBar', NavBar)
 app.component('QuillEditor', QuillEditor)
-
 app.mount('#app')
 

@@ -27,3 +27,7 @@ https://www.youtube.com/watch?v=bUHVGPx6IMo&list=PL4cUxeGkcC9jveNu1TI0P62Dn9Me1j
 # 0319-tips
 ### Remember to add a uifire.js in folder firebase
 template is the same as what was given in the lecture
+
+# 0326-q
+1. Layout overwrite the router, then there is no need for a /router and also inside of the router there is no need a layout import
+2. 

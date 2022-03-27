@@ -93,7 +93,7 @@ export default createStore({
 
       console.log(name)
       await setDoc(doc(db, "users", auth.currentUser.uid), {
-        name: "d"
+        name: name
       })
       
       commit('SET_USER', auth.currentUser)

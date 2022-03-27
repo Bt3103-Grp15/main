@@ -13,6 +13,10 @@
                 type="password"
                 placeholder="Password"
                 v-model="register_form.password" />
+			<input
+                type="displayname"
+                placeholder="Display name"
+                v-model="register_form.name" />
             <input
                 type="submit"
                 value="Register" />

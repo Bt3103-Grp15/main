@@ -12,19 +12,25 @@
         <hr/>
   </div>
 
+  <Blogs :blogs="blogs" v-for="(blogs,index) in bloglist" :key="index"/>
+
 </template>
 
 <script>
 import DisplayNameForm from '../components/ProfileComponents/DisplayNameForm.vue'
 import sectionHeader from '../components/ProfileComponents/sectionHeader.vue'
 import UserHeader from '../components/ProfileComponents/UserHeader.vue'
-
+import Blogs from '@/components/ProfileComponents/Blogs.vue'
 
 export default {
     name: 'Profile',
     data () {
         return {
-            userName : "ba"
+            userName : "ba",
+            bloglist: [
+                { bimage: "hongkong1.jpeg", title: "First Blog" , description: "description: the detailed description of my first trip to Hong Kong", date: "Dec 11 2022", username: "korey"},
+                { bimage: "hongkong2.jpeg", title: "Second Blog", description: "description: the detailed description of my second trip to Hong Kong", date: "Jan 23 2021", username: "dai"},
+            ]
         }
     },
     methods: {
@@ -37,6 +43,7 @@ export default {
         UserHeader,
         sectionHeader,
         DisplayNameForm,
+        Blogs,
 }
     
 }

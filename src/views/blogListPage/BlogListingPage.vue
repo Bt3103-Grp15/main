@@ -100,7 +100,7 @@ export default {
 
 <style>
 body{
-    background-image: url('../assets/view.jpg');
+    background-image: url('../../assets/view.jpg');
     background-size: contain, cover;
 }
 

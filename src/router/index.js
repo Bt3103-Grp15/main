@@ -38,7 +38,7 @@ const routes = [
       {
         path: 'blog',
         name: 'blog',
-        component: () => import( '../views/Blog.vue'),
+        component: () => import( '../views/blogListPage/BlogListingPage.vue'),
       },
       {
         path: 'register',

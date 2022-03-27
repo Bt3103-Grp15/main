@@ -11,7 +11,7 @@
 	</div>
 	
     <div class="blog-image">
-        <img :src="require(`@/assets/${blogs.bimage}`)" alt="">
+        <img :src="require(`../../assets/${blogs.bimage}`)" alt="">
 
         <div class="info">
             <h2> Description</h2>

@@ -60,7 +60,6 @@ export default {
         };
         ui.start("#firebaseui-auth-container", uiConfig)
     }
-
 }
 </script>
 

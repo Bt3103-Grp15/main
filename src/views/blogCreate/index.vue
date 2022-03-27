@@ -18,7 +18,7 @@
 
 <script>
 import { getFirestore } from "firebase/firestore";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import app from "@/firebase/index.js";
 
@@ -56,16 +56,17 @@ export default {
     async upload() {
       try {
         const auth = getAuth();
-        const fbuser = auth.currentUser.email;
         if (!this.title) {
           alert("Please enter the title!");
           return;
         }
 
-        await setDoc(doc(db, String(fbuser), this.title), {
+        await addDoc(collection(db, "users/" + auth.currentUser.uid + "/blog"), {
           Name: this.title,
           Content: this.qeditor.root.innerHTML,
         });
+
+
         alert("Upload successfully!");
         this.title = null;
         this.qeditor.setText("");

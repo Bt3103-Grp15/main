@@ -11,7 +11,6 @@ import {
     SubMenu,
 } from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
-import NavBar from "@/components/NavBar.vue";
 import "./assets/reset.css";
 import "./assets/style.less";
 import "./assets/icons/index";
@@ -32,6 +31,5 @@ const app = createApp(App)
     .use(SubMenu);
 
 app.component("svg-icon", SvgIcon);
-app.component("NavBar", NavBar);
 app.component("QuillEditor", QuillEditor);
 app.mount("#app");

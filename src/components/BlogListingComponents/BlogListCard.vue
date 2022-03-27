@@ -143,7 +143,7 @@ font-family: 'EB Garamond', serif;
     top: 0;
 }
 
-.info h2 {text-align: center}
+.info h2 {text-align: center;}
 .blog-image:hover .info{transform: translateX(0);}
 
 .info ul li{transition: 0.3s ease;}

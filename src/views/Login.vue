@@ -64,7 +64,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 form {
 	flex: 1 1 0%;
 	padding: 8rem 1rem 1rem;

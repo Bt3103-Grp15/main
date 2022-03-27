@@ -12,13 +12,11 @@
           </div>
           <div class="back-block">
             <svg-icon iconClass="fanhui"></svg-icon>
-            <span>
-              Learn more about Hong Kong
-            </span>
+            <span> Learn more about Hong Kong </span>
           </div>
         </div>
         <div class="top-right-block">
-          <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="">
+          <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="" />
         </div>
       </div>
       <div class="attraction-list">
@@ -31,7 +29,8 @@
               </div>
             </div>
             <div class="Central">
-              Central and Western District, Hong Kong<br /> Island, Hong Kong 999077 China
+              Central and Western District, Hong Kong<br />
+              Island, Hong Kong 999077 China
             </div>
             <div class="East">
               <div>How to get there</div>
@@ -43,14 +42,17 @@
           </div>
           <div class="imageList">
             <div class="ImagebyDanFreeman">
-              <img src="../../assets/image/ImagebyDanFreeman.jpeg" alt="">
+              <img src="../../assets/image/ImagebyDanFreeman.jpeg" alt="" />
             </div>
             <div class="rightimg">
               <div>
-                <img src="../../assets/image/ImagebySébastienGoldberg.jpeg" alt="">
+                <img
+                  src="../../assets/image/ImagebySébastienGoldberg.jpeg"
+                  alt=""
+                />
               </div>
               <div>
-                <img src="../../assets/image/HongKongSkyline.jpeg" alt="">
+                <img src="../../assets/image/HongKongSkyline.jpeg" alt="" />
               </div>
             </div>
           </div>
@@ -64,7 +66,8 @@
               </div>
             </div>
             <div class="Central">
-              Central and Western District, Hong Kong<br /> Island, Hong Kong 999077 China
+              Central and Western District, Hong Kong<br />
+              Island, Hong Kong 999077 China
             </div>
             <div class="East">
               <div>How to get there</div>
@@ -76,14 +79,17 @@
           </div>
           <div class="imageList">
             <div class="ImagebyDanFreeman">
-              <img src="../../assets/image/ImagebyDanFreeman.jpeg" alt="">
+              <img src="../../assets/image/ImagebyDanFreeman.jpeg" alt="" />
             </div>
             <div class="rightimg">
               <div>
-                <img src="../../assets/image/ImagebySébastienGoldberg.jpeg" alt="">
+                <img
+                  src="../../assets/image/ImagebySébastienGoldberg.jpeg"
+                  alt=""
+                />
               </div>
               <div>
-                <img src="../../assets/image/HongKongSkyline.jpeg" alt="">
+                <img src="../../assets/image/HongKongSkyline.jpeg" alt="" />
               </div>
             </div>
           </div>
@@ -92,12 +98,14 @@
     </div>
   </div>
 </template>
-<script setup>
+
+<script>
 </script>
+
 <style lang="less" scoped>
 .attraction-list-page {
   background: url(../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg);
-  background-attachment:fixed;
+  background-attachment: fixed;
   background-size: cover;
   .type-area {
     width: 980px;
@@ -115,17 +123,16 @@
           padding-top: 30px;
           h2 {
             color: rgb(41, 41, 41);
-            letter-spacing:6px !important;
+            letter-spacing: 6px !important;
             font-size: 30px !important;
           }
-
         }
         .back-block {
           display: flex;
           align-items: center;
           padding: 20px 40px;
           color: rgba(41, 41, 41, 0.8);
-          .svg-icon{
+          .svg-icon {
             height: 35px;
             width: 35px;
             margin-right: 10px;

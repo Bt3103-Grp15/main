@@ -1,22 +1,24 @@
 <template>
   <main class="login">
-		<section class="form">
-          <form class="login" @submit.prevent="login">
-            <h2>Login</h2>
-            <router-link to="/layout/register">Register</router-link>
-            <input
-                type="email"
-                placeholder="Email address"
-                v-model="login_form.email" required/>
-            <input
-                type="password"
-                placeholder="Password"
-                v-model="login_form.password" required/>
-            <input
-                type="submit"
-                value="Login" />
-          </form>
-		</section>
+        <div>
+            <section class="form">
+            <form class="login" @submit.prevent="login">
+                <h2>Login</h2>
+                <router-link to="/layout/register">Register</router-link>
+                <input
+                    type="email"
+                    placeholder="Email address"
+                    v-model="login_form.email" required/>
+                <input
+                    type="password"
+                    placeholder="Password"
+                    v-model="login_form.password" required/>
+                <input
+                    type="submit"
+                    value="Login" />
+            </form>
+            </section>
+        </div>
 		<div id="firebaseui-auth-container"></div>
   </main>
 </template>
@@ -116,4 +118,16 @@ form.login input[type="submit"] {
 	text-transform: uppercase;
 }
 
+main.login{
+width: 80%;
+  margin: 1% 10%;
+  height: 500px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  padding-bottom: 40px;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+}
 </style>

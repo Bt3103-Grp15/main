@@ -8,8 +8,12 @@ import {
   signInWithPopup,
   getAuth
 } from 'firebase/auth'
+import {doc, setDoc, getFirestore} from "firebase/firestore"
+
 
 const auth = getAuth(app)
+const db = getFirestore(app)
+
 export default createStore({
   state: {//Use to store state globally
     user: null
@@ -63,7 +67,7 @@ export default createStore({
     },
 
     async register ({ commit }, details) {
-      const { email, password } = details
+      const { email, password, name } = details
 
       try {
         await createUserWithEmailAndPassword(auth, email, password)
@@ -86,9 +90,14 @@ export default createStore({
         }
         return
       }
+
+      console.log(name)
+      await setDoc(doc(db, "users", auth.currentUser.uid), {
+        name: "d"
+      })
+      
       commit('SET_USER', auth.currentUser)
       router.push('/')
-
     },
 
     async logout ({ commit }) {

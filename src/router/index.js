@@ -26,9 +26,10 @@ const routes = [
     component: NotFound
   },
   {
-    path: '/layout',
+    path: '/',
     name: 'layout',
     component: layout,
+    redirect: '/index',
     children: [
       {
         path: 'profile',

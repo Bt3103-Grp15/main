@@ -104,7 +104,7 @@ export default createStore({
       await signOut(auth)
 
       commit('CLEAR_USER')
-      router.push('/login')
+      router.push({name :'Login'})
     },
 
     fetchUser ({ commit }) {

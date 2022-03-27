@@ -30,9 +30,10 @@
       </nav>
       <div>
         <span></span>
-        <span class="Sign" @click="jumpPage('Login')">
+        <span class="Sign" @click='this.$store.dispatch("logout")'>
           <svg-icon class="svg-icon" iconClass="touxiang"></svg-icon>
-          <span> Sign In </span>
+          <span v-if="$store.state.user!==null">Logout</span>
+          <span v-else>Login</span>
         </span>
       </div>
     </header>

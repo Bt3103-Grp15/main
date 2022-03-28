@@ -1,5 +1,5 @@
 <template>
-<div id="container">	
+<div id="blogcard">	
 	
 	<div class="blog-details">
 		<h1>{{blogs.title}}</h1>
@@ -43,7 +43,7 @@ body {
 	background-size: cover;
 }
 
-#container{
+#blogcard{
 	box-shadow: 0 15px 30px 1px grey;
 	background: rgba(255, 255, 255, 0.90);
 	text-align: center;
@@ -65,7 +65,7 @@ body {
 
 }
 
-#container .blog-details h1{
+#blogcard .blog-details h1{
 	font-family: 'Bebas Neue', cursive;
 	display: inline-block;
 	position: relative;
@@ -75,7 +75,7 @@ body {
 	
 }
 
-#container .blog-details h1:before{
+#blogcard .blog-details h1:before{
 	position: absolute;
 	content: '';
 	right: 0%; 
@@ -99,7 +99,7 @@ body {
 	width: 50%;
 }
 
-#container .blog-details > p {
+#blogcard .blog-details > p {
 font-family: 'EB Garamond', serif;
 	text-align: left;
 	font-size: 18px;
@@ -124,7 +124,7 @@ font-family: 'EB Garamond', serif;
 	display: inline-block;
 }
 
-#container img {width: 100%;height: 100%;}
+#blogcard img {width: 100%;height: 100%;}
 
 .info {
     background: rgba(27, 26, 26, 0.9);

@@ -2,12 +2,11 @@ import { createStore } from 'vuex'
 import router from '../router'
 import app from '@/firebase/index.js'
 import { 
-  createUserWithEmailAndPassword,
   signOut,
   signInWithPopup,
   getAuth
 } from 'firebase/auth'
-import {doc, setDoc, getFirestore, getDoc} from "firebase/firestore"
+import {doc, getFirestore, getDoc} from "firebase/firestore"
 
 const auth = getAuth(app)
 const db = getFirestore(app)
@@ -49,40 +48,6 @@ export default createStore({
         }
         return
       }
-      commit('SET_USER', auth.currentUser)
-      router.push('/')
-    },
-
-    async register ({ commit }, details) {
-      const { email, password, name } = details
-
-      try {
-        await createUserWithEmailAndPassword(auth, email, password)
-      } catch (error) {
-        switch(error.code) {
-          case 'auth/email-already-in-use':
-            alert("Email already in use")
-            break
-          case 'auth/invalid-email':
-            alert("Invalid email")
-            break
-          case 'auth/operation-not-allowed':
-            alert("Operation not allowed")
-            break
-          case 'auth/weak-password':
-            alert("Weak password")
-            break
-          default:
-            alert("Something went wrong")
-        }
-        return
-      }
-
-      console.log(name)
-      await setDoc(doc(db, "users", auth.currentUser.uid), {
-        name: name
-      })
-      
       commit('SET_USER', auth.currentUser)
       router.push('/')
     },

@@ -28,17 +28,15 @@
 
 <script>
 import { ref } from 'vue';
-import { useStore } from 'vuex';
 
 
 export default {
 
     setup() {
         const register_form = ref({});
-        const store = useStore();
 
         const register = () => {
-            store.dispatch('register', register_form.value);
+            this.$store.dispatch('register', register_form.value);
         }
 
         return {

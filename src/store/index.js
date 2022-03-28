@@ -129,6 +129,11 @@ export default createStore({
           commit('CLEAR_USER')
         } else {
           commit('SET_USER', user)
+          //get user document 
+          const userDocRef = doc(db, "users", auth.currentUser.uid)
+          const docSnap = await getDoc(userDocRef)
+          const data = await docSnap.data()
+          commit('SET_PROFILE', data)
 
           if(router.isReady() && router.currentRoute.value.path === '/login') {
             router.push('/')

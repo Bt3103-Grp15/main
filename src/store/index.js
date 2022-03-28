@@ -6,7 +6,7 @@ import {
   signInWithPopup,
   getAuth
 } from 'firebase/auth'
-import {doc, getFirestore, getDoc} from "firebase/firestore"
+import {doc, getFirestore, getDoc, updateDoc} from "firebase/firestore"
 
 const auth = getAuth(app)
 const db = getFirestore(app)
@@ -28,6 +28,10 @@ export default createStore({
       if (data.blogs) { //if user has created blogs before 
         state.blogs = data.blogs
       }
+    },
+
+    SET_USERNAME(state, name) {
+      state.username = name
     },
 
 
@@ -76,6 +80,14 @@ export default createStore({
           }
         }
       })
+    },
+
+    async updateUsername({commit}, newName) {
+      await updateDoc(doc(db,"users",auth.currentUser.uid), {name : newName});
+
+      console.log("hi im next")
+      
+      commit('SET_USERNAME', newName)
     }
   }
 })

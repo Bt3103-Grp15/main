@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         changeName(name) {
-            this.userName = name
+            this.$store.dispatch("updateUsername", name)
         }
     },
 

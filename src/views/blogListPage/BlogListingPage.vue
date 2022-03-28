@@ -1,5 +1,4 @@
 <template>
-    <div><h1>header</h1></div>
     <div class="form-div">
         <form id="form" role="search" >
         <input id="query" name="q" placeholder="Search here..." aria-label="Search through site content">
@@ -174,13 +173,13 @@ input {
 }
 
 
-svg {
+/* svg {
   color: cadetblue;
   fill: currentColor;
   width: 24px;
   height: 24px;
   padding: 10px;
-}
+} */
 
 .readbtn {
 	width: 150px;

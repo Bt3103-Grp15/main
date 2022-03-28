@@ -53,7 +53,7 @@ export default createStore({
         return
       }
       commit('SET_USER', auth.currentUser)
-      router.push('/')
+      router.push({name : 'Destination'})
     },
 
     async logout ({ commit }) {
@@ -75,8 +75,8 @@ export default createStore({
           const data = await docSnap.data()
           commit('SET_PROFILE', data)
 
-          if(router.isReady() && router.currentRoute.value.path === '/login') {
-            router.push('/')
+          if(router.isReady() && router.currentRoute.value.name === 'Login') {
+            router.push({ name: "Login"})
           }
         }
       })

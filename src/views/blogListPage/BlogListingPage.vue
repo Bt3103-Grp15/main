@@ -1,4 +1,6 @@
 <template>
+<div class="actasboday">
+    <br> <br>
     <div class="form-div">
         <form id="form" role="search" >
         <input id="query" name="q" placeholder="Search here..." aria-label="Search through site content">
@@ -11,6 +13,8 @@
         </button>
     </form>
     </div>
+
+    <br>
 
     <div class="filter">
         <h2> All Results for {{destination}} </h2>
@@ -55,7 +59,9 @@
     </div>
 
     <button class="readbtn">Read More</button>
-    
+
+    <br> <br> <br> <br> <br>
+</div>
 </template>
 
 <script>
@@ -69,8 +75,8 @@ export default {
         return {
             destination: "",
             bloglist: [
-                { bimage: "hongkong1.jpeg", title: "First Blog" , description: "the thhhdhdhd description of my first trip to Hong Kong", date: "Dec 11 2022", username: "Dora Zhu", place: "HongKong", likes: 1000},
-                { bimage: "hongkong2.jpeg", title: "Second Blog", description: "the detailed description of my second trip to Hong Kong", date: "Jan 23 2021", username: "Kelly Zhou", place: "HongKong", likes: 1300},
+                { bimage: "hongkong1.jpeg", title: "First Blog" , description: "The description of my first trip to Hong Kong", date: "Dec 11 2022", username: "Dora Zhu", place: "HongKong", likes: 1000},
+                { bimage: "hongkong2.jpeg", title: "Second Blog", description: "The detailed description of my second trip to Hong Kong", date: "Jan 23 2021", username: "Kelly Zhou", place: "HongKong", likes: 1300},
             ],
             arrayOfObjects1: [{name: "Most Viewed"}, {name: "Most Popular Blog"}],
             arrayOfObjects2: [{name: "2022"}, {name: "2021"}],
@@ -97,8 +103,8 @@ export default {
 }
 </script>
 
-<style scpoed>
-body{
+<style scoped>
+.actasboday{
     background-image: url('../../assets/view.jpg');
     background-size: contain, cover;
 }

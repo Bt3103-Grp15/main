@@ -1,4 +1,5 @@
 <template>
+<div class="actasboday">
     <br> <br>
     <div class="form-div">
         <form id="form" role="search" >
@@ -12,6 +13,8 @@
         </button>
     </form>
     </div>
+
+    <br>
 
     <div class="filter">
         <h2> All Results for {{destination}} </h2>
@@ -58,7 +61,7 @@
     <button class="readbtn">Read More</button>
 
     <br> <br> <br> <br> <br>
-    
+</div>
 </template>
 
 <script>
@@ -101,7 +104,7 @@ export default {
 </script>
 
 <style scoped>
-body{
+.actasboday{
     background-image: url('../../assets/view.jpg');
     background-size: contain, cover;
 }

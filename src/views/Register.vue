@@ -71,6 +71,8 @@ export default {
             await setDoc(doc(db, "users", auth.currentUser.uid), {
                 name: this.register_form.name
             })
+
+            this.$router.push({ name: "index"})
         }
     }
 

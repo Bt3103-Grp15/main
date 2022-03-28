@@ -98,7 +98,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body{
     background-image: url('../../assets/view.jpg');
     background-size: contain, cover;

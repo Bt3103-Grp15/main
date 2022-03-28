@@ -8,21 +8,30 @@ import {
   signInWithPopup,
   getAuth
 } from 'firebase/auth'
-import {doc, setDoc, getFirestore} from "firebase/firestore"
-
+import {doc, setDoc, getFirestore, getDoc} from "firebase/firestore"
 
 const auth = getAuth(app)
 const db = getFirestore(app)
 
 export default createStore({
   state: {//Use to store state globally
-    user: null
+    user: null,
+    username: "",
+    blogs: [],
   },
   mutations: {//change the state
 
     SET_USER (state, user) {
       state.user = user
     },
+
+    SET_PROFILE(state, data) {
+      state.username = data.name
+      if (data.blogs) { //if user has created blogs before 
+        state.blogs = data.blogs
+      }
+    },
+
 
     CLEAR_USER (state) {
       state.user = null
@@ -63,6 +72,13 @@ export default createStore({
         return
       }
       commit('SET_USER', auth.currentUser)
+
+      //get user document 
+      const userDocRef = doc(db, "users", auth.currentUser.uid)
+      const docSnap = await getDoc(userDocRef)
+      const data = await docSnap.data()
+      commit('SET_PROFILE', data)
+
       router.push({name:"Destination"})
     },
 

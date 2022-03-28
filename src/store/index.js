@@ -3,7 +3,6 @@ import router from '../router'
 import app from '@/firebase/index.js'
 import { 
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   signOut,
   signInWithPopup,
   getAuth
@@ -51,34 +50,6 @@ export default createStore({
         return
       }
       commit('SET_USER', auth.currentUser)
-      router.push('/')
-    },
-    async login ({ commit }, details) {
-      const { email, password } = details
-
-      try {
-        await signInWithEmailAndPassword(auth, email, password)
-      } catch (error) {
-        switch(error.code) {
-          case 'auth/user-not-found':
-            alert("User not found")
-            break
-          case 'auth/wrong-password':
-            alert("Wrong password")
-            break
-          default:
-            alert("Something went wrong")
-        }
-        return
-      }
-      commit('SET_USER', auth.currentUser)
-
-      //get user document 
-      const userDocRef = doc(db, "users", auth.currentUser.uid)
-      const docSnap = await getDoc(userDocRef)
-      const data = await docSnap.data()
-      commit('SET_PROFILE', data)
-
       router.push('/')
     },
 

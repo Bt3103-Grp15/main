@@ -7,9 +7,21 @@
                     Where to?
                   </h2>
               </div>
-              <div class="input-block">
+              <!-- <div class="input-block">
                   <input type="text" placeholder="Search for a city">
-              </div>
+              </div> -->
+              <div class="input-block">
+                <form id="form" role="search" >
+                <input id="query" name="q" placeholder="Search here..." aria-label="Search through site content">
+                <button class="searchbtn" @click="updatedestination">
+                <svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 
+                36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 
+                0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 
+                408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 
+                218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
+                </button>
+                </form>
+            </div>
           </div>
       </div>
       <div class="blog-list">
@@ -122,6 +134,15 @@ const list = [
             padding-right: 50px;
             padding-left: 10px;
         }
+        form {
+            width: 600px;
+            height: 44px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
         input {
             /*去除阴影*/
             box-shadow:none;
@@ -139,6 +160,11 @@ const list = [
             font-size: 20px;
             display: block;
             flex: 1
+        }.searchbtn {
+            all: unset;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
         }
     }
     .blog-list {

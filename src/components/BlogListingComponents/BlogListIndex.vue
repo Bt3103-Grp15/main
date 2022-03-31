@@ -65,7 +65,7 @@ export default {
           letter-spacing: normal !important;
         }
         .option {
-          padding-top: 40px;
+          padding-top: 120px;
           display: flex;
           align-items: center;
           justify-content: space-between;

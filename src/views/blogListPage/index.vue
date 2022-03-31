@@ -170,6 +170,11 @@ export default {
   }
 }
 
+.form-div{
+  display: flex;
+  justify-content: center;
+}
+
 form {
   background-color: #f1f1f1;
   width: 600px;

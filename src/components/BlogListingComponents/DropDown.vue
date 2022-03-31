@@ -91,15 +91,13 @@
 .btn-group a:hover {
   text-decoration: none;
 }
-/* .dropdown-toggle {
-  color: #636b6f;
+.dropdown-toggle {
   min-width: 160px;
   padding: 10px 20px 10px 10px;
   text-transform: none;
   font-weight: 300;
   margin-bottom: 7px;
   border: 0;
-  background: #e1e1e1;
   transition: background 0s ease-out;
   float: none;
   box-shadow: none;
@@ -107,11 +105,11 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-} */
-/* .dropdown-toggle:hover {
+}
+.dropdown-toggle:hover {
   background: #e1e1e1;
   cursor: pointer;
-} */
+}
 .dropdown-menu {
   position: absolute;
   top: 100%;

@@ -5,20 +5,13 @@
 </template>
 
 <script>
-import { onBeforeMount } from 'vue'
-import { useStore } from 'vuex'
 
 export default {
   name: "App",
   components: {
   },
-  setup() {
-    const store = useStore()
-
-    onBeforeMount(() => {
-      store.dispatch('fetchUser')
-    })
-
+  created() {
+    this.$store.dispatch("fetchUser")
   }
 }
 </script>

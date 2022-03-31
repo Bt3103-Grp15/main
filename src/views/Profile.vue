@@ -1,6 +1,6 @@
 <template>
     
-    <UserHeader :name="userName" imgpath=""/>
+    <UserHeader :name="this.$store.state.username" imgpath=""/>
     <div class="container">
         <sectionHeader title="My Account" instruction="View and edit your personal info below. "/>
         <hr/>
@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         changeName(name) {
-            this.userName = name
+            this.$store.dispatch("updateUsername", name)
         }
     },
 

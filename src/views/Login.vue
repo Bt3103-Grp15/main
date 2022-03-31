@@ -4,7 +4,7 @@
             <section class="form">
             <form class="login" @submit.prevent="login">
                 <h2>Login</h2>
-                <router-link to="/layout/register">Register</router-link>
+                <router-link to="/register">Register</router-link>
                 <input
                     type="email"
                     placeholder="Email address"
@@ -25,42 +25,43 @@
 
 <script>
 import { ref } from 'vue';
-import { useStore } from 'vuex';
-import firebase from '@/firebase/uifire.js';
-import 'firebase/compat/auth';
-import * as firebaseui from 'firebaseui';
-import 'firebaseui/dist/firebaseui.css';
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import app from '@/firebase/index.js'
 
-
+const auth = getAuth(app)
 export default {
     setup() {
         const login_form = ref({});
-        const store = useStore();
 
-        const login = () => {
-            store.dispatch('login', login_form.value);
-        }
+        // const login = () => {
+        //     this.$store.dispatch('login', login_form.value);
+        // }
 
         return {
-            login_form,
-            login,
+            login_form
         }
     },
 
 	mounted() {
-        var ui = firebaseui.auth.AuthUI.getInstance();
-        if(!ui) {
-            ui = new firebaseui.auth.AuthUI(firebase.auth());
+    },
+    methods:{
+        async login() {
+          try {
+            await signInWithEmailAndPassword(auth, this.login_form.email, this.login_form.password)
+            } catch (error) {
+        switch(error.code) {
+          case 'auth/user-not-found':
+            alert("User not found")
+            break
+          case 'auth/wrong-password':
+            alert("Wrong password")
+            break
+          default:
+            alert("Something went wrong")
         }
-
-        var uiConfig = {
-            signInSuccessUrl: '/',
-            signInOptions: [
-                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                firebase.auth.EmailAuthProvider.PROVIDER_ID,
-            ]
-        };
-        ui.start("#firebaseui-auth-container", uiConfig)
+        return
+      }
+        }
     }
 }
 </script>

@@ -28,22 +28,51 @@
 
 <script>
 import { ref } from 'vue';
-import { useStore } from 'vuex';
+import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+import app from '@/firebase/index.js'
+import {doc, setDoc, getFirestore} from "firebase/firestore"
 
+const auth = getAuth(app)
+const db = getFirestore(app)
 
 export default {
 
     setup() {
         const register_form = ref({});
-        const store = useStore();
-
-        const register = () => {
-            store.dispatch('register', register_form.value);
-        }
 
         return {
             register_form,
-            register
+        }
+    },
+    methods: {
+        async register() {
+            try {
+                await createUserWithEmailAndPassword(auth, this.register_form.email, this.register_form.password)
+            } catch (error) {
+             switch(error.code) {
+                case 'auth/email-already-in-use':
+                    alert("Email already in use")
+                    break
+                case 'auth/invalid-email':
+                    alert("Invalid email")
+                    break
+                case 'auth/operation-not-allowed':
+                    alert("Operation not allowed")
+                    break
+                case 'auth/weak-password':
+                    alert("Weak password")
+                    break
+                default:
+                    alert("Something went wrong")
+                }
+                return
+            }
+
+            await setDoc(doc(db, "users", auth.currentUser.uid), {
+                name: this.register_form.name
+            })
+
+            this.$router.push({ name: "index"})
         }
     }
 

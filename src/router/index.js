@@ -37,11 +37,6 @@ const routes = [
         component: () => import( '../views/Profile.vue')
       },
       {
-        path: 'blog',
-        name: 'blog',
-        component: () => import( '../views/blogListPage/BlogListingPage.vue'),
-      },
-      {
         path: 'register',
         name: 'Register',
         component: () => import( '../views/Register.vue'),

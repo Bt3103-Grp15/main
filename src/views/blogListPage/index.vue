@@ -1,185 +1,98 @@
 <template>
   <div class="blogListPage">
     <div class="type-area">
-      <div class="search-block">
-        <input placeholder="search here..." type="text" />
-      </div>
+      <div class="form-div">
+        <form id="form" role="search" >
+        <input id="query" name="q" placeholder="Search here..." aria-label="Search through site content">
+        <button class="searchbtn" @click="updatedestination">
+            <svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 
+            36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 
+            0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 
+            408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 
+            218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
+        </button>
+    </form>
+    </div>
       <div class="title-block">
         <h2>All Results for "Hong Kong"</h2>
       </div>
-      <div class="selects-box">
-        <div class="select-block">
-          <select name="2" id="2">
-            <option value="1">Most Popular Blogs</option>
-            <option value="2">Vanilla</option>
-            <option value="3">ChocolateChocolateChocolateChocolate</option>
-            <option value="4">Strawberry</option>
-            <option value="5">Rocky Road</option>
-          </select>
-        </div>
-        <div class="select-block">
-          <select name="4" id="4">
-            <option value="1">Most Popular Blogs</option>
-            <option value="2">Vanilla</option>
-            <option value="3">ChocolateChocolateChocolateChocolate</option>
-            <option value="4">Strawberry</option>
-            <option value="5">Rocky Road</option>
-          </select>
-        </div>
-        <div class="select-block">
-          <select name="3" id="3">
-            <option value="1">Most Popular Blogs</option>
-            <option value="2">Vanilla</option>
-            <option value="3">ChocolateChocolateChocolateChocolate</option>
-            <option value="4">Strawberry</option>
-            <option value="5">Rocky Road</option>
-          </select>
-        </div>
-        <div class="select-block">
-          <select name="5" id="5">
-            <option value="1">Most Popular Blogs</option>
-            <option value="2">Vanilla</option>
-            <option value="3">ChocolateChocolateChocolateChocolate</option>
-            <option value="4">Strawberry</option>
-            <option value="5">Rocky Road</option>
-          </select>
-        </div>
+      <div class="selects-box"> 
+        <DropDown class="select-block"
+          :options="arrayOfObjects1" 
+          :selected="object1" 
+          v-on:updateOption="methodToRunOnSelect" 
+          :placeholder="'Select an Item'"
+          :closeOnOutsideClick="boolean">
+        </DropDown>
+
+        <DropDown class="select-block"
+          :options="arrayOfObjects2" 
+          :selected="object2" 
+          v-on:updateOption="methodToRunOnSelect" 
+          :placeholder="'Select an Item'"
+          :closeOnOutsideClick="boolean">
+        </DropDown>
+
+        <DropDown class="select-block"
+          :options="arrayOfObjects3" 
+          :selected="object3" 
+          v-on:updateOption="methodToRunOnSelect" 
+          :placeholder="'Select an Item'"
+          :closeOnOutsideClick="boolean">
+        </DropDown>
+
+        <DropDown class="select-block"
+          :options="arrayOfObjects4" 
+          :selected="object4" 
+          v-on:updateOption="methodToRunOnSelect" 
+          :placeholder="'Select an Item'"
+          :closeOnOutsideClick="boolean">
+        </DropDown>
       </div>
-      <div class="blog-list">
-        <div class="blog-itme">
-          <div class="blog-img">
-            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="" />
-          </div>
-          <div class="blog-right">
-            <div class="title-block">
-              <h2>The First-Timer’s Travel Guide to Hong Kong</h2>
-            </div>
-            <div class="content">
-              Hong Kong is perhaps the one country we’ve visited more times than
-              we can remember. Its proximity makes it an ideal destination.
-              You’d think the city would lose its lustre after all those visits,
-              yet every trip seems to bring with it the promise ...
-            </div>
-            <div class="option">
-              <div class="user">
-                <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                <h2>Dora Zhu</h2>
-              </div>
-              <div class="right-icon">
-                <div class="weizhi">
-                  <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                  <span>Hong Kong</span>
-                </div>
-                <div class="weizhi">
-                  <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                  <span>2000</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="blog-itme">
-          <div class="blog-img">
-            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="" />
-          </div>
-          <div class="blog-right">
-            <div class="title-block">
-              <h2>The First-Timer’s Travel Guide to Hong Kong</h2>
-            </div>
-            <div class="content">
-              Hong Kong is perhaps the one country we’ve visited more times than
-              we can remember. Its proximity makes it an ideal destination.
-              You’d think the city would lose its lustre after all those visits,
-              yet every trip seems to bring with it the promise ...
-            </div>
-            <div class="option">
-              <div class="user">
-                <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                <h2>Dora Zhu</h2>
-              </div>
-              <div class="right-icon">
-                <div class="weizhi">
-                  <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                  <span>Hong Kong</span>
-                </div>
-                <div class="weizhi">
-                  <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                  <span>2000</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="blog-itme">
-          <div class="blog-img">
-            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="" />
-          </div>
-          <div class="blog-right">
-            <div class="title-block">
-              <h2>The First-Timer’s Travel Guide to Hong Kong</h2>
-            </div>
-            <div class="content">
-              Hong Kong is perhaps the one country we’ve visited more times than
-              we can remember. Its proximity makes it an ideal destination.
-              You’d think the city would lose its lustre after all those visits,
-              yet every trip seems to bring with it the promise ...
-            </div>
-            <div class="option">
-              <div class="user">
-                <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                <h2>Dora Zhu</h2>
-              </div>
-              <div class="right-icon">
-                <div class="weizhi">
-                  <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                  <span>Hong Kong</span>
-                </div>
-                <div class="weizhi">
-                  <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                  <span>2000</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="blog-itme">
-          <div class="blog-img">
-            <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="" />
-          </div>
-          <div class="blog-right">
-            <div class="title-block">
-              <h2>The First-Timer’s Travel Guide to Hong Kong</h2>
-            </div>
-            <div class="content">
-              Hong Kong is perhaps the one country we’ve visited more times than
-              we can remember. Its proximity makes it an ideal destination.
-              You’d think the city would lose its lustre after all those visits,
-              yet every trip seems to bring with it the promise ...
-            </div>
-            <div class="option">
-              <div class="user">
-                <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                <h2>Dora Zhu</h2>
-              </div>
-              <div class="right-icon">
-                <div class="weizhi">
-                  <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                  <span>Hong Kong</span>
-                </div>
-                <div class="weizhi">
-                  <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                  <span>2000</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div>
+        <BlogListIndex :bloglistingitem="bloglistingitem" v-for="(bloglistingitem,index) in bloglistitems" :key="index"/>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
+<script>
+import BlogListIndex from '../../components/BlogListingComponents/BlogListIndex.vue';
+import DropDown from "../../components/BlogListingComponents/DropDown.vue"
+
+export default {
+    name: 'BlogListingPage',
+    props: ["bloglistingitem"],
+    data () {
+        return {
+            bloglistitems: [
+                { bimage: "hongkong1.jpeg", title: "First Blog" , description: "The description of my first trip to Hong Kong", date: "Dec 11 2022", username: "Dora Zhu", place: "HongKong", likes: 1000},
+                { bimage: "hongkong2.jpeg", title: "Second Blog", description: "The detailed description of my second trip to Hong Kong", date: "Jan 23 2021", username: "Kelly Zhou", place: "HongKong", likes: 1300},
+            ],
+            arrayOfObjects1: [{name: "Most Viewed"}, {name: "Most Popular Blog"}],
+            arrayOfObjects2: [{name: "2022"}, {name: "2021"}],
+            arrayOfObjects3: [{name: "10 days"}, {name: "20 days"}],
+            arrayOfObjects4: [{name: "1000HKD"}, {name: "2000HKD"}],
+            object1: {  name: 'Category', },
+            object2: {  name: 'Depature Time', },
+            object3: {  name: 'Travel Days', },
+            object4: {  name: 'Average Spending', },
+        }
+    },
+    components: {
+        DropDown,
+        BlogListIndex,
+    },
+    methods: {
+        methodToRunOnSelect(payload) {
+          this.object = payload;
+        },
+        updatedestination() {
+          this.destination = document.querySelector("input[name=q]").value
+        }
+    }
+}
+
 </script>
 
 <style lang="less" scoped>
@@ -255,68 +168,38 @@
       }
     }
   }
+}
 
-  .blog-list {
-    .blog-itme {
-      height: 317px;
-      width: 100%;
-      background: #fff;
-      padding: 30px;
-      display: flex;
-      margin-bottom: 30px;
-      .blog-img {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        img {
-          width: 338px;
-          height: 204px;
-        }
-      }
-      .blog-right {
-        padding-left: 30px;
-        .title-block {
-          padding: 0;
-        }
-        .content {
-          font-size: 15px;
-          padding-top: 20px;
-          letter-spacing: normal !important;
-        }
-        .option {
-          padding-top: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          .user {
-            display: flex;
-            align-items: center;
-            svg {
-              margin-right: 10px;
-              height: 35px;
-              width: 35px;
-              color: #5581b0;
-            }
-          }
-          .right-icon {
-            display: flex;
-            .weizhi {
-              display: flex;
-              align-items: center;
-              color: #5581b0;
-              &:first-child {
-                margin-right: 40px;
-              }
-              svg {
-                margin-right: 10px;
-                height: 23px;
-                width: 17px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+form {
+  background-color: #f1f1f1;
+  width: 600px;
+  height: 44px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+input {
+  all: unset;
+  font: 16px system-ui;
+  color: black;
+  height: 100%;
+  width: 100%;
+  text-align: left;
+  padding: 6px 10px;
+}
+
+::placeholder {
+  color: black;
+  opacity: 0.7; 
+}
+
+.searchbtn {
+  all: unset;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
 }
 </style>

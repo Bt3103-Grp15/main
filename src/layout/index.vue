@@ -28,13 +28,24 @@
           </ul>
         </h2>
       </nav>
-      <div>
+      <div class="empty-box"></div>
+      <div class="user-control">
+      <div v-if="$store.state.user!==null"  @click="navProfile()" class="profile" ref="profile">
+        <span class="profile">{{$store.state.username[0]}}</span>
+        <div class="empty-box"></div>
+        <button @click='this.$store.dispatch("logout")'> Log Out</button>
+      </div>
+      <div v-else> 
+        <router-link class = "link" :to="{ name : 'Login'}"> Login/Register </router-link>
+      </div>
+      <!-- <div>
         <span></span>
         <span class="Sign" @click='this.$store.dispatch("logout")'>
           <svg-icon class="svg-icon" iconClass="touxiang"></svg-icon>
           <span v-if="$store.state.user!==null">Logout</span>
           <span v-else>Login</span>
         </span>
+      </div> -->
       </div>
     </header>
 
@@ -158,6 +169,7 @@ const menuList = [
     ],
   },
 ];
+
 const wordKey = ref("1");
 const jumpPage = (name, index) => {
   router.push({
@@ -165,16 +177,47 @@ const jumpPage = (name, index) => {
   });
   wordKey.value = index;
 };
+
+const navProfile = () => {
+  router.push({ name: "Profile"})
+}
+
 </script>
 
 
 
 
 <style lang="less" scoped>
+.userControl {
+  position: absolute ;
+  right:0;
+  top:10px
+}
+.empty-box {
+  width: 50px;
+}
+.profile {
+  display: flex;
+  width: 30px;
+  height:30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #303030;
+  padding:30px
+  }
+
+  button {
+    padding: 10px;
+    color: #000;
+  }
+
 .layout {
   background: #ccc;
   height: 100%;
   padding-top: 105px;
+  width: 100%;
   header {
     height: auto;
     width: 100%;
@@ -309,4 +352,5 @@ const jumpPage = (name, index) => {
     width: 30px;
   }
 }
+
 </style>

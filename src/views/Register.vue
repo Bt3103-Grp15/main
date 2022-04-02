@@ -4,7 +4,7 @@
 
           <form class="register" @submit.prevent="register">
             <h2>Register</h2>
-            <router-link to="/layout/login">Login</router-link>
+            <router-link to="/login">Login</router-link>
             <input
                 type="email"
                 placeholder="Email address"

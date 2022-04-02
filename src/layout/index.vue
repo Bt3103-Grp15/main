@@ -114,7 +114,7 @@ const menuList = [
     ],
   },
   {
-    name: "blog",
+    name: "blog-main",
     label: "Blog",
     level: "2",
     child: [

@@ -27,9 +27,10 @@
                 {{ item.groupingName }}
              </div>
              <div class="blog-list-main">
-                 <div class="blog-list-item" v-for="cityInfo in item.child" :key="cityInfo.id">
+                 <div class="blog-list-item" v-for="cityInfo in item.child" :key="cityInfo.id" :style="background">
                      <div class="city-name">{{ cityInfo.cityName }}</div>
-                     <div class="read-more">Read More</div>
+                   <div class="read-more" v-if="cityInfo.id === 1-3" @click="jumpPage('cityPage')">Read More</div>
+                   <div class="read-more" v-if="cityInfo.id !== 1-3">Read More</div>
                  </div>
              </div>
           </div>
@@ -59,6 +60,10 @@
 </template>
 
 <script setup>
+import {ref} from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
 const list = [
     {
         groupingName: 'Top Destinations Recently',
@@ -66,38 +71,56 @@ const list = [
         child: [
             {
                 cityName: 'Kuala Lumpur',
-                id: 1
+                id: 1-1,
+                picUrl: "../../assets/image/63a0e8_950d68896707457a8e53f332ee0c1024_mv2.jpeg",
             },
             {
                 cityName: 'Kuala Lumpur',
-                id: 2
+                id: 1-2,
+                picUrl: "../../assets/image/63a0e8_950d68896707457a8e53f332ee0c1024_mv2.jpeg",
             },
             {
-                cityName: 'Kuala Lumpur',
-                id: 3
+                cityName: 'Hong Kong',
+                id: 1-3,
+                picUrl: "../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg",
             }
         ]
     },
     {
         groupingName: 'Top Destinations Recently',
-        id: 1,
+        id: 2,
         child: [
             {
                 cityName: 'Kuala Lumpur',
-                id: 1
+                id: 2-1,
+                picUrl: "../../assets/image/63a0e8_950d68896707457a8e53f332ee0c1024_mv2.jpeg",
             },
             {
                 cityName: 'Kuala Lumpur',
-                id: 2
+                id: 2-2,
+                picUrl: "../../assets/image/63a0e8_950d68896707457a8e53f332ee0c1024_mv2.jpeg",
             },
             {
                 cityName: 'Kuala Lumpur',
-                id: 3
+                id: 2-3,
+                picUrl: "../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg",
             }
         ]
     }
-
 ]
+
+
+
+const wordKey = ref("1");
+const jumpPage = (name, index) => {
+  router.push({
+    name,
+  });
+  wordKey.value = index;
+};
+
+
+
 </script>
 
 <style lang="less" scoped>

@@ -1,0 +1,232 @@
+<template>
+  <div class="blog-main">
+    <div class="top-block">
+      <div class="top-main">
+        <div class="top-left">
+          <div class="last-btn">
+            Country >
+          </div>
+          <div class="last-btn">
+            Season >
+          </div>
+          <div class="last-btn">
+            City >
+          </div>
+          <div class="input-block">
+            <input placeholder="Enter search term" type="text">
+            <svg-icon class="svg-icon" iconClass="sousuo"></svg-icon>
+          </div>
+        </div>
+        <div class="top-right">
+          <div class="left-icon">left</div>
+          <div class="right-icon"> > </div>
+          <div class="indicate">
+            <div></div>
+            <div></div>
+            <div class="active"></div>
+          </div>
+          <img src="../../assets/image/5bfb6f_26f1a5c736e544e09c63c82a4c792645_mv2_d_3839_1306_s_2.jpeg" alt="">
+        </div>
+      </div>
+      <div class="bottom-main">
+        <div class="title">
+          <h3>
+            Recommends Blogs
+          </h3>
+        </div>
+        <div class="img-list">
+          <div>
+            <img src="../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg" alt="">
+            <div class="read-more">Read More</div>
+            <div class="diming">My Trip in Hong Kong</div>
+          </div>
+          <div>
+            <img src="../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg" alt="">
+            <div class="read-more">Read More</div>
+            <div class="diming">My Trip in Hong Kong</div>
+          </div>
+          <div>
+            <img src="../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg" alt="">
+            <div class="read-more">Read More</div>
+            <div class="diming">My Trip in Hong Kong</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+</script>
+
+<style lang="less" scoped>
+.blog-main {
+  background: url(../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg) no-repeat;
+  background-attachment:fixed;
+  background-size: cover;
+  .top-block {
+    width: 980px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.5);
+    min-height: 1120px;
+    overflow: hidden;
+    padding: 30px;
+    .top-main {
+      display: flex;
+    }
+    .top-left {
+      padding-right: 30px;
+      .last-btn {
+        width: 300px;
+        height: 40px;
+        background: #f2f2f2;
+        border: 1px solid #f2f2f2;
+        color: #000;
+        text-align: center;
+        line-height: 40px;
+        font-size: 17px;
+        margin-bottom: 20px;
+        &:first-child {
+          margin-top: 80px;
+        }
+        &:hover {
+          background: #3c72d3;
+        }
+      }
+      .input-block{
+        width: 300px;
+        height: 46px;
+        padding: 0 50px 0 20px;
+        background: #fff;
+        border-radius: 20px;
+        position: relative;
+        input {
+          /*去除阴影*/
+          box-shadow:none;
+          /*聚焦input的蓝色边框*/
+          outline: none;
+          /*textarea 禁止拖拽*/
+          resize: none;
+          /*去除边框*/
+          border: none;
+          /*常用于IOS下移除原生样式*/
+          -webkit-appearance: none;
+          /*点击高亮的颜色*/
+          -webkit-tap-highlight-color:rgba(0,0,0,0);
+          width: 100%;
+          height: 100%;
+        }
+        .svg-icon {
+          height: 21px;
+          width: 21px;
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+    .top-right {
+      width: 600px;
+      height: 370px;
+      background: red;
+      position: relative;
+      .left-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background: #3c72d3;
+      }
+      .right-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background: #3c72d3;
+      }
+      .indicate {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div {
+          height: 10px;
+          width: 10px;
+          background: #fff;
+          border-radius: 50%;
+          margin-right: 10px;
+          cursor: pointer;
+          &.active {
+            background: #000;
+            border: 1px solid #fff;
+          }
+        }
+      }
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .bottom-main {
+      height: 30px;
+      width: 100%;
+      padding-top: 130px;
+      .title {
+        border-bottom: 2px solid #000;
+        width: 500px;
+        h3 {
+          font-size: 37px;
+          letter-spacing: normal !important;
+        }
+      }
+      .img-list {
+        padding-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        >div {
+          position: relative;
+          img {
+            width: 277px;
+            height: 400px;
+          }
+          .read-more {
+              position: absolute;
+              width: 105px;
+              height: 33px;
+              border: 1px solid #fff;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              letter-spacing:normal !important;
+              right: 20px;
+              top: 20px;
+              color: #fff;
+              font-size: 18px;
+              &:hover {
+                  background: #fff;
+                  color: #000;
+              }
+          }
+          .diming {
+            position: absolute;
+            letter-spacing:normal !important;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 80px;
+            color: #fff;
+            font-size: 32px;
+            width: 100%;
+            padding-left: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+</style>

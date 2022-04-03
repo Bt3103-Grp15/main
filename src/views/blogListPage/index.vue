@@ -67,10 +67,9 @@
         >
         </DropDown>
       </div>
-      <div>
-        <div v-for="post in posts" :key="post.id">
-        <BlogListIndex :bloglistingitem="post" />
-        <!-- <BlogListIndex :bloglistingitem="bloglistingitem" v-for="(bloglistingitem,index) in bloglistitems" :key="index"/> -->
+      <div v-for="post in posts" :key="post.id">
+          <BlogListIndex :bloglistingitem="post" />
+          <!-- <BlogListIndex :bloglistingitem="bloglistingitem" v-for="(bloglistingitem,index) in bloglistitems" :key="index"/> -->
       </div>
     </div>
 

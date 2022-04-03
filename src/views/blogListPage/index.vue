@@ -50,9 +50,11 @@
         </DropDown>
       </div>
       <div>
-        <BlogListIndex :bloglistingitem="bloglistingitem" v-for="(bloglistingitem,index) in bloglistitems" :key="index"/>
+        <BlogListIndex :bloglistingitem="bloglistingitem" v-for="(bloglistingitem,index) in bloglistingitems" :key="index"/>
       </div>
     </div>
+
+    <button class="readbtn" @click="listlen++">Read More</button> 
   </div>
 </template>
 
@@ -68,7 +70,11 @@ export default {
             bloglistitems: [
                 { bimage: "hongkong1.jpeg", title: "First Blog" , description: "The description of my first trip to Hong Kong", date: "Dec 11 2022", username: "Dora Zhu", place: "HongKong", likes: 1000},
                 { bimage: "hongkong2.jpeg", title: "Second Blog", description: "The detailed description of my second trip to Hong Kong", date: "Jan 23 2021", username: "Kelly Zhou", place: "HongKong", likes: 1300},
+                { bimage: "hongkong2.jpeg", title: "Thrid Blog", description: "The detailed description of my second trip to Hong Kong", date: "Jan 23 2021", username: "Kelly Zhou", place: "HongKong", likes: 1300},
+                { bimage: "hongkong2.jpeg", title: "Forth Blog", description: "The detailed description of my second trip to Hong Kong", date: "Jan 23 2021", username: "Kelly Zhou", place: "HongKong", likes: 1300},
+                { bimage: "hongkong2.jpeg", title: "Fifth Blog", description: "The detailed description of my second trip to Hong Kong", date: "Jan 23 2021", username: "Kelly Zhou", place: "HongKong", likes: 1300},
             ],
+            listlen: 3,
             arrayOfObjects1: [{name: "Most Viewed"}, {name: "Most Popular Blog"}],
             arrayOfObjects2: [{name: "2022"}, {name: "2021"}],
             arrayOfObjects3: [{name: "10 days"}, {name: "20 days"}],
@@ -78,6 +84,11 @@ export default {
             object3: {  name: 'Travel Days', },
             object4: {  name: 'Average Spending', },
         }
+    },
+    computed: {
+      bloglistingitems: function() {
+        return this.bloglistitems.filter(blog => this.bloglistitems.indexOf(blog) < this.listlen)
+      }
     },
     components: {
         DropDown,
@@ -97,9 +108,8 @@ export default {
 
 <style lang="less" scoped>
 .blogListPage {
-  background: url(../../assets/image/11062b_61151d0087ad418fa801687a88c78716_mv2.jpeg)
-    no-repeat;
-  background-size: 100% 2000px;
+  background: url(../../assets/image/11062b_61151d0087ad418fa801687a88c78716_mv2.jpeg);
+  background-size: cover, contain;
   position: relative;
   height: 2000px;
   padding-top: 50px;
@@ -206,5 +216,45 @@ input {
   cursor: pointer;
   width: 44px;
   height: 44px;
+}
+
+.readbtn{
+    width: 200px;
+    height: 80px;
+    border: none;
+    outline: none;
+    background: #2f2f2f;
+    color: #fff;
+    font-size: 22px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.readbtn {
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	color: black;
+	background: white;
+	border: 2px solid black;
+	box-shadow: 5px 5px 0 black,
+		-5px -5px 0 black,
+		-5px 5px 0 black,
+		5px -5px 0 black;
+	transition: 500ms ease-in-out;
+}
+
+.readbtn:hover {
+	box-shadow: 20px 5px 0 black, -20px -5px 0 black;
+}
+
+.readbtn:focus {
+	outline: none;
 }
 </style>

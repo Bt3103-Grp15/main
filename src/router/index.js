@@ -52,7 +52,13 @@ const routes = [
       {
         path: 'attractionListPage',
         name: 'attractionListPage',
-        component: () => import(/* webpackChunkName: "about" */ '../views/attractionListPage'),
+        component: () => import('../views/attractionListPage'),
+      },
+      {
+        path: 'attactionListPage/:id',
+        name: 'indivAttraction',
+        component: () => import('../views/attractionListPage/indivAttraction'),
+        props: true
       },
       {
         path: 'blogListPage',

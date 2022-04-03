@@ -122,6 +122,11 @@ const menuList = [
         label: "Indiv Attraction Pager",
         level: "1-1",
       },
+      {
+        name: "attractionListPage",
+        label: "attractionListPage",
+        level: "1-2",
+      },
     ],
   },
   {

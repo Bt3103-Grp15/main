@@ -1,23 +1,35 @@
 <template>
   <!-- <editor-content class="eidtor" :editor="editor" /> -->
-  <div class="editone">
-    <label>Your Title</label>
-    <input placeholder="Enter your title" v-model="title" />
-  </div>
-  <div class="editcontainer">
-    <QuillEditor
-      ref="qeditor"
-      class="editor"
-      theme="snow"
-      toolbar="Full"
-      @ready="onEditorReady($event)"
-    />
+  <div class="page">
+    <div class="editone">
+      <div class="inputbox">
+        <label>Your Title</label>
+        <input placeholder="Enter your title" v-model="title" />
+      </div>
+      <div class="inputbox">
+        <label>City</label>
+        <input placeholder="Enter your city" v-model="city" />
+      </div>
+      <div class="inputbox">
+        <label>Description</label>
+        <input placeholder="Enter your description" v-model="des" />
+      </div>
+    </div>
+    <div class="editcontainer">
+      <QuillEditor
+        ref="qeditor"
+        class="editor"
+        theme="snow"
+        toolbar="full"
+        @ready="onEditorReady($event)"
+      />
+    </div>
     <button class="editbutton" v-on:click="upload()">Upload</button>
   </div>
 </template>
 
 <script>
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase/index";
 
 export default {
@@ -29,7 +41,9 @@ export default {
       editor: null,
       user: this.$store.user,
       title: null,
+      city: null,
       isEditing: true,
+      des: null
     };
   },
 
@@ -56,16 +70,24 @@ export default {
           return;
         }
 
-        await addDoc(
-          collection(db, "users/" + this.$store.state.user.uid + "/blog"),
-          {
-            Name: this.title,
-            Content: this.qeditor.root.innerHTML,
-          }
-        );
+        const res = await addDoc(collection(db, "blogs"), {
+          author: this.$store.state.username,
+          authorId: this.$store.state.user.uid,
+          content: this.qeditor.root.innerHTML,
+          city: this.city,
+          title: this.title,
+          likes: 0,
+          description: this.des
+        });
+
+        // console.log(res.id)
+        await setDoc(doc(db, "users/"+this.$store.state.user.uid+"/blogs", res.id), {
+            id: res.id
+        })
 
         alert("Upload successfully!");
         this.title = null;
+        this.city = null;
         this.qeditor.setText("");
         this.qeditor.root.dataset.placeholder =
           "Please enter enter your blogs here...";
@@ -78,20 +100,34 @@ export default {
 };
 </script>
 
-<style scoped>
-.editcontainer {
-  width: 80%;
-  margin: 1% 10%;
-  height: 500px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: black;
-  padding-bottom: 40px;
-  align-items: center;
-}
+<style lang="less" scoped>
+.page {
+  background: url(../../assets/image/bc3ec7bc825c4e6ca746c659189cea83.jpeg);
+  background-attachment: fixed;
+  background-size: cover;
+  padding-bottom: 50px;
+  .editone {
+    .inputbox {
+      margin: 20px;
+    }
+  }
+  .editcontainer {
+    width: 80%;
+    margin: 1% 10%;
+    height: 1000px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    padding-bottom: 40px;
+    align-items: center;
+  }
 
-.editbutton {
-  margin-top: 20px;
+  .editbutton {
+    margin-top: 20px;
+  }
+  button.ql-bold {
+    font: bold;
+  }
 }
 </style>>
 

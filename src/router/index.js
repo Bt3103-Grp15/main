@@ -14,15 +14,11 @@ const routes = [
     }
   },
   {
-    path: '/createBlog',
-    name: 'BlogCreate',
-    component: () => import( '../views/blogCreate/index.vue'),
-  },
-  {
     path: '/:catchAll(.*)',
     name: 'NotFound',
     component: NotFound
   },
+
   {
     path: '/',
     name: 'layout',
@@ -52,7 +48,13 @@ const routes = [
       {
         path: 'attractionListPage',
         name: 'attractionListPage',
-        component: () => import(/* webpackChunkName: "about" */ '../views/attractionListPage'),
+        component: () => import('../views/attractionListPage'),
+      },
+      {
+        path: 'attractionListPage/:id',
+        name: 'indivAttraction',
+        component: () => import('../views/attractionListPage/indivAttraction'),
+        props: true
       },
       {
         path: 'blogListPage',
@@ -70,9 +72,10 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/blog-main'),
       },
       {
-        path: 'indivBlogPage',
+        path: 'indivBlogPage/:id',
         name: 'indivBlogPage',
         component: () => import(/* webpackChunkName: "about" */ '../views/indivBlogPage'),
+        props: true
       },
       {
         path: 'notification',
@@ -85,15 +88,9 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/ProfilePage/BlogLikes'),
       },
       {
-        path: '/blogdetail',
-        name: 'BlogD',
-        component: () => import('../views/indivBlogPage/BlogDetail.vue')
-      },
-      {
-        path: '/blogdetail/:id',
-        name: 'BlogDetail',
-        component: () => import('../views/indivBlogPage/BlogDetail.vue'),
-        props: true
+        path: '/createBlog',
+        name: 'BlogCreate',
+        component: () => import( '../views/blogCreate/index.vue'),
       },
     ]
   }

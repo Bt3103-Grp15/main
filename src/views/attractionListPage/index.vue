@@ -19,61 +19,25 @@
           <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="" />
         </div>
       </div>
-      <div class="attraction-list">
-        <div class="attraction-item">
+      <div
+        class="attraction-list"
+        v-for="attraction in attractions"
+        :key="attraction.id"
+      >
+        <div class="attraction-item" @click="seeAttraction(attraction.id)">
           <div class="attraction-info">
             <div class="attraction-title">
-              <div class="index">1</div>
+              <div class="index">{{ attraction.attindex }}</div>
               <div class="index-title">
-                <h2>Victoria Harbour</h2>
+                <h2>{{ attraction.name }}</h2>
               </div>
             </div>
             <div class="Central">
-              Central and Western District, Hong Kong<br />
-              Island, Hong Kong 999077 China
+              {{ attraction.address }}
             </div>
-            <div class="East">
-              <div>How to get there</div>
+            <div class="East" v-for="line in attraction.info" :key="line.index">
               <ul>
-                <li>East Tsim Sha Tsui • 4 min walk</li>
-                <li>Tsim Sha Tsui • 7 min walk</li>
-              </ul>
-            </div>
-          </div>
-          <div class="imageList">
-            <div class="ImagebyDanFreeman">
-              <img src="../../assets/image/ImagebyDanFreeman.jpeg" alt="" />
-            </div>
-            <div class="rightimg">
-              <div>
-                <img
-                  src="../../assets/image/ImagebySébastienGoldberg.jpeg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img src="../../assets/image/HongKongSkyline.jpeg" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="attraction-item">
-          <div class="attraction-info">
-            <div class="attraction-title">
-              <div class="index">1</div>
-              <div class="index-title">
-                <h2>Victoria Harbour</h2>
-              </div>
-            </div>
-            <div class="Central">
-              Central and Western District, Hong Kong<br />
-              Island, Hong Kong 999077 China
-            </div>
-            <div class="East">
-              <div>How to get there</div>
-              <ul>
-                <li>East Tsim Sha Tsui • 4 min walk</li>
-                <li>Tsim Sha Tsui • 7 min walk</li>
+                <li>{{ line }}</li>
               </ul>
             </div>
           </div>
@@ -100,6 +64,41 @@
 </template>
 
 <script>
+import { db } from "../../firebase/index";
+import { ref } from "vue";
+import { getDocs, collection } from "firebase/firestore";
+export default {
+  data() {},
+  setup() {
+    const attractions = ref([]);
+    const load = async () => {
+      try {
+        const res = await getDocs(
+          collection(db, "cities/Hong-Kong/attractions")
+        );
+        var index = 0;
+        attractions.value = res.docs.map((doc) => {
+          // console.log(doc.data());
+          index++;
+          return { ...doc.data(), id: doc.id, attindex: index };
+        });
+      } catch (err) {
+        alert(err.message);
+      }
+    };
+
+    load();
+    return {
+      attractions,
+    };
+  },
+
+  methods: {
+    seeAttraction(attid) {
+      this.$router.push({ name: "indivAttraction", params: { id: attid } });
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -159,8 +158,6 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 20px;
-        .attraction-info {
-        }
         .imageList {
           display: flex;
           .ImagebyDanFreeman {

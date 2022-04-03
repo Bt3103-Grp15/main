@@ -76,28 +76,27 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-import { db } from "@/firebase/index.js";
-import { doc, getDoc } from "firebase/firestore";
-export default {
-  props: ["id"],
-  setup(props) {
-    const post = ref("");
+// import { ref } from 'vue'
+// import { db } from "@/firebase/index.js";
+// import { doc, getDoc } from "firebase/firestore";
+// export default {
+//   props: ["id"],
+//   setup(props) {
+//     const post = ref("");
 
-    const load = async () => {
-      try {
-        const res = await getDoc(doc(db, "blogs", props.id));
-        post.value = res.data();
-      } catch (err) {
-        alert(err.message)
-      }
-    }
-    load();
+//     const load = async () => {
+//       try {
+//         const res = await getDoc(doc(db, "blogs", props.id));
+//         post.value = res.data();
+//       } catch (err) {
+//         alert(err.message)
+//       }
+//     }
+//     load();
 
-    return { post };
-  },
-};
-
+//     return { post };
+//   },
+// };
 </script>
 
 <style lang="less" scoped>

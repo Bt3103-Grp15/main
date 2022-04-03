@@ -51,22 +51,6 @@
           </router-link>
         </div>
       </div>
-      <!-- <div class="user-control">
-        <div
-          v-if="$store.state.user !== null"
-          @click="navProfile()"
-          class="profile"
-          ref="profile"
-        >
-          <span class="profile-name">{{ $store.state.username[0] }}</span>
-          <button class="btn-logout" @click="this.$store.dispatch('logout')">Log Out</button>
-        </div>
-        <div v-else>
-          <router-link class="link" :to="{ name: 'Login' }">
-            Login/Register
-          </router-link>
-        </div>
-      </div> -->
     </header>
 
     <section class="content">
@@ -226,6 +210,13 @@ export default {
 
 
 <style lang="less" scoped>
+.link {
+  color:black;
+  padding:30px;
+  display: flex;
+  font-size: 15px;
+}
+
 .user-control {
   position: absolute;
   display: flex;
@@ -292,7 +283,7 @@ export default {
     .logo {
       width: 376px;
       font-weight: bold;
-      font-size: 28px;
+      font-size: 24px;
       height: 105px;
       display: flex;
       align-items: center;
@@ -303,7 +294,7 @@ export default {
       li {
         width: 238px;
         height: 50px;
-        font-size: 24px;
+        font-size: 20px;
         text-align: center;
         cursor: pointer;
         line-height: 50px;

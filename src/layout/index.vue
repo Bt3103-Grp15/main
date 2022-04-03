@@ -30,15 +30,22 @@
       </nav>
       <div class="empty-box"></div>
       <div class="user-control">
-      <div v-if="$store.state.user!==null"  @click="navProfile()" class="profile" ref="profile">
-        <span class="profile">{{$store.state.username[0]}}</span>
-        <div class="empty-box"></div>
-        <button @click='this.$store.dispatch("logout")'> Log Out</button>
-      </div>
-      <div v-else> 
-        <router-link class = "link" :to="{ name : 'Login'}"> Login/Register </router-link>
-      </div>
-      <!-- <div>
+        <div
+          v-if="$store.state.user !== null"
+          @click="navProfile()"
+          class="profile"
+          ref="profile"
+        >
+          <span class="profile-name">{{ $store.state.username[0] }}</span>
+          <div class="empty-box"></div>
+          <button class="btn-logout" @click="this.$store.dispatch('logout')">Log Out</button>
+        </div>
+        <div v-else>
+          <router-link class="link" :to="{ name: 'Login' }">
+            Login/Register
+          </router-link>
+        </div>
+        <!-- <div>
         <span></span>
         <span class="Sign" @click='this.$store.dispatch("logout")'>
           <svg-icon class="svg-icon" iconClass="touxiang"></svg-icon>
@@ -184,9 +191,8 @@ const jumpPage = (name, index) => {
 };
 
 const navProfile = () => {
-  router.push({ name: "Profile"})
-}
-
+  router.push({ name: "Profile" });
+};
 </script>
 
 
@@ -194,9 +200,9 @@ const navProfile = () => {
 
 <style lang="less" scoped>
 .userControl {
-  position: absolute ;
-  right:0;
-  top:10px
+  position: absolute;
+  right: 0;
+  top: 10px;
 }
 .empty-box {
   width: 50px;
@@ -204,19 +210,19 @@ const navProfile = () => {
 .profile {
   display: flex;
   width: 30px;
-  height:30px;
+  height: 30px;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   color: #fff;
   background-color: #303030;
-  padding:30px
-  }
+  padding: 30px;
+}
 
-  button {
-    padding: 10px;
-    color: #000;
-  }
+button {
+  padding: 10px;
+  color: #000;
+}
 
 .layout {
   background: #ccc;
@@ -358,4 +364,12 @@ const navProfile = () => {
   }
 }
 
+.user-control {
+  .profile-name {
+    margin: auto 20px auto auto
+  }
+  .btn-logout {
+    margin: auto auto 20px 100px
+  }
+}
 </style>

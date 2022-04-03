@@ -67,10 +67,10 @@
         >
         </DropDown>
       </div>
-      <div v-for="post in posts" :key="post.id">
+      <!-- <div v-for="post in posts" :key="post.id">
           <BlogListIndex :bloglistingitem="post" />
-          <!-- <BlogListIndex :bloglistingitem="bloglistingitem" v-for="(bloglistingitem,index) in bloglistitems" :key="index"/> -->
-      </div>
+      </div> -->
+      <BlogListIndex :bloglistingitem="bloglistingitem" v-for="(bloglistingitem,index) in bloglistingitems" :key="index"/>
     </div>
 
     <button class="readbtn" @click="listlen++">Read More</button> 

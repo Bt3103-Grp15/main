@@ -32,7 +32,7 @@ const routes = [
       {
         path: 'profile',
         name: 'Profile',
-        component: () => import( '../views/Profile.vue')
+        component: () => import( '../views/ProfilePage/Profile.vue')
       },
       {
         path: 'register',
@@ -73,6 +73,16 @@ const routes = [
         path: 'indivBlogPage',
         name: 'indivBlogPage',
         component: () => import(/* webpackChunkName: "about" */ '../views/indivBlogPage'),
+      },
+      {
+        path: 'notification',
+        name: 'notification',
+        component: () => import(/* webpackChunkName: "about" */ '../views/ProfilePage/Notification'),
+      },
+      {
+        path: 'bloglikes',
+        name: 'bloglikes',
+        component: () => import(/* webpackChunkName: "about" */ '../views/ProfilePage/BlogLikes'),
       },
       {
         path: '/blogdetail',

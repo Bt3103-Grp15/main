@@ -1,19 +1,39 @@
 <template>
   <div class="indiv-blog-page">
     <div class="bg">
-      <video id="pageBackground_jkx4t_video" class="_3vVMz" role="presentation" crossorigin="anonymous" playsinline="" preload="auto" muted="" loop="" autoplay="" tabindex="-1" width="100%" height="100%" src="../../assets/image/file.mp4" style="width: 100%; height: 100%; object-position: center center; opacity: 1; object-fit: cover;"></video>
+      <video
+        id="pageBackground_jkx4t_video"
+        class="_3vVMz"
+        role="presentation"
+        crossorigin="anonymous"
+        playsinline=""
+        preload="auto"
+        muted=""
+        loop=""
+        autoplay=""
+        tabindex="-1"
+        width="100%"
+        height="100%"
+        src="../../assets/image/file.mp4"
+        style="
+          width: 100%;
+          height: 100%;
+          object-position: center center;
+          opacity: 1;
+          object-fit: cover;
+        "
+      ></video>
     </div>
     <div class="type-area">
       <div class="header-title">
         <h2>{{ post.title }}</h2>
       </div>
-      <div class="top-content">
-         {{ post.content }}
+      <div v-html="post.content" class="top-content">
       </div>
       <div class="top-option">
         <div class="user">
           <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-          <h2> {{ post.author }}</h2>
+          <h2>{{ post.author }}</h2>
           <div>follow me</div>
         </div>
         <div class="text-like">
@@ -33,50 +53,73 @@
       </div>
       <div class="img-list">
         <div class="filst-img">
-          <img src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg" alt="">
+          <img
+            src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg"
+            alt=""
+          />
         </div>
         <div class="secand-img">
           <div class="s-left-img">
-            <img src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg" alt="">
+            <img
+              src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg"
+              alt=""
+            />
           </div>
           <div class="s-right-img">
-            <img src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg" alt="">
+            <img
+              src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg"
+              alt=""
+            />
           </div>
         </div>
         <div class="last-img">
           <div class="l-left-img">
-            <img src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg" alt="">
+            <img
+              src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg"
+              alt=""
+            />
           </div>
           <div class="l-right-img">
-            <img src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg" alt="">
+            <img
+              src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg"
+              alt=""
+            />
           </div>
         </div>
       </div>
       <div class="secand-title">
-        <h2>
-          Section Title
-        </h2>
+        <h2>Section Title</h2>
       </div>
       <div class="top-content">
-        Every website has a story, and your visitors want to hear yours. This space is a great opportunity to give a full background on who you are, what your team does and what your site has to offer. Double click on the text box to start editing your content and make sure to add all the relevant details you want site visitors to know.
+        Every website has a story, and your visitors want to hear yours. This
+        space is a great opportunity to give a full background on who you are,
+        what your team does and what your site has to offer. Double click on the
+        text box to start editing your content and make sure to add all the
+        relevant details you want site visitors to know.
       </div>
       <div class="top-content last-coent">
-        Every website has a story, and your visitors want to hear yours. This space is a great opportunity to give a full background on who you are, what your team does and what your site has to offer. Double click on the text box to start editing your content and make sure to add all the relevant details you want site visitors to know.
+        Every website has a story, and your visitors want to hear yours. This
+        space is a great opportunity to give a full background on who you are,
+        what your team does and what your site has to offer. Double click on the
+        text box to start editing your content and make sure to add all the
+        relevant details you want site visitors to know.
       </div>
       <div class="secand-title">
-        <h2>
-          Comments
-        </h2>
+        <h2>Comments</h2>
       </div>
       <div class="iframe-block">
-        <iframe class="iframe-content" src="https://app.commentsplugin.com/widget-wix?pageId=jkx4t&compId=comp-kzz12u9t&viewerCompId=comp-kzz12u9t&siteRevision=126&viewMode=site&deviceType=desktop&locale=en&tz=Asia%2FSingapore&regionalLanguage=en&width=653&height=150&instance=xYyxXlflwyp4sCawSnt_w8QjMmjJjU9yg5s4Qbk_sMA.eyJpbnN0YW5jZUlkIjoiMTJlOTQzNjgtZjc0YS00M2FjLTk4MzQtMzlmY2NlOWQyMTNhIiwiYXBwRGVmSWQiOiIxMzAxNjU4OS1hOWViLTQyNGEtOGE2OS00NmNiMDVjZTBiMmMiLCJzaWduRGF0ZSI6IjIwMjItMDMtMjNUMTM6MDk6MDMuOTA4WiIsImRlbW9Nb2RlIjpmYWxzZSwiYWlkIjoiZGU3ODhhNDgtNjc1Ni00NzBlLThjYTgtMDljZDZjZDRiMzRmIiwic2l0ZU93bmVySWQiOiI2M2EwZTg2OC03Yzk1LTQwZDEtYWZkMy1lMWJjZDg0NDU0OGMifQ&currency=SGD&currentCurrency=SGD&commonConfig=%7B%22brand%22%3A%22wix%22%2C%22bsi%22%3A%22c6c8cc6e-1407-4846-8420-c5e92f645044%7C8%22%2C%22BSI%22%3A%22c6c8cc6e-1407-4846-8420-c5e92f645044%7C8%22%7D&vsi=cd8342e3-a6cf-4822-8870-1cc1cd911588" frameborder="0"></iframe>
+        <iframe
+          class="iframe-content"
+          src="https://app.commentsplugin.com/widget-wix?pageId=jkx4t&compId=comp-kzz12u9t&viewerCompId=comp-kzz12u9t&siteRevision=126&viewMode=site&deviceType=desktop&locale=en&tz=Asia%2FSingapore&regionalLanguage=en&width=653&height=150&instance=xYyxXlflwyp4sCawSnt_w8QjMmjJjU9yg5s4Qbk_sMA.eyJpbnN0YW5jZUlkIjoiMTJlOTQzNjgtZjc0YS00M2FjLTk4MzQtMzlmY2NlOWQyMTNhIiwiYXBwRGVmSWQiOiIxMzAxNjU4OS1hOWViLTQyNGEtOGE2OS00NmNiMDVjZTBiMmMiLCJzaWduRGF0ZSI6IjIwMjItMDMtMjNUMTM6MDk6MDMuOTA4WiIsImRlbW9Nb2RlIjpmYWxzZSwiYWlkIjoiZGU3ODhhNDgtNjc1Ni00NzBlLThjYTgtMDljZDZjZDRiMzRmIiwic2l0ZU93bmVySWQiOiI2M2EwZTg2OC03Yzk1LTQwZDEtYWZkMy1lMWJjZDg0NDU0OGMifQ&currency=SGD&currentCurrency=SGD&commonConfig=%7B%22brand%22%3A%22wix%22%2C%22bsi%22%3A%22c6c8cc6e-1407-4846-8420-c5e92f645044%7C8%22%2C%22BSI%22%3A%22c6c8cc6e-1407-4846-8420-c5e92f645044%7C8%22%7D&vsi=cd8342e3-a6cf-4822-8870-1cc1cd911588"
+          frameborder="0"
+        ></iframe>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref } from "vue";
 import { db } from "@/firebase/index.js";
 import { doc, getDoc } from "firebase/firestore";
 export default {
@@ -89,15 +132,14 @@ export default {
         const res = await getDoc(doc(db, "blogs", props.id));
         post.value = res.data();
       } catch (err) {
-        alert(err.message)
+        alert(err.message);
       }
-    }
+    };
     load();
 
     return { post };
   },
 };
-
 </script>
 
 <style lang="less" scoped>
@@ -129,7 +171,7 @@ export default {
     font-size: 14px;
     width: 70%;
     line-height: 2.5;
-    color: rgb(105,105,105);
+    color: rgb(105, 105, 105);
   }
   .top-option {
     padding-top: 30px;

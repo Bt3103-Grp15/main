@@ -10,6 +10,10 @@
         <label>City</label>
         <input placeholder="Enter your city" v-model="city" />
       </div>
+      <div class="inputbox">
+        <label>Description</label>
+        <input placeholder="Enter your description" v-model="des" />
+      </div>
     </div>
     <div class="editcontainer">
       <QuillEditor
@@ -39,6 +43,7 @@ export default {
       title: null,
       city: null,
       isEditing: true,
+      des: null
     };
   },
 
@@ -72,6 +77,7 @@ export default {
           city: this.city,
           title: this.title,
           likes: 0,
+          description: this.des
         });
 
         alert("Upload successfully!");

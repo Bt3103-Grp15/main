@@ -8,7 +8,8 @@
         <h2>{{ bloglistingitem.title }}</h2>
       </div>
       <div class="content">
-        <p>{{ content }}</p>
+        <p id="list-content"></p>
+        <p>{{ description }}</p>
       </div>
       <div class="option">
         <div class="user">
@@ -36,10 +37,10 @@ export default {
   name: "bloglistindex",
   props: ["bloglistingitem"],
   setup(props) {
-    const content = ref("")
-    content.value = props.bloglistingitem.content.substring(1, 200) + "...";
+    const description = ref("")
+    description.value = props.bloglistingitem.description.substring(0, 200) + "...";
 
-    return { content };
+    return { description };
   },
 
   methods: {

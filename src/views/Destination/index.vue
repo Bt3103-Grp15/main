@@ -7,9 +7,6 @@
                     Where to?
                   </h2>
               </div>
-              <!-- <div class="input-block">
-                  <input type="text" placeholder="Search for a city">
-              </div> -->
               <div class="input-block">
                 <form id="form" role="search" >
                 <input id="query" name="q" placeholder="Search here..." aria-label="Search through site content">

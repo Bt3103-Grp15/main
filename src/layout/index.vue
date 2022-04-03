@@ -38,6 +38,9 @@
               <router-link class="option" :to="{ name: 'Profile' }">
                 <p>Profile</p>
               </router-link>
+              <router-link class="option" :to="{ name: 'BlogCreate' }">
+                <p>Create a blog</p>
+              </router-link>
               <div @click="this.$store.dispatch('logout')" class="option">
                 <p>Sign Out</p>
             </div>

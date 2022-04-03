@@ -18,6 +18,7 @@ const routes = [
     name: 'NotFound',
     component: NotFound
   },
+
   {
     path: '/',
     name: 'layout',
@@ -81,6 +82,7 @@ const routes = [
         name: 'BlogCreate',
         component: () => import( '../views/blogCreate/index.vue'),
       },
+
     ]
   }
 ]

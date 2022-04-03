@@ -1,25 +1,27 @@
 <template>
   <!-- <editor-content class="eidtor" :editor="editor" /> -->
-  <div class="editone">
-    <div class="inputbox">
-      <label>Your Title</label>
-      <input placeholder="Enter your title" v-model="title" />
+  <div class="page">
+    <div class="editone">
+      <div class="inputbox">
+        <label>Your Title</label>
+        <input placeholder="Enter your title" v-model="title" />
+      </div>
+      <div class="inputbox">
+        <label>City</label>
+        <input placeholder="Enter your city" v-model="city" />
+      </div>
     </div>
-    <div class="inputbox">
-      <label>City</label>
-      <input placeholder="Enter your city" v-model="city" />
+    <div class="editcontainer">
+      <QuillEditor
+        ref="qeditor"
+        class="editor"
+        theme="snow"
+        toolbar="Full"
+        @ready="onEditorReady($event)"
+      />
     </div>
+    <button class="editbutton" v-on:click="upload()">Upload</button>
   </div>
-  <div class="editcontainer">
-    <QuillEditor
-      ref="qeditor"
-      class="editor"
-      theme="snow"
-      toolbar="Full"
-      @ready="onEditorReady($event)"
-    />
-  </div>
-  <button class="editbutton" v-on:click="upload()">Upload</button>
 </template>
 
 <script>
@@ -88,25 +90,30 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.editone {
-  margin-top: 50px;
-  .inputbox {
-    margin: 20px;
+.page {
+  background: url(../../assets/image/bc3ec7bc825c4e6ca746c659189cea83.jpeg);
+  background-attachment: fixed;
+  background-size: cover;
+  padding-bottom: 50px;
+  .editone {
+    .inputbox {
+      margin: 20px;
+    }
   }
-}
-.editcontainer {
-  width: 80%;
-  margin: 1% 10%;
-  height: 500px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: black;
-  padding-bottom: 40px;
-  align-items: center;
-}
+  .editcontainer {
+    width: 80%;
+    margin: 1% 10%;
+    height: 500px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    padding-bottom: 40px;
+    align-items: center;
+  }
 
-.editbutton {
-  margin-top: 20px;
+  .editbutton {
+    margin-top: 20px;
+  }
 }
 </style>>
 

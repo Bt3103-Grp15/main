@@ -2,51 +2,69 @@
   <div class="blogListPage">
     <div class="type-area">
       <div class="form-div">
-        <form id="form" role="search" >
-        <input id="query" name="q" placeholder="Search here..." aria-label="Search through site content">
-        <button class="searchbtn" @click="updatedestination">
-            <svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 
+        <form id="form" role="search">
+          <input
+            id="query"
+            name="q"
+            placeholder="Search here..."
+            aria-label="Search through site content"
+          />
+          <button class="searchbtn" @click="updatedestination">
+            <svg viewBox="0 0 1024 1024">
+              <path
+                class="path1"
+                d="M848.471 928l-263.059-263.059c-48.941 
             36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 
             0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 
             408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 
-            218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
-        </button>
-    </form>
-    </div>
+            218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"
+              ></path>
+            </svg>
+          </button>
+        </form>
+      </div>
       <div class="title-block">
         <h2>All Results for "Hong Kong"</h2>
       </div>
-      <div class="selects-box"> 
-        <DropDown class="select-block"
-          :options="arrayOfObjects1" 
-          :selected="object1" 
-          v-on:updateOption="methodToRunOnSelect" 
+      <div class="selects-box">
+        <DropDown
+          class="select-block"
+          :options="arrayOfObjects1"
+          :selected="object1"
+          v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
-          :closeOnOutsideClick="boolean">
+          :closeOnOutsideClick="boolean"
+        >
         </DropDown>
 
-        <DropDown class="select-block"
-          :options="arrayOfObjects2" 
-          :selected="object2" 
-          v-on:updateOption="methodToRunOnSelect" 
+        <DropDown
+          class="select-block"
+          :options="arrayOfObjects2"
+          :selected="object2"
+          v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
-          :closeOnOutsideClick="boolean">
+          :closeOnOutsideClick="boolean"
+        >
         </DropDown>
 
-        <DropDown class="select-block"
-          :options="arrayOfObjects3" 
-          :selected="object3" 
-          v-on:updateOption="methodToRunOnSelect" 
+        <DropDown
+          class="select-block"
+          :options="arrayOfObjects3"
+          :selected="object3"
+          v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
-          :closeOnOutsideClick="boolean">
+          :closeOnOutsideClick="boolean"
+        >
         </DropDown>
 
-        <DropDown class="select-block"
-          :options="arrayOfObjects4" 
-          :selected="object4" 
-          v-on:updateOption="methodToRunOnSelect" 
+        <DropDown
+          class="select-block"
+          :options="arrayOfObjects4"
+          :selected="object4"
+          v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
-          :closeOnOutsideClick="boolean">
+          :closeOnOutsideClick="boolean"
+        >
         </DropDown>
       </div>
       <div>
@@ -59,8 +77,9 @@
 </template>
 
 <script>
-import BlogListIndex from '../../components/BlogListingComponents/BlogListIndex.vue';
-import DropDown from "../../components/BlogListingComponents/DropDown.vue"
+import BlogListIndex from "../../components/BlogListingComponents/BlogListIndex.vue";
+import DropDown from "../../components/BlogListingComponents/DropDown.vue";
+import getPost from './GetPost'
 
 export default {
     name: 'BlogListingPage',
@@ -94,16 +113,22 @@ export default {
         DropDown,
         BlogListIndex,
     },
-    methods: {
-        methodToRunOnSelect(payload) {
-          this.object = payload;
-        },
-        updatedestination() {
-          this.destination = document.querySelector("input[name=q]").value
-        }
-    }
-}
+  methods: {
+    methodToRunOnSelect(payload) {
+      this.object = payload;
+    },
+    updatedestination() {
+      this.destination = document.querySelector("input[name=q]").value;
+    },
+  },
+  setup() {
+    const { posts, error, load } = getPost();
 
+    load();
+
+    return { posts, error };
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -180,7 +205,7 @@ export default {
   }
 }
 
-.form-div{
+.form-div {
   display: flex;
   justify-content: center;
 }
@@ -208,7 +233,7 @@ input {
 
 ::placeholder {
   color: black;
-  opacity: 0.7; 
+  opacity: 0.7;
 }
 
 .searchbtn {

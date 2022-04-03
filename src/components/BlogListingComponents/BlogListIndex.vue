@@ -8,17 +8,17 @@
               <h2> {{bloglistingitem.title}} </h2>
             </div>
             <div class="content">
-              <p> {{bloglistingitem.description}} </p>
+              <p> {{bloglistingitem.content}} </p>
             </div>
             <div class="option">
               <div class="user">
                 <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                <h2> {{bloglistingitem.username}} </h2>
+                <h2> {{bloglistingitem.author}} </h2>
               </div>
               <div class="right-icon">
                 <div class="weizhi">
                   <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-                  <p> {{bloglistingitem.place}} </p>
+                  <p> {{bloglistingitem.city}} </p>
                 </div>
                 <div class="weizhi">
                   <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>

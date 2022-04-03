@@ -5,15 +5,15 @@
     </div>
     <div class="type-area">
       <div class="header-title">
-        <h2>My First Trip to Hong Kong</h2>
+        <h2>{{ post.title }}</h2>
       </div>
       <div class="top-content">
-        This is a Paragraph. Click on "Edit Text" or double click on the text box to start editing the content and make sure to add any relevant details or information that you want to share with your visitors.
+         {{ post.content }}
       </div>
       <div class="top-option">
         <div class="user">
           <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-          <h2>Dora Zhu</h2>
+          <h2> {{ post.author }}</h2>
           <div>follow me</div>
         </div>
         <div class="text-like">
@@ -75,7 +75,29 @@
   </div>
 </template>
 
-<script setup>
+<script>
+import { ref } from 'vue'
+import { db } from "@/firebase/index.js";
+import { doc, getDoc } from "firebase/firestore";
+export default {
+  props: ["id"],
+  setup(props) {
+    const post = ref("");
+
+    const load = async () => {
+      try {
+        const res = await getDoc(doc(db, "blogs", props.id));
+        post.value = res.data();
+      } catch (err) {
+        alert(err.message)
+      }
+    }
+    load();
+
+    return { post };
+  },
+};
+
 </script>
 
 <style lang="less" scoped>

@@ -14,11 +14,6 @@ const routes = [
     }
   },
   {
-    path: '/createBlog',
-    name: 'BlogCreate',
-    component: () => import( '../views/blogCreate/index.vue'),
-  },
-  {
     path: '/:catchAll(.*)',
     name: 'NotFound',
     component: NotFound
@@ -55,7 +50,7 @@ const routes = [
         component: () => import('../views/attractionListPage'),
       },
       {
-        path: 'attactionListPage/:id',
+        path: 'attractionListPage/:id',
         name: 'indivAttraction',
         component: () => import('../views/attractionListPage/indivAttraction'),
         props: true
@@ -76,20 +71,15 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/blog-main'),
       },
       {
-        path: 'indivBlogPage',
+        path: 'indivBlogPage/:id',
         name: 'indivBlogPage',
         component: () => import(/* webpackChunkName: "about" */ '../views/indivBlogPage'),
-      },
-      {
-        path: '/blogdetail',
-        name: 'BlogD',
-        component: () => import('../views/indivBlogPage/BlogDetail.vue')
-      },
-      {
-        path: '/blogdetail/:id',
-        name: 'BlogDetail',
-        component: () => import('../views/indivBlogPage/BlogDetail.vue'),
         props: true
+      },
+      {
+        path: '/createBlog',
+        name: 'BlogCreate',
+        component: () => import( '../views/blogCreate/index.vue'),
       },
     ]
   }

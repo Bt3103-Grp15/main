@@ -1,8 +1,14 @@
 <template>
   <!-- <editor-content class="eidtor" :editor="editor" /> -->
   <div class="editone">
-    <label>Your Title</label>
-    <input placeholder="Enter your title" v-model="title" />
+    <div class="inputbox">
+      <label>Your Title</label>
+      <input placeholder="Enter your title" v-model="title" />
+    </div>
+    <div class="inputbox">
+      <label>City</label>
+      <input placeholder="Enter your city" v-model="city" />
+    </div>
   </div>
   <div class="editcontainer">
     <QuillEditor
@@ -12,8 +18,8 @@
       toolbar="Full"
       @ready="onEditorReady($event)"
     />
-    <button class="editbutton" v-on:click="upload()">Upload</button>
   </div>
+  <button class="editbutton" v-on:click="upload()">Upload</button>
 </template>
 
 <script>
@@ -29,6 +35,7 @@ export default {
       editor: null,
       user: this.$store.user,
       title: null,
+      city: null,
       isEditing: true,
     };
   },
@@ -56,16 +63,18 @@ export default {
           return;
         }
 
-        await addDoc(
-          collection(db, "users/" + this.$store.state.user.uid + "/blog"),
-          {
-            Name: this.title,
-            Content: this.qeditor.root.innerHTML,
-          }
-        );
+        await addDoc(collection(db, "blogs"), {
+          author: this.$store.state.username,
+          authorId: this.$store.state.user.uid,
+          content: this.qeditor.root.innerHTML,
+          city: this.city,
+          title: this.title,
+          likes: 0,
+        });
 
         alert("Upload successfully!");
         this.title = null;
+        this.city = null;
         this.qeditor.setText("");
         this.qeditor.root.dataset.placeholder =
           "Please enter enter your blogs here...";
@@ -78,7 +87,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+.editone {
+  margin-top: 50px;
+  .inputbox {
+    margin: 20px;
+  }
+}
 .editcontainer {
   width: 80%;
   margin: 1% 10%;

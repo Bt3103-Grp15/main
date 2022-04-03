@@ -28,8 +28,30 @@
           </ul>
         </h2>
       </nav>
-      <div class="empty-box"></div>
-      <div class="user-control">
+
+      <div class = "user-control">
+        <div v-if="$store.state.user !== null" @click="toggleProfileMenu" class="profile" ref="profile" >
+          <span class="profile-name">{{ $store.state.username[0] }}</span>
+          <div  v-show= "profileMenu" class="profile-menu">
+            <div class="info"> Welcome, {{ $store.state.username }}</div>
+            <hr>
+              <router-link class="option" :to="{ name: 'Profile' }">
+                <p>Profile</p>
+              </router-link>
+              <div @click="this.$store.dispatch('logout')" class="option">
+                <p>Sign Out</p>
+            </div>
+
+
+          </div>
+        </div>
+        <div v-else>
+          <router-link class="link" :to="{ name: 'Login' }">
+            Login/Register
+          </router-link>
+        </div>
+      </div>
+      <!-- <div class="user-control">
         <div
           v-if="$store.state.user !== null"
           @click="navProfile()"
@@ -37,7 +59,6 @@
           ref="profile"
         >
           <span class="profile-name">{{ $store.state.username[0] }}</span>
-          <div class="empty-box"></div>
           <button class="btn-logout" @click="this.$store.dispatch('logout')">Log Out</button>
         </div>
         <div v-else>
@@ -45,15 +66,7 @@
             Login/Register
           </router-link>
         </div>
-        <!-- <div>
-        <span></span>
-        <span class="Sign" @click='this.$store.dispatch("logout")'>
-          <svg-icon class="svg-icon" iconClass="touxiang"></svg-icon>
-          <span v-if="$store.state.user!==null">Logout</span>
-          <span v-else>Login</span>
-        </span>
       </div> -->
-      </div>
     </header>
 
     <section class="content">
@@ -114,11 +127,26 @@
 </template>
 
 
-<script setup>
+
+<script>
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-const router = useRouter();
-const menuList = [
+
+export default {
+  data() {
+    return {profileMenu: null}
+  },
+  methods: {
+    toggleProfileMenu(e) {
+      if (e.target === this.$refs.profile) {
+        this.profileMenu = !this.profileMenu;
+      }
+    }
+  },
+
+  setup() {
+    const router = useRouter();
+    const menuList = [
   {
     name: "index",
     label: "Destination",
@@ -182,46 +210,69 @@ const menuList = [
   },
 ];
 
-const wordKey = ref("1");
-const jumpPage = (name, index) => {
+    const wordKey = ref("1");
+    const jumpPage = (name, index) => {
   router.push({
     name,
   });
   wordKey.value = index;
 };
-
-const navProfile = () => {
-  router.push({ name: "Profile" });
-};
+    return {router,menuList, wordKey, jumpPage}
+  }
+}
 </script>
 
 
 
 
 <style lang="less" scoped>
-.userControl {
+.user-control {
   position: absolute;
+  display: flex;
   right: 0;
   top: 10px;
-}
-.empty-box {
-  width: 50px;
-}
-.profile {
-  display: flex;
-  width: 30px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  color: #fff;
-  background-color: #303030;
-  padding: 30px;
-}
+  margin: 10px;
 
-button {
-  padding: 10px;
-  color: #000;
+
+  .profile {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #303030;
+    padding: 30px;
+    span {
+      pointer-events: none;
+    }
+    .profile-menu {
+      position: absolute;
+      top: 80px;
+      right: 0;
+      width: 250px;
+      background-color: #303030;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+      
+      .option {
+        padding:15px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        cursor:pointer
+      }
+
+      .info {
+        padding:15px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+    }
+  }
 }
 
 .layout {
@@ -364,12 +415,5 @@ button {
   }
 }
 
-.user-control {
-  .profile-name {
-    margin: auto 20px auto auto
-  }
-  .btn-logout {
-    margin: auto auto 20px 100px
-  }
-}
+
 </style>

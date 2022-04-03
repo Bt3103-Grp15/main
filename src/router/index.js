@@ -1,10 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import app from '../firebase/index'
+import { auth } from '../firebase/index'
 import NotFound from '@/components/NotFound.vue'
-import { getAuth } from 'firebase/auth';
 import layout from "@/layout"; // 主页
 
-const auth = getAuth(app)
 
 const routes = [
   {
@@ -75,6 +73,17 @@ const routes = [
         path: 'indivBlogPage',
         name: 'indivBlogPage',
         component: () => import(/* webpackChunkName: "about" */ '../views/indivBlogPage'),
+      },
+      {
+        path: '/blogdetail',
+        name: 'BlogD',
+        component: () => import('../views/indivBlogPage/BlogDetail.vue')
+      },
+      {
+        path: '/blogdetail/:id',
+        name: 'BlogDetail',
+        component: () => import('../views/indivBlogPage/BlogDetail.vue'),
+        props: true
       },
     ]
   }

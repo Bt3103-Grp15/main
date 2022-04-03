@@ -17,12 +17,8 @@
 </template>
 
 <script>
-import { getFirestore } from "firebase/firestore";
 import { collection, addDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import app from "@/firebase/index.js";
-
-const db = getFirestore(app);
+import { db } from "../../firebase/index";
 
 export default {
   components: {
@@ -55,17 +51,18 @@ export default {
 
     async upload() {
       try {
-        const auth = getAuth();
         if (!this.title) {
           alert("Please enter the title!");
           return;
         }
 
-        await addDoc(collection(db, "users/" + auth.currentUser.uid + "/blog"), {
-          Name: this.title,
-          Content: this.qeditor.root.innerHTML,
-        });
-
+        await addDoc(
+          collection(db, "users/" + this.$store.state.user.uid + "/blog"),
+          {
+            Name: this.title,
+            Content: this.qeditor.root.innerHTML,
+          }
+        );
 
         alert("Upload successfully!");
         this.title = null;
@@ -96,6 +93,5 @@ export default {
 .editbutton {
   margin-top: 20px;
 }
-
 </style>>
 

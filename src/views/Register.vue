@@ -28,12 +28,9 @@
 
 <script>
 import { ref } from 'vue';
-import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
-import app from '@/firebase/index.js'
-import {doc, setDoc, getFirestore} from "firebase/firestore"
-
-const auth = getAuth(app)
-const db = getFirestore(app)
+import { createUserWithEmailAndPassword} from 'firebase/auth'
+import { auth, db } from '../firebase/index'
+import {doc, setDoc} from "firebase/firestore"
 
 export default {
 

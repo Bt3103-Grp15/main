@@ -1,15 +1,12 @@
 import { createStore } from 'vuex'
 import router from '../router'
-import app from '@/firebase/index.js'
+import { db, auth } from '../firebase/index'
 import { 
   signOut,
   signInWithPopup,
-  getAuth
 } from 'firebase/auth'
-import {doc, getFirestore, getDoc, updateDoc} from "firebase/firestore"
+import {doc, getDoc, updateDoc} from "firebase/firestore"
 
-const auth = getAuth(app)
-const db = getFirestore(app)
 
 export default createStore({
   state: {//Use to store state globally

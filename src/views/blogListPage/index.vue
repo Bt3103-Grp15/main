@@ -117,7 +117,7 @@ export default {
   },
   setup() {
     const { posts, error, load } = getPost();
-    const listlen = ref(1);
+    const listlen = ref(4);
 
     load();
 

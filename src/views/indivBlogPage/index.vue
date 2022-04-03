@@ -28,8 +28,7 @@
       <div class="header-title">
         <h2>{{ post.title }}</h2>
       </div>
-      <div v-html="post.content" class="top-content">
-      </div>
+      <div class="top-content">{{ post.description }}</div>
       <div class="top-option">
         <div class="user">
           <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
@@ -88,21 +87,13 @@
         </div>
       </div>
       <div class="secand-title">
-        <h2>Section Title</h2>
+        <h2>{{ post.title }}</h2>
       </div>
       <div class="top-content">
-        Every website has a story, and your visitors want to hear yours. This
-        space is a great opportunity to give a full background on who you are,
-        what your team does and what your site has to offer. Double click on the
-        text box to start editing your content and make sure to add all the
-        relevant details you want site visitors to know.
+        <div v-html="post.content" class="top-content"></div>
       </div>
       <div class="top-content last-coent">
-        Every website has a story, and your visitors want to hear yours. This
-        space is a great opportunity to give a full background on who you are,
-        what your team does and what your site has to offer. Double click on the
-        text box to start editing your content and make sure to add all the
-        relevant details you want site visitors to know.
+        <div v-html="post.content" class="top-content"></div>
       </div>
       <div class="secand-title">
         <h2>Comments</h2>
@@ -162,16 +153,21 @@ export default {
   .header-title {
     padding-top: 50px;
     padding-bottom: 30px;
+    text-align: left;
+    margin-left: 30px;
     h2 {
       font-size: 50px;
       letter-spacing: normal !important;
     }
   }
   .top-content {
+    margin-left: 30px;
     font-size: 14px;
     width: 70%;
     line-height: 2.5;
     color: rgb(105, 105, 105);
+    text-align: justify;
+    text-justify: inter-word;
   }
   .top-option {
     padding-top: 30px;
@@ -285,6 +281,7 @@ export default {
 .iframe-block {
   height: 470px;
   width: 653px;
+  margin: auto;
   .iframe-content {
     width: 100%;
     height: 100%;

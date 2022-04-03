@@ -20,7 +20,7 @@
         ref="qeditor"
         class="editor"
         theme="snow"
-        toolbar="Full"
+        toolbar="full"
         @ready="onEditorReady($event)"
       />
     </div>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase/index";
 
 export default {
@@ -70,7 +70,7 @@ export default {
           return;
         }
 
-        await addDoc(collection(db, "blogs"), {
+        const res = await addDoc(collection(db, "blogs"), {
           author: this.$store.state.username,
           authorId: this.$store.state.user.uid,
           content: this.qeditor.root.innerHTML,
@@ -79,6 +79,11 @@ export default {
           likes: 0,
           description: this.des
         });
+
+        // console.log(res.id)
+        await setDoc(doc(db, "users/"+this.$store.state.user.uid+"/blogs", res.id), {
+            id: res.id
+        })
 
         alert("Upload successfully!");
         this.title = null;
@@ -109,7 +114,7 @@ export default {
   .editcontainer {
     width: 80%;
     margin: 1% 10%;
-    height: 500px;
+    height: 1000px;
     border-style: solid;
     border-width: 2px;
     border-color: black;
@@ -119,6 +124,9 @@ export default {
 
   .editbutton {
     margin-top: 20px;
+  }
+  button.ql-bold {
+    font: bold;
   }
 }
 </style>>

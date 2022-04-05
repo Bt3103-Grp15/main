@@ -66,7 +66,7 @@
           <Comments
             :comments="comment"
             v-for="comment in comments"
-            :key="comment.id"
+            :key="comment.date"
           />
         </div>
       </div>
@@ -77,9 +77,9 @@
         <div class="textAre-block">
           <textarea
             placeholder="How can we do better next time?"
-            name=""
-            id=""
+            v-model="commentarea"
           ></textarea>
+          <button class="btn-comments" @click="submitCom">Submit</button>
         </div>
       </div>
     </div>
@@ -89,35 +89,44 @@
 <script>
 import Comments from "../../components/Comments.vue";
 import { db } from "../../firebase/index";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, addDoc, query, orderBy, limit, getDocs } from "firebase/firestore";
 import { ref } from "vue";
+import { Timestamp } from "firebase/firestore";
 
 export default {
   data() {
     return {
-      // commentslist: [
-      //   {
-      //     date: "Date: 2022.02.22",
-      //     comment:
-      //       "I really like the food in Hong Kong!! My favourite restaurant is near to the Victoria Harbour and the dim sum there ...",
-      //   },
-      //   {
-      //     date: "Date: 2022.02.20",
-      //     comment:
-      //       "I really like the food in Hong Kong!! My favourite restaurant is Poly Canteen ...",
-      //   },
-      // ],
+      commentarea: "",
     };
   },
   components: {
     Comments,
   },
+  methods: {
+    async submitCom() {
+      try {
+        await addDoc(collection(db, "cities/Hong-Kong/comments"), {
+          date: Timestamp.fromDate(new Date()),
+          username: this.$store.state.username,
+          userId: this.$store.state.user.uid,
+          content: this.commentarea,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+
+      alert("Comments successfully!");
+      this.commentarea = "";
+    },
+  },
   setup() {
     const comments = ref([]);
+    const dbRef = collection(db, "cities/Hong-Kong/comments")
     const load = async () => {
-      const res = await getDocs(collection(db, "cities/Hong-Kong/comments"));
+      const q = query(dbRef, orderBy("date", "desc"), limit(3));
+      const res = await getDocs(q);
       comments.value = res.docs.map((doc) => {
-        console.log(doc.data());
+        // console.log(doc.data());
         return { ...doc.data(), id: doc.id };
       });
     };

@@ -1,8 +1,8 @@
 <template>
     <user-header/>
     <profile-nav/>
-    <div class="container">
-    <Blogs :blogs="blogs" v-for="(blogs,index) in bloglist" :key="index"/>
+    <div class="container" v-for="blog in myblogs" :key="blog.id">
+    <Blogs :blogs="blog" />
     </div>
 </template>
 
@@ -10,6 +10,11 @@
 import Blogs from '../../components/ProfileComponents/Blogs.vue'
 import ProfileNav from '../../components/ProfileComponents/ProfileNav.vue'
 import UserHeader from "../../components/ProfileComponents/UserHeader.vue"
+import { ref } from "vue";
+import { collection, getDocs, query, where } from '@firebase/firestore';
+import { db } from '../../firebase';
+// import {useStore} from "vuex"
+// import { computed } from 'vue'
 
 export default {
   components: { UserHeader, Blogs, ProfileNav },
@@ -21,6 +26,22 @@ export default {
             ],
         }
     },
+    setup() {
+        const myblogs = ref([]);
+        // const store = useStore();
+        // const user = computed(() => store.state.user)
+        const load = async () => {
+            const dbRef = collection(db, "blogs");
+            const q = query(dbRef, where("authorId","==","l4BenEYfTaMPUyRlE52I7yxQbBN2"))
+            const res = await getDocs(q);
+            myblogs.value = res.docs.map(doc => {
+                // console.log(doc.data())
+                return { ...doc.data(),id:doc.id }
+            })
+        }
+        load()
+        return { myblogs}
+    }
 
 }
 </script>

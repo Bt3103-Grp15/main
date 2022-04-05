@@ -82,7 +82,7 @@ export default {
 
         // console.log(res.id)
         await setDoc(doc(db, "users/"+this.$store.state.user.uid+"/blogs", res.id), {
-            id: res.id
+            id: res.id,
         })
 
         alert("Upload successfully!");

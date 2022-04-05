@@ -1,8 +1,8 @@
 <template>
 <div id="navMenu">
-    <router-link to="/profile" class="navitems"> Profile </router-link>
+    <router-link to="/profile" class="navitems"> Settings </router-link>
     <p class="navitems"> </p>
-    <router-link to="/notification" class="navitems">Notification</router-link>
+    <router-link to="/myblogs" class="navitems">MyBlogs</router-link>
 </div>
 </template>
 

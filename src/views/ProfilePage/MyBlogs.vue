@@ -1,5 +1,6 @@
 <template>
     <user-header/>
+    <profile-nav/>
     <div class="container">
     <Blogs :blogs="blogs" v-for="(blogs,index) in bloglist" :key="index"/>
     </div>
@@ -7,10 +8,11 @@
 
 <script>
 import Blogs from '../../components/ProfileComponents/Blogs.vue'
+import ProfileNav from '../../components/ProfileComponents/ProfileNav.vue'
 import UserHeader from "../../components/ProfileComponents/UserHeader.vue"
 
 export default {
-  components: { UserHeader, Blogs },
+  components: { UserHeader, Blogs, ProfileNav },
   data () {
         return {
             bloglist: [

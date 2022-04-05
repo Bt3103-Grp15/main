@@ -78,14 +78,9 @@ const routes = [
         props: true
       },
       {
-        path: 'notification',
-        name: 'notification',
-        component: () => import(/* webpackChunkName: "about" */ '../views/ProfilePage/Notification'),
-      },
-      {
-        path: 'bloglikes',
-        name: 'bloglikes',
-        component: () => import(/* webpackChunkName: "about" */ '../views/ProfilePage/BlogLikes'),
+        path: 'myblogs',
+        name: 'myblogs',
+        component: () => import(/* webpackChunkName: "about" */ '../views/ProfilePage/MyBlogs'),
       },
       {
         path: '/createBlog',

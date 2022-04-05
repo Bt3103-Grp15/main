@@ -1,5 +1,4 @@
 <template>
-    
     <UserHeader :name="this.$store.state.username" imgpath=""/>
     <ProfileNav/>
     <div class="container">
@@ -9,12 +8,6 @@
         <DisplayNameForm @change-name="changeName"/>
         <hr/>
         <sectionHeader title="Account" instruction="Update and Edit the information you share with the community "/>
-       
-        <hr/>
-        <h2>My Blogs</h2>
-        <Blogs :blogs="blogs" v-for="(blogs,index) in bloglist" :key="index"/> <br>
-
-        <router-link to="/bloglikes" class="likesbtn"> View My Likes </router-link>
   </div>
 
 </template>
@@ -23,7 +16,6 @@
 import DisplayNameForm from '@/components/ProfileComponents/DisplayNameForm.vue'
 import sectionHeader from '@/components/ProfileComponents/sectionHeader.vue'
 import UserHeader from '@/components/ProfileComponents/UserHeader.vue'
-import Blogs from '@/components/ProfileComponents/Blogs.vue'
 import ProfileNav from '@/components/ProfileComponents/ProfileNav.vue'
 
 export default {
@@ -47,7 +39,6 @@ export default {
         UserHeader,
         sectionHeader,
         DisplayNameForm,
-        Blogs,
         ProfileNav,
     }
     

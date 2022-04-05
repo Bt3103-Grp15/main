@@ -71,42 +71,7 @@
           </div>
         </div>
         <div class="commit-list">
-          <div class="commit">
-            <div class="user-info">
-              <div class="arrt">
-                <svg-icon class="svg-icon" iconClass="touxiang"></svg-icon>
-              </div>
-              <div class="user-commit-info">
-                I really like the food in Hong Kong!! My favourite restaurant is near to the Victoria Harbour and the dim sum there ...
-              </div>
-            </div>
-            <div class="bottom-jantou">
-              <div class="commit-time">
-                Date: 2022.02.22
-              </div>
-              <div class="input-jiantou">
-                <svg-icon class="jiantou" iconClass="jiantou"></svg-icon>
-              </div>
-            </div>
-          </div>
-          <div class="commit">
-            <div class="user-info">
-              <div class="arrt">
-                <svg-icon class="svg-icon" iconClass="touxiang"></svg-icon>
-              </div>
-              <div class="user-commit-info">
-                I really like the food in Hong Kong!! My favourite restaurant is near to the Victoria Harbour and the dim sum there ...
-              </div>
-            </div>
-            <div class="bottom-jantou">
-              <div class="commit-time">
-                Date: 2022.02.22
-              </div>
-              <div class="input-jiantou">
-                <svg-icon class="jiantou" iconClass="jiantou"></svg-icon>
-              </div>
-            </div>
-          </div>
+            <Comments :comments="comments" v-for="(comments,index) in commentslist" :key="index"/>
         </div>
       </div>
       <div>
@@ -123,7 +88,23 @@
   </div>
 </template>
 
-<script setup>
+<script>
+import Comments from '../../components/Comments.vue';
+
+export default {
+  data() {
+    return {
+      commentslist: [
+        {date: "Date: 2022.02.22", comment: "I really like the food in Hong Kong!! My favourite restaurant is near to the Victoria Harbour and the dim sum there ..."},
+        {date: "Date: 2022.02.20", comment: "I really like the food in Hong Kong!! My favourite restaurant is Poly Canteen ..."}
+        
+      ]
+    }
+  },
+  components: {
+    Comments,
+  }
+}
 </script>
 
 <style lang="less" scoped>
@@ -269,65 +250,6 @@
       flex-direction: column;
       align-items: center;
       justify-items: center;
-      .commit {
-        height: 244px;
-        width: 820px;
-        background: rgba(255, 255, 255, 0.5);
-        padding: 30px 20px;
-        padding-top: 50px;
-        padding-right: 60px;
-        margin-bottom: 20px;
-        .user-info {
-          display: flex;
-          align-items: center;
-          .arrt {
-            height: 100px;
-            width: 100px;
-            border-radius: 50%;
-            background: #c9c9c9;
-            margin-right: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            .svg-icon {
-              // color: #c9c9c9;
-            }
-          }
-          .user-commit-info {
-            font-size: 23px;
-            font-weight: 700;
-            letter-spacing: normal !important;
-          }
-        }
-        .bottom-jantou {
-          display: flex;
-          padding-top: 20px;
-          .commit-time {
-            padding-top: 40px;
-            padding-right: 50px;
-          }
-          .input-jiantou{
-            height: 55px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgb(66, 66, 66);
-            width: 412px;
-            position: relative;
-            .jiantou {
-              height: 54px;
-              width: 54px;
-              position: absolute;
-              cursor: pointer;
-              // bottom: px;
-              &:hover {
-                transform: translateX(10px);
-                transition: 0.5s;
-              }
-            }
-          }
-        }
-      }
     }
 
     .textAre-block {

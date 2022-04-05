@@ -36,9 +36,9 @@
           <div>follow me</div>
         </div>
         <div class="text-like">
-          <div class="like">
+          <div class="like" @click="likeBlog">
             <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
-            <h2>Like this Blog</h2>
+            <h2>{{ post.likes }} Like this Blog</h2>
           </div>
           <div class="Share">
             <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
@@ -112,7 +112,7 @@
 <script>
 import { ref } from "vue";
 import { db } from "@/firebase/index.js";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
 export default {
   props: ["id"],
   setup(props) {
@@ -128,7 +128,29 @@ export default {
     };
     load();
 
-    return { post };
+    return { post, load };
+  },
+  methods: {
+    async likeBlog() {
+      const docu = await getDoc(
+        doc(db, "users/" + this.$store.state.user.uid + "/likes", this.id)
+      );
+      if (docu.data()) {
+        alert("You have liked this post");
+      } else {
+        const dbRef = doc(db, "blogs/" + this.id);
+        const res = await getDoc(dbRef);
+        const like = res.data().likes;
+        console.log(like);
+        await updateDoc(dbRef, { likes: like + 1 });
+        await setDoc(doc(db, "users/" + this.$store.state.user.uid + "/likes/" +this.id),
+          {
+            likedate: 1,
+          });
+      }
+
+      this.load();
+    },
   },
 };
 </script>
@@ -211,6 +233,7 @@ export default {
         padding-right: 20px;
         &.like {
           color: #d32e6f;
+          cursor: pointer;
         }
         &.Share {
           color: #5581b0;

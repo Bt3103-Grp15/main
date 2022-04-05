@@ -2,9 +2,7 @@
   <div class="cityPage">
     <div class="top-block">
       <div class="city-name">
-        <h1>
-            Hong Kong
-        </h1>
+        <h1>Hong Kong</h1>
       </div>
       <div class="Routes-block">
         <ul>
@@ -12,49 +10,47 @@
             <div class="icon-block">
               <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
             </div>
-            <h2>
-              Travel Routes
-            </h2>
+            <h2>Travel Routes</h2>
           </li>
           <li>
             <div class="icon-block shoucang">
               <svg-icon class="svg-icon" iconClass="shoucang"></svg-icon>
             </div>
-            <h2>
-              Attractions
-            </h2>
+            <h2>Attractions</h2>
           </li>
           <li>
             <div class="icon-block qianbi">
               <svg-icon class="svg-icon" iconClass="qianbi"></svg-icon>
             </div>
-            <h2>
-              Blogs
-            </h2>
+            <h2>Blogs</h2>
           </li>
           <li>
             <div class="icon-block shouji">
               <svg-icon class="svg-icon" iconClass="shouji"></svg-icon>
             </div>
-            <h2>
-              Design Routes
-            </h2>
+            <h2>Design Routes</h2>
           </li>
         </ul>
         <div class="title">
           A vibrant harbour city with an unbeatable food scene
         </div>
         <div class="content">
-          Delectable dim sum, floating islands, and a one-of-a-kind skyline are just some of Hong Kong’s enchanting features. Eat your way across Temple Street Night Market with its fish balls and stinky tofu, or settle in for dim sum at Michelin-starred venues like Tim Ho Wan. For traditional Chinese architecture, head to Ngong Ping Village, then take the tram to the tippity-top of Victoria Peak for skyscraper views. The gentle hills of Nan Lian Garden will deliver serenity, but a detour through the city’s cocktail bars will bring back Hong Kong’s urban buzz.
+          Delectable dim sum, floating islands, and a one-of-a-kind skyline are
+          just some of Hong Kong’s enchanting features. Eat your way across
+          Temple Street Night Market with its fish balls and stinky tofu, or
+          settle in for dim sum at Michelin-starred venues like Tim Ho Wan. For
+          traditional Chinese architecture, head to Ngong Ping Village, then
+          take the tram to the tippity-top of Victoria Peak for skyscraper
+          views. The gentle hills of Nan Lian Garden will deliver serenity, but
+          a detour through the city’s cocktail bars will bring back Hong Kong’s
+          urban buzz.
         </div>
       </div>
     </div>
     <div class="main-content">
       <div class="map-block">
         <div class="title-block">
-          <h2>
-            Classic Trip Plans in Hong Kong
-          </h2>
+          <h2>Classic Trip Plans in Hong Kong</h2>
         </div>
         <div class="map-content">
           <div></div>
@@ -63,25 +59,27 @@
       </div>
       <div class="comments-block">
         <div class="title-block">
-          <h2>
-            Users' Comments on this City
-          </h2>
-          <div class="More">
-            Read More >
-          </div>
+          <h2>Users' Comments on this City</h2>
+          <div class="More">Read More ></div>
         </div>
         <div class="commit-list">
-            <Comments :comments="comments" v-for="(comments,index) in commentslist" :key="index"/>
+          <Comments
+            :comments="comment"
+            v-for="comment in comments"
+            :key="comment.id"
+          />
         </div>
       </div>
       <div>
         <div class="title-block">
-          <h2>
-            Add your Comment
-          </h2>
+          <h2>Add your Comment</h2>
         </div>
         <div class="textAre-block">
-          <textarea placeholder="How can we do better next time?" name="" id=""></textarea>
+          <textarea
+            placeholder="How can we do better next time?"
+            name=""
+            id=""
+          ></textarea>
         </div>
       </div>
     </div>
@@ -89,29 +87,52 @@
 </template>
 
 <script>
-import Comments from '../../components/Comments.vue';
+import Comments from "../../components/Comments.vue";
+import { db } from "../../firebase/index";
+import { collection, getDocs } from "firebase/firestore";
+import { ref } from "vue";
 
 export default {
   data() {
     return {
-      commentslist: [
-        {date: "Date: 2022.02.22", comment: "I really like the food in Hong Kong!! My favourite restaurant is near to the Victoria Harbour and the dim sum there ..."},
-        {date: "Date: 2022.02.20", comment: "I really like the food in Hong Kong!! My favourite restaurant is Poly Canteen ..."}
-        
-      ]
-    }
+      // commentslist: [
+      //   {
+      //     date: "Date: 2022.02.22",
+      //     comment:
+      //       "I really like the food in Hong Kong!! My favourite restaurant is near to the Victoria Harbour and the dim sum there ...",
+      //   },
+      //   {
+      //     date: "Date: 2022.02.20",
+      //     comment:
+      //       "I really like the food in Hong Kong!! My favourite restaurant is Poly Canteen ...",
+      //   },
+      // ],
+    };
   },
   components: {
     Comments,
-  }
-}
+  },
+  setup() {
+    const comments = ref([]);
+    const load = async () => {
+      const res = await getDocs(collection(db, "cities/Hong-Kong/comments"));
+      comments.value = res.docs.map((doc) => {
+        console.log(doc.data());
+        return { ...doc.data(), id: doc.id };
+      });
+    };
+    load();
+    return { comments };
+  },
+};
 </script>
 
 <style lang="less" scoped>
 .cityPage {
-  .top-block  {
-    background: url(../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg) no-repeat;
-    background-attachment:fixed;
+  .top-block {
+    background: url(../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg)
+      no-repeat;
+    background-attachment: fixed;
     background-size: cover;
     .city-name {
       padding-top: 130px;
@@ -196,19 +217,19 @@ export default {
       .title {
         padding: 50px 50px 40px;
         font-size: 25px;
-        letter-spacing:normal !important;
+        letter-spacing: normal !important;
       }
       .content {
         padding: 0 50px;
         font-size: 18px;
-        letter-spacing:normal !important;
+        letter-spacing: normal !important;
         line-height: 25px;
       }
     }
   }
   .main-content {
     background: url(../../assets/image/bc3ec7bc825c4e6ca746c659189cea83.jpeg);
-    background-attachment:fixed;
+    background-attachment: fixed;
     background-size: cover;
     padding-bottom: 50px;
     .map-content {
@@ -225,7 +246,7 @@ export default {
         }
       }
     }
-    .title-block{
+    .title-block {
       padding: 50px 130px;
       display: flex;
       align-items: center;
@@ -234,7 +255,7 @@ export default {
         font-size: 30px;
       }
       .More {
-        letter-spacing:normal !important;
+        letter-spacing: normal !important;
         font-size: 20px;
         cursor: pointer;
         &:hover {
@@ -255,7 +276,7 @@ export default {
     .textAre-block {
       height: 265px;
       width: 980px;
-      border: 2px solid rgb(145,145,145;);
+      border: 2px solid rgb(145, 145, 145;);
       margin: 0 auto;
       textarea {
         padding: 10px;
@@ -263,7 +284,7 @@ export default {
         width: 100%;
         border: none;
         /*去除阴影*/
-        box-shadow:none;
+        box-shadow: none;
         /*聚焦input的蓝色边框*/
         outline: none;
         /*textarea 禁止拖拽*/
@@ -273,9 +294,8 @@ export default {
         /*常用于IOS下移除原生样式*/
         -webkit-appearance: none;
         /*点击高亮的颜色*/
-        -webkit-tap-highlight-color:rgba(0,0,0,0);
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       }
-
     }
   }
 }

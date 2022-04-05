@@ -5,12 +5,12 @@
             <svg-icon class="svg-icon" iconClass="touxiang"></svg-icon>
         </div>
         <div class="user-commit-info">
-            {{comments.comment}}
+            {{comments.content}}
         </div>
     </div>
     <div class="bottom-jantou">
         <div class="commit-time">
-            {{comments.date}}
+            {{comments.date.toDate()}}
         </div>
         <div class="input-jiantou">
             <svg-icon class="jiantou" iconClass="jiantou"></svg-icon>

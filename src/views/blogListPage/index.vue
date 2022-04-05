@@ -2,12 +2,11 @@
   <div class="blogListPage">
     <div class="type-area">
       <div class="form-div">
-        <form id="form" role="search">
+        <form id="form" role="search" @submit.prevent="index">
           <input
             id="query"
             name="q"
             placeholder="Search here..."
-            aria-label="Search through site content"
           />
           <button class="searchbtn" @click="updatedestination">
             <svg viewBox="0 0 1024 1024">
@@ -102,7 +101,10 @@ export default {
     computed: {
       bloglistingitems: function() {
         return this.bloglistitems.filter(blog => this.bloglistitems.indexOf(blog) < this.listlen)
-      }
+      },
+      blogs: function() {
+        return this.bloglistitems.filter(blog => blog.place == this.destination)
+      },
     },
     components: {
         DropDown,

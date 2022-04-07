@@ -32,7 +32,7 @@
         </form>
       </section>
     </div>
-    <div class="background"></div>
+    <div class = "background-login"></div>
     <div id="firebaseui-auth-container"></div>
   </main>
 </template>
@@ -89,7 +89,10 @@ export default {
 .Container{
   padding:10px;
   margin: 10px;
-  height: 60%
+  height: 60%;
+  display: flex;
+  background-image: url("../assets/login.jpeg");
+  background-color: white;
 }
 
 h2 {
@@ -98,17 +101,24 @@ h2 {
   margin-bottom: 20px;
 }
 
+.login-register {
+  font-size: 15px
+}
+
 .form {
-  padding: 2rem;
+  padding: 30;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 50vh;
+  height: 85vh;
+  width:100%;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
 }
 
 .form .login{
-    width:40%;
+    width:40vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -140,6 +150,7 @@ h2 {
   padding:10px;
   border: 0ch;
   border-radius: 30px;
+  
 }
 
 .icon {
@@ -148,15 +159,23 @@ h2 {
           left: 6px;
 }
 
-.background{
-  display: none;
+img {
+  height:70vh;
+  width:auto;
+  padding:0;
+  margin:0;
+  display: block;
+  float: right;
+}
+
+.background-login {
+    display: none;
     flex: 2;
     background-size: cover;
-    background-color: brown;
     background-image: url("../assets/login.jpeg");
-    width: 100px;
-    height: 100px;
-}
+    width: 100%;
+    height: 100%;
+  }
 /*
 h2 {
   font-size: 2rem;

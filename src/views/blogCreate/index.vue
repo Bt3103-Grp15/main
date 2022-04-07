@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc, Timestamp } from "firebase/firestore";
 import { db } from "../../firebase/index";
 
 export default {
@@ -77,7 +77,8 @@ export default {
           city: this.city,
           title: this.title,
           likes: 0,
-          description: this.des
+          description: this.des,
+          date: Timestamp.fromDate(new Date()),
         });
 
         // console.log(res.id)

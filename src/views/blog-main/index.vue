@@ -14,7 +14,9 @@
           </div>
           <div class="input-block">
             <input placeholder="Enter search term" type="text">
+            <button class="searchbtn" @click="searchforcityblog()">
             <svg-icon class="svg-icon" iconClass="sousuo"></svg-icon>
+            </button>
           </div>
         </div>
 
@@ -62,6 +64,16 @@
 
 <script setup>
 import {ref} from "@vue/reactivity"
+import {useRouter} from "vue-router";
+
+const router = useRouter();
+
+const searchforcityblog = () => {
+  let searchresult = document.querySelector("input[name=q]").value;
+  router.push({
+    name: 'blogListPage', params: {city : searchresult}
+  });
+};
 
 const list = [
   require('../../assets/image/b_1.jpeg'),

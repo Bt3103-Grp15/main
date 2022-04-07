@@ -65,9 +65,10 @@ const routes = [
         props: true
       },
       {
-        path: 'blogListPage',
+        path: 'blogListPage/:city',
         name: 'blogListPage',
         component: () => import('../views/blogListPage'),
+        props: true
       },
       {
         path: 'cityPage/:cityname',

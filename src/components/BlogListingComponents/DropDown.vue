@@ -21,62 +21,64 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                selectedOption: {
-                  name: '',
-                },
-                showMenu: false,
-                placeholderText: 'Please select an item',
-            }
-        },
+export default {
+  emits:["updateOption"],
+  
+  data() {
+      return {
+          selectedOption: {
+            name: '',
+          },
+          showMenu: false,
+          placeholderText: 'Please select an item',
+      }
+  },
 
-        props: {
-            options: {
-                type: [Array, Object]
-            },
-            selected: {},
-            placeholder: [String],
-            closeOnOutsideClick: {
-              type: [Boolean],
-              default: true,
-            },
-        },
+  props: {
+      options: {
+          type: [Array, Object]
+      },
+      selected: {},
+      placeholder: [String],
+      closeOnOutsideClick: {
+        type: [Boolean],
+        default: true,
+      },
+  },
 
-        mounted() {
-            this.selectedOption = this.selected;
-            if (this.placeholder)
-            {
-                this.placeholderText = this.placeholder;
-            }
-            if (this.closeOnOutsideClick) {
-              document.addEventListener('click', this.clickHandler);
-            }
-        },
+  mounted() {
+      this.selectedOption = this.selected;
+      if (this.placeholder)
+      {
+          this.placeholderText = this.placeholder;
+      }
+      if (this.closeOnOutsideClick) {
+        document.addEventListener('click', this.clickHandler);
+      }
+  },
 
-        beforeUnmount() {
-            document.removeEventListener('click', this.clickHandler);
-        },
+  beforeUnmount() {
+      document.removeEventListener('click', this.clickHandler);
+  },
 
-        methods: {
-            updateOption(option) {
-                this.selectedOption = option;
-                this.showMenu = false;
-                this.$emit('updateOption', this.selectedOption);
-            },
-            toggleMenu() {
-              this.showMenu = !this.showMenu;
-            },
-            clickHandler(event) {
-                const { target } = event;
-                const { $el } = this;
-                if (!$el.contains(target)) {
-                  this.showMenu = false;
-                }
-            },
-        }
-    }
+  methods: {
+      updateOption(option) {
+          this.selectedOption = option;
+          this.showMenu = false;
+          this.$emit('updateOption', this.selectedOption);
+      },
+      toggleMenu() {
+        this.showMenu = !this.showMenu;
+      },
+      clickHandler(event) {
+          const { target } = event;
+          const { $el } = this;
+          if (!$el.contains(target)) {
+            this.showMenu = false;
+          }
+      },
+  }
+}
 </script>
 
 <style scoped>

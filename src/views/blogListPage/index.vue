@@ -8,7 +8,7 @@
             name="q"
             placeholder="Search here..."
           />
-          <button class="searchbtn" @click="updatedestination">
+          <button class="searchbtn" @click="updatedestination()">
             <svg viewBox="0 0 1024 1024">
               <path
                 class="path1"
@@ -33,6 +33,7 @@
           v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
           :closeOnOutsideClick="boolean"
+          @updateOption ="updateinfo($event)"
         >
         </DropDown>
 
@@ -43,6 +44,7 @@
           v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
           :closeOnOutsideClick="boolean"
+          @updateOption ="updateinfo($event)"
         >
         </DropDown>
 
@@ -53,6 +55,7 @@
           v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
           :closeOnOutsideClick="boolean"
+          @updateOption ="updateinfo($event)"
         >
         </DropDown>
 
@@ -63,12 +66,13 @@
           v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
           :closeOnOutsideClick="boolean"
+          @updateOption ="updateinfo($event)"
         >
         </DropDown>
       </div>
 
       <div v-for="post in posts.slice(0,listlen)" :key="post.id">
-          <BlogListIndex :bloglistingitem="post" />
+        <BlogListIndex :bloglistingitem="post" />
       </div>
       
     </div>
@@ -80,12 +84,13 @@
 <script>
 import BlogListIndex from "../../components/BlogListingComponents/BlogListIndex.vue";
 import DropDown from "../../components/BlogListingComponents/DropDown.vue";
-import getPost from './GetPost'
 import {ref} from "vue"
+import { db } from '@/firebase/index'
+import { collection, getDocs, where, query } from 'firebase/firestore';
 
 export default {
-    name: 'BlogListingPage',
-    props: ["bloglistingitem"],
+    name: 'blogListPage',
+    props: ["city"],
     data () {
         return {
             arrayOfObjects1: [{name: "Most Viewed"}, {name: "Most Popular Blog"}],
@@ -98,14 +103,6 @@ export default {
             object4: {  name: 'Average Spending', },
         }
     },
-    computed: {
-      bloglistingitems: function() {
-        return this.bloglistitems.filter(blog => this.bloglistitems.indexOf(blog) < this.listlen)
-      },
-      blogs: function() {
-        return this.bloglistitems.filter(blog => blog.place == this.destination)
-      },
-    },
     components: {
         DropDown,
         BlogListIndex,
@@ -114,17 +111,39 @@ export default {
     methodToRunOnSelect(payload) {
       this.object = payload;
     },
-    updatedestination() {
-      this.destination = document.querySelector("input[name=q]").value;
+    async updatedestination() {
+      try{
+        this.destination = document.querySelector("input[name=q]").value;
+        this.load()
+      } catch (err) {
+        console.log(err);
+      }
     },
+    updateinfo(x){
+      alert(x.name)
+    }
   },
-  setup() {
-    const { posts, error, load } = getPost();
-    const listlen = ref(2);
 
+  setup(props) {
+    const posts = ref([]);
+    const error = ref(null);
+    const dbRef = collection(db, 'blogs')
+
+    const load = async () => {
+      try{
+        const q = query(dbRef, where("city", "==", props.searchresult));
+        const res = await getDocs(q);
+        posts.value = res.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        });
+      }
+      catch (err) {
+        error.value = err.message
+        alert(error.value)
+      }
+    }
     load();
-
-    return { posts, error, listlen};
+    return { posts, load, error };
   },
 };
 </script>

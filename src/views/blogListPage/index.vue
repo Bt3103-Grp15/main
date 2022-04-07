@@ -77,7 +77,7 @@
       
     </div>
 
-    <button class="readbtn" @click="listlen++">Read More</button> 
+    <button class="readbtn" @click="listlen++">Read More</button> <br> <br> <br>
   </div>
 </template>
 
@@ -91,6 +91,7 @@ import { collection, getDocs, where, query } from 'firebase/firestore';
 export default {
     name: 'blogListPage',
     props: ["city"],
+    listlen: 3,
     data () {
         return {
             arrayOfObjects1: [{name: "Most Viewed"}, {name: "Most Popular Blog"}],
@@ -107,6 +108,7 @@ export default {
         DropDown,
         BlogListIndex,
     },
+
   methods: {
     methodToRunOnSelect(payload) {
       this.object = payload;
@@ -127,11 +129,10 @@ export default {
   setup(props) {
     const posts = ref([]);
     const error = ref(null);
-    const dbRef = collection(db, 'blogs')
 
     const load = async () => {
       try{
-        const q = query(dbRef, where("city", "==", props.city));
+        const q = query(collection(db, 'blogs'), where("city", "==", props.city));
         const res = await getDocs(q);
         posts.value = res.docs.map((doc) => {
           return { ...doc.data(), id: doc.id };
@@ -151,9 +152,8 @@ export default {
 <style lang="less" scoped>
 .blogListPage {
   background: url(../../assets/image/11062b_61151d0087ad418fa801687a88c78716_mv2.jpeg);
-  --background-size: cover, contain;
+  background-size: cover !important;
   position: relative;
-  height: 2000px;
   padding-top: 50px;
   .type-area {
     width: 980px;

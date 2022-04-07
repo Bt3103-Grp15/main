@@ -124,6 +124,9 @@ export default {
             color: rgb(41, 41, 41);
             letter-spacing: 6px !important;
             font-size: 30px !important;
+            text-align: left;
+            font-family: fantasy;
+            font-weight: bold;
           }
         }
         .back-block {
@@ -131,6 +134,7 @@ export default {
           align-items: center;
           padding: 20px 40px;
           color: rgba(41, 41, 41, 0.8);
+
           .svg-icon {
             height: 35px;
             width: 35px;
@@ -140,6 +144,8 @@ export default {
             font-size: 16px;
             border-bottom: 1px solid rgba(41, 41, 41, 0.8);
             line-height: 1;
+            text-align: left;
+            font-weight: bold;
           }
         }
       }
@@ -197,6 +203,9 @@ export default {
             font-size: 25px;
             color: rgb(41, 41, 41);
             // letter-spacing: normal !important;
+            font-family: fantasy;
+            font-weight: bold;
+            text-align: left;
           }
         }
       }
@@ -205,12 +214,14 @@ export default {
         letter-spacing: normal !important;
         padding-left: 55px;
         padding-top: 20px;
+        text-align: left;
       }
       .East {
         font-size: 15px;
         color: rgb(105, 105, 105);
         padding-top: 20px;
         padding-left: 55px;
+        text-align: left;
         ul {
           list-style: outside !important;
           padding-left: 20px;

@@ -30,4 +30,12 @@ template is the same as what was given in the lecture
 
 # 0326-q
 1. Layout overwrite the router, then there is no need for a /router and also inside of the router there is no need a layout import
-2. 
+
+
+# To-do
+- [ ] Fixed the ReadMore in blogList Page
+- [ ] Fixed the search on main page (allow key word)
+- [ ] Add Readmore in profile bloglist
+- [ ] Allow cancel the like feature, alert sth when not login
+- [ ] connect bloglist page to dynamic router
+- [ ] 

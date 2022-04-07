@@ -38,4 +38,9 @@ template is the same as what was given in the lecture
 - [ ] Add Readmore in profile bloglist
 - [ ] Allow cancel the like feature, alert sth when not login
 - [ ] connect bloglist page to dynamic router
-- [ ] 
+- [ ] profile page change background  
+- [ ] Blog Page search => blog Listing Page; Three bottuns
+- [ ] Change Routes to Others(About us, Write Review)
+- [ ] Connect AttractionList to Firebase and change the picture
+- [ ] blog Create page three categories(depature time, average spending...)
+

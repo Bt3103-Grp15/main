@@ -47,16 +47,50 @@
         </div>
       </div>
     </div>
+
+    <!--地图部分从这里开始-->
     <div class="main-content">
       <div class="map-block">
         <div class="title-block">
           <h2>Classic Trip Plans in Hong Kong</h2>
         </div>
         <div class="map-content">
-          <div></div>
-          <div></div>
+          <div>
+            <div class="hongTit">
+              3 Days Trip Plan in Hong Kong
+            </div>
+            <div class="mapmain">
+              <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7381.797921247366!2d114.16626071642457!3d22.319660701187885!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340400c62bc7810f%3A0x3ba12a5918081894!2z6aaZ5riv5pe66KeS!5e0!3m2!1szh-CN!2s!4v1648890556315!5m2!1szh-CN!2s"
+                  width="100%"
+                  height="100%"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+          <div>
+            <div class="hongTit">
+              4 Days Trip Plan in Hong Kong
+            </div>
+            <div class="mapmain">
+              <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7382.506566694534!2d114.18115757844798!3d22.306258767275114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340400ddfd685b6f%3A0xa2dcb7a8a243b328!2z6aaZ5riv57qi56Oh!5e0!3m2!1szh-CN!2s!4v1648890620610!5m2!1szh-CN!2s"
+                  width="100%"
+                  height="100%"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
         </div>
       </div>
+
+
       <div class="comments-block">
         <div class="title-block">
           <h2>Users' Comments on this City</h2>
@@ -83,6 +117,11 @@
         </div>
       </div>
     </div>
+
+
+
+
+
   </div>
 </template>
 
@@ -153,6 +192,7 @@ export default {
         font-weight: bold;
         line-height: 1.2;
         text-align: center;
+        font-family: fantasy;
       }
     }
     .Routes-block {
@@ -220,6 +260,8 @@ export default {
           }
           h2 {
             font-size: 18px;
+            font-family: fantasy;
+            font-weight: bold;
           }
         }
       }
@@ -227,12 +269,15 @@ export default {
         padding: 50px 50px 40px;
         font-size: 25px;
         letter-spacing: normal !important;
+        font-weight: bold;
       }
       .content {
         padding: 0 50px;
-        font-size: 18px;
+        font-size: 20px;
         letter-spacing: normal !important;
         line-height: 25px;
+        text-align: left;
+
       }
     }
   }
@@ -250,9 +295,20 @@ export default {
         width: 572px;
         background: #fff;
         flex-shrink: 0;
+        padding: 30px ;
         &:first-child {
           margin-right: 20px;
         }
+      }
+      .mapmain {
+        width: 100%;
+        height: calc(100% - 40px);
+      }
+      .hongTit {
+        padding-bottom: 10px;
+        font-size: 18px;
+        text-align: left;
+        font-weight: bold;
       }
     }
     .title-block {
@@ -260,8 +316,11 @@ export default {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       h2 {
-        font-size: 30px;
+        font-size: 35px;
+        font-family: fantasy;
+        font-weight: bold;
       }
       .More {
         letter-spacing: normal !important;

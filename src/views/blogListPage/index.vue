@@ -91,9 +91,9 @@ import { collection, getDocs, where, query } from 'firebase/firestore';
 export default {
     name: 'blogListPage',
     props: ["city"],
-    listlen: 3,
     data () {
         return {
+            listlen: 3,
             arrayOfObjects1: [{name: "Most Viewed"}, {name: "Most Popular Blog"}],
             arrayOfObjects2: [{name: "2022"}, {name: "2021"}],
             arrayOfObjects3: [{name: "10 days"}, {name: "20 days"}],

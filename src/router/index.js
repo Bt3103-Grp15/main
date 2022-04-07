@@ -53,6 +53,11 @@ const routes = [
         name: 'attractionListPage',
         component: () => import('../views/attractionListPage'),
       },
+        {
+            path: 'indivAttractionPage',
+            name: 'indivAttractionPage',
+            component: () => import(/* webpackChunkName: "about" */ '../views/indivAttractionPager'),
+        },
       {
         path: 'attractionListPage/:id',
         name: 'indivAttraction',

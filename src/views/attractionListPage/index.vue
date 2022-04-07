@@ -24,12 +24,12 @@
         v-for="attraction in attractions"
         :key="attraction.id"
       >
-        <div class="attraction-item" @click="seeAttraction(attraction.id)">
+        <div class="attraction-item" >
           <div class="attraction-info">
             <div class="attraction-title">
               <div class="index">{{ attraction.attindex }}</div>
               <div class="index-title">
-                <h2>{{ attraction.name }}</h2>
+                <h2 @click="seeAttraction(attraction.id)">{{ attraction.name }}</h2>
               </div>
             </div>
             <div class="Central">
@@ -206,6 +206,17 @@ export default {
             font-family: fantasy;
             font-weight: bold;
             text-align: left;
+            &:hover {
+              color: #3a70d8;
+              // 如果要动，就用下面的
+              //display: inline-block;
+              //vertical-align: middle;
+              //transform: perspective(1px) translateZ(0);
+              //box-shadow: 0 0 1px transparent;
+              //margin: 10px;
+              //transition-duration: 0.3s;
+              //transition-property: box-shadow, transform;
+            }
           }
         }
       }

@@ -140,8 +140,8 @@ export default {
     level: "1",
     child: [
       {
-        name: "indivAttractionPager",
-        label: "Indiv Attraction Pager",
+        name: "indivAttractionPage",
+        label: "Indiv Attraction Page",
         level: "1-1",
       },
       {
@@ -162,7 +162,7 @@ export default {
         level: "2-1",
       },
       {
-        name: "indivAttractionPager",
+        name: "indivAttractionPage",
         label: "Search Results",
         level: "2-2",
       },
@@ -184,7 +184,7 @@ export default {
         level: "3-1",
       },
       {
-        name: "indivAttractionPager",
+        name: "indivAttractionPage",
         label: "Design Routes",
         level: "3-2",
       },

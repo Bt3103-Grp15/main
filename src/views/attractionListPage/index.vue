@@ -11,8 +11,8 @@
             </h2>
           </div>
           <div class="back-block">
-            <svg-icon iconClass="fanhui"></svg-icon>
-            <span> Learn more about Hong Kong </span>
+            <svg-icon iconClass="fanhui" @click="jumpPage('cityPage/Hong-Kong')"></svg-icon>
+            <span @click="jumpPage('Hong-Kong')"> Learn more about Hong Kong </span>
           </div>
         </div>
         <div class="top-right-block">
@@ -64,12 +64,14 @@
 </template>
 
 <script>
+import { useRouter } from "vue-router";
 import { db } from "../../firebase/index";
 import { ref } from "vue";
 import { getDocs, collection } from "firebase/firestore";
 export default {
   data() {},
   setup() {
+    const router = useRouter();
     const attractions = ref([]);
     const load = async () => {
       try {
@@ -87,9 +89,16 @@ export default {
       }
     };
 
+    const jumpPage = (name) => {
+    router.push({
+      name,
+    });
+  };
+
     load();
     return {
       attractions,
+      jumpPage
     };
   },
 
@@ -100,7 +109,7 @@ export default {
   },
 };
 </script>
-
+import { useRouter } from "vue-router";
 <style lang="less" scoped>
 .attraction-list-page {
   background: url(../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg);

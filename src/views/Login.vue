@@ -88,7 +88,6 @@ export default {
 
 .Container{
   padding:10px;
-  margin: 10px;
   height: 60%;
   display: flex;
   background-image: url("../assets/login.webp");
@@ -98,8 +97,9 @@ export default {
 
 h2 {
   text-align: center;
-  font-size: 32px;
-  margin-bottom: 20px;
+  font-size: 40px;
+  margin-bottom: 5vh;
+  font-weight: bold;
 }
 
 .login-register {
@@ -108,7 +108,8 @@ h2 {
 }
 
 .form {
-  padding: 30;
+  padding: 20px;
+  margin: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -136,7 +137,7 @@ h2 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 5vh;
   width: 50%
 }
 

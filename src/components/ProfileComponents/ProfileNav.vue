@@ -1,14 +1,13 @@
 <template>
-<div id="navMenu">
-    <router-link to="/profile" class="navitems"> Settings </router-link>
+<div id="navMenu" class="Container">
+    <router-link to="/profile" class="navitems"> Setting </router-link>
     <p class="navitems"> </p>
-    <router-link to="/myblogs" class="navitems">MyBlogs</router-link>
+    <router-link to="/myblogs" class="navitems">Blog</router-link>
 </div>
 </template>
 
 <script>
 export default {
-
 }
 </script>
 
@@ -32,5 +31,12 @@ export default {
 
 .navitems:hover {
   color: cadetblue;
+}
+.Container {
+    background-color: rgb(255, 255, 255);
+    padding: 2vh 10vw 2vh 10vw;
+    align-items: center;
+    margin: 0;
+    display: flex;
 }
 </style>

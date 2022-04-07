@@ -3,7 +3,7 @@
       <div class="top-search">
           <div>
               <div class="top-text">
-                  <h2>
+                  <h2 style="font-family: fantasy">
                     Where to?
                   </h2>
               </div>
@@ -103,7 +103,7 @@ const list = [
         flex-direction: row;
         justify-content: center;
         .top-text {
-            font-family: avenir-lt-w01_85-heavy1475544,avenir-lt-w05_85-heavy,sans-serif;
+            font-family: fantasy;
             font-size: 30px;
             color: #fff;
             text-align: center;

@@ -3,7 +3,7 @@
     <div class="top-search">
       <div>
         <div class="top-text">
-          <h2>
+          <h2 style="font-family: fantasy">
             Where to?
           </h2>
         </div>
@@ -166,11 +166,11 @@ const jumpPage = (name, index) => {
     justify-content: center;
 
     .top-text {
-      font-family: avenir-lt-w01_85-heavy1475544, avenir-lt-w05_85-heavy, sans-serif;
-      font-size: 30px;
+      font-family: fantasy;
+      font-size: 50px;
       color: #fff;
       text-align: center;
-      font-weight: 400;
+      font-weight: bolder;
       padding-bottom: 20px;
     }
 
@@ -264,15 +264,18 @@ const jumpPage = (name, index) => {
             font-weight: bold;
             margin-bottom: 5px;
             text-align: left;
+            font-family: fantasy;
           }
 
           .read-more {
-            width: 105px;
-            height: 33px;
+            width: 110px;
+            height: 36px;
             border: 1px solid #fff;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: bold;
+            font-size: 15px;
 
             &:hover {
               background: #fff;

@@ -48,12 +48,13 @@ const routes = [
                 component: () => import("../views/Destination/index.vue"),
             },
             {
-                path: "attractionListPage",
+                path: "attractionListPage/:cityname",
                 name: "attractionListPage",
                 component: () => import("../views/attractionListPage"),
+                props: true
             },
             {
-                path: "indivAttractionPage/:id",
+                path: "indivAttractionPage/:cityname/:id",
                 name: "indivAttractionPage",
                 component: () => import("../views/indivAttractionPager"),
                 props: true

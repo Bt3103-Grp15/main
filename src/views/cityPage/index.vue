@@ -16,7 +16,7 @@
             <div class="icon-block shoucang">
               <svg-icon class="svg-icon" iconClass="shoucang" @click="jumpPage('attractionListPage')"></svg-icon>
             </div>
-            <h2 @click="jumpPage('attractionListPage')" >Attractions</h2>
+            <h2 @click="jumpAttraction()" >Attractions</h2>
           </li>
           <li>
             <div class="icon-block qianbi">
@@ -165,6 +165,10 @@ export default {
       alert("Comments successfully!");
       this.commentarea = "";
     },
+
+    jumpAttraction() {
+      this.$router.push({ name: "attractionListPage", params: {cityname: this.cityname}})
+    }
   },
   setup(props) {
     const router = useRouter();

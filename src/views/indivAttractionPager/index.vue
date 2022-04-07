@@ -72,7 +72,7 @@ import { ref } from "vue";
 import { db } from "../../firebase/index";
 import Comments from "../../components/Comments.vue";
 export default {
-  props: ["id"],
+  props: ["id", "cityname"],
   data() {
     return {
       commentarea: "",
@@ -86,7 +86,7 @@ export default {
     const load = async () => {
       try {
         const res = await getDoc(
-          doc(db, "cities/Hong-Kong/attractions", props.id)
+          doc(db, "cities/" + props.cityname+"/attractions", props.id)
         );
         attraction.value = res.data();
         console.log(res.data());
@@ -98,7 +98,7 @@ export default {
     const comments = ref([]);
     const dbRef = collection(
       db,
-      "cities/Hong-Kong" + "/attractions/" + props.id + "/comments"
+      "cities/"+ props.cityname + "/attractions/" + props.id + "/comments"
     );
     const loadComm = async () => {
       const q = query(dbRef, orderBy("date", "desc"), limit(3));

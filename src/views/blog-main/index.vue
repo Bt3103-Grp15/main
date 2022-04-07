@@ -17,16 +17,20 @@
             <svg-icon class="svg-icon" iconClass="sousuo"></svg-icon>
           </div>
         </div>
+
         <div class="top-right">
-          <div class="left-icon">left</div>
-          <div class="right-icon"> > </div>
-          <div class="indicate">
-            <div></div>
-            <div></div>
-            <div class="active"></div>
+          <div @click="previous" class="left-icon">
+            <svg-icon class="svg-icon" iconClass="zuoj"></svg-icon>
           </div>
-          <img src="../../assets/image/5bfb6f_26f1a5c736e544e09c63c82a4c792645_mv2_d_3839_1306_s_2.jpeg" alt="">
+          <div @click="next" class="right-icon">
+            <svg-icon class="svg-icon" iconClass="youj"></svg-icon>
+          </div>
+          <div class="indicate">
+            <div v-for="(item, dot) in list" :key="dot" :class="{ active: dot === index }"></div>
+          </div>
+          <img :src="currImg" alt="">
         </div>
+
       </div>
       <div class="bottom-main">
         <div class="title">

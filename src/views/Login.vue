@@ -1,26 +1,38 @@
 <template>
-  <main class="login">
+  <main class="Container">
     <div>
       <section class="form">
         <form class="login" @submit.prevent="login">
+          <p class="login-register">
+        Don't have an account?
+        <router-link class="router-link" to="/register">Register</router-link>
+      </p>
           <h2>Login</h2>
-          <router-link to="/register">Register</router-link>
-          <input
+          <div class = "input">
+            <input
             type="email"
-            placeholder="Email address"
+            placeholder="Email"
             v-model="login_form.email"
             required
           />
-          <input
+          <svg-icon class="icon" iconClass="envelope-regular"></svg-icon>
+          </div>
+          
+          <div class = "input">
+            <input
             type="password"
             placeholder="Password"
             v-model="login_form.password"
             required
           />
-          <input type="submit" value="Login" />
+          <svg-icon class="icon" iconClass="lock-alt-solid"></svg-icon>
+          </div>
+
+          <input class="btn" type="submit" value="Log in" />
         </form>
       </section>
     </div>
+    <div class="background"></div>
     <div id="firebaseui-auth-container"></div>
   </main>
 </template>
@@ -73,11 +85,79 @@ export default {
 </script>
 
 <style scoped>
-form {
-  flex: 1 1 0%;
-  padding: 8rem 1rem 1rem;
+
+.Container{
+  padding:10px;
+  margin: 10px;
+  height: 60%
 }
 
+h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 50vh;
+}
+
+.form .login{
+    width:40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+
+.input {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 15px;
+  width: 50%
+}
+
+.input input {
+  width: 100%;
+  border: none;
+  padding: 4px 4px 4px 30px;
+  height: 50px;      
+}
+
+.btn {
+  width:30%;
+  padding:10px;
+  border: 0ch;
+  border-radius: 30px;
+}
+
+.icon {
+          width: 16px;
+          position: absolute;
+          left: 6px;
+}
+
+.background{
+  display: none;
+    flex: 2;
+    background-size: cover;
+    background-color: brown;
+    background-image: url("../assets/login.jpeg");
+    width: 100px;
+    height: 100px;
+}
+/*
 h2 {
   font-size: 2rem;
   text-transform: uppercase;
@@ -136,5 +216,5 @@ main.login {
   align-items: center;
   display: flex;
   justify-content: space-evenly;
-}
+} */
 </style>

@@ -91,8 +91,9 @@ export default {
   margin: 10px;
   height: 60%;
   display: flex;
-  background-image: url("../assets/login.jpeg");
+  background-image: url("../assets/login.webp");
   background-color: white;
+  background-size: 100% 100%;
 }
 
 h2 {
@@ -102,7 +103,8 @@ h2 {
 }
 
 .login-register {
-  font-size: 15px
+  font-size: 13px;
+  margin-bottom: 30px
 }
 
 .form {
@@ -142,7 +144,9 @@ h2 {
   width: 100%;
   border: none;
   padding: 4px 4px 4px 30px;
-  height: 50px;      
+  height: 50px;
+  border-radius: 10px;
+  font-size:15px      
 }
 
 .btn {

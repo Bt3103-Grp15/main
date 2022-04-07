@@ -28,7 +28,10 @@ const routes = [
       {
         path: 'profile',
         name: 'Profile',
-        component: () => import( '../views/ProfilePage/Profile.vue')
+        component: () => import( '../views/ProfilePage/Profile.vue'),
+        meta: {
+          reqiresAuth: true
+        }
       },
       {
         path: 'register',
@@ -43,7 +46,7 @@ const routes = [
       {
         path: 'index',
         name: 'index',
-        component: () => import(/* webpackChunkName: "about" */ '../views/Destination/index.vue'),
+        component: () => import('../views/Destination/index.vue'),
       },
       {
         path: 'attractionListPage',
@@ -59,33 +62,39 @@ const routes = [
       {
         path: 'blogListPage',
         name: 'blogListPage',
-        component: () => import(/* webpackChunkName: "about" */ '../views/blogListPage'),
+        component: () => import('../views/blogListPage'),
       },
       {
         path: 'cityPage',
         name: 'cityPage',
-        component: () => import(/* webpackChunkName: "about" */ '../views/cityPage'),
+        component: () => import('../views/cityPage'),
       },
       {
         path: 'blog-main',
         name: 'blog-main',
-        component: () => import(/* webpackChunkName: "about" */ '../views/blog-main'),
+        component: () => import('../views/blog-main'),
       },
       {
         path: 'indivBlogPage/:id',
         name: 'indivBlogPage',
-        component: () => import(/* webpackChunkName: "about" */ '../views/indivBlogPage'),
+        component: () => import('../views/indivBlogPage'),
         props: true
       },
       {
         path: 'myblogs',
         name: 'myblogs',
-        component: () => import(/* webpackChunkName: "about" */ '../views/ProfilePage/MyBlogs'),
+        component: () => import( '../views/ProfilePage/MyBlogs'),
+        meta: {
+          reqiresAuth: true
+        }
       },
       {
         path: '/createBlog',
         name: 'BlogCreate',
         component: () => import( '../views/blogCreate/index.vue'),
+        meta: {
+          reqiresAuth: true
+        }
       },
     ]
   }
@@ -97,13 +106,14 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/login' && auth.currentUser) {
-    next('/')
+  //if is login but wnt to go to login page, then jump to the main page
+  if (to.name === 'Login' && auth.currentUser) {
+    next("/")
     return;
   }
-
+  //if want to see the personal page but do not login, then jump to the login page
   if (to.matched.some(record => record.meta.requiresAuth) && !auth.currentUser) {
-    next('/login')
+    next({ name: 'Login'})
     return;
   }
 

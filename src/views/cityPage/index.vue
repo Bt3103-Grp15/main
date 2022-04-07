@@ -78,6 +78,7 @@
           <textarea
             placeholder="How can we do better next time?"
             v-model="commentarea"
+            required=true
           ></textarea>
           <button class="btn-comments" @click="submitCom">Submit</button>
         </div>
@@ -104,6 +105,10 @@ export default {
   },
   methods: {
     async submitCom() {
+      if (!this.commentarea) {
+        alert("Cannot submit empty comments")
+        return;
+      }
       try {
         await addDoc(collection(db, "cities/Hong-Kong/comments"), {
           date: Timestamp.fromDate(new Date()),
@@ -111,6 +116,7 @@ export default {
           userId: this.$store.state.user.uid,
           content: this.commentarea,
         });
+        this.load()
       } catch (err) {
         console.log(err);
       }
@@ -131,7 +137,7 @@ export default {
       });
     };
     load();
-    return { comments };
+    return { comments, load };
   },
 };
 </script>

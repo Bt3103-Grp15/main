@@ -139,11 +139,11 @@ export default {
     label: "Destination",
     level: "1",
     child: [
-      {
-        name: "indivAttractionPager",
-        label: "Indiv Attraction Pager",
-        level: "1-1",
-      },
+      // {
+      //   name: "indivAttractionPager",
+      //   label: "Indiv Attraction Pager",
+      //   level: "1-1",
+      // },
       {
         name: "attractionListPage",
         label: "attractionListPage",
@@ -161,16 +161,16 @@ export default {
         label: "Blog List Page",
         level: "2-1",
       },
-      {
-        name: "indivAttractionPager",
-        label: "Search Results",
-        level: "2-2",
-      },
-      {
-        name: "indivBlogPage",
-        label: "Indiv Blog Page",
-        level: "2-3",
-      },
+      // {
+      //   name: "indivAttractionPager",
+      //   label: "Search Results",
+      //   level: "2-2",
+      // },
+      // {
+      //   name: "indivBlogPage",
+      //   label: "Indiv Blog Page",
+      //   level: "2-3",
+      // },
     ],
   },
   {

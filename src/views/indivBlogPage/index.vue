@@ -31,21 +31,21 @@
       <div class="top-content">{{ post.description }}</div>
       <div class="top-option">
         <div class="user">
-          <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
+          <svg-icon class="svg-icon" iconClass="yinzhang1"></svg-icon>
           <h2>{{ post.author }}</h2>
           <div>follow me</div>
         </div>
         <div class="text-like">
           <div class="like" @click="likeBlog">
-            <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
+            <svg-icon class="svg-icon" iconClass="aixin1"></svg-icon>
             <h2>{{ post.likes }} Like this Blog</h2>
           </div>
           <div class="Share">
-            <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
+            <svg-icon class="svg-icon" iconClass="fenxiang"></svg-icon>
             <h2>Share</h2>
           </div>
           <div class="Archive">
-            <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
+            <svg-icon class="svg-icon" iconClass="Archive"></svg-icon>
             <h2>Archive</h2>
           </div>
         </div>
@@ -53,20 +53,20 @@
       <div class="img-list">
         <div class="filst-img">
           <img
-            src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg"
+            src="../../assets/image/t_1.jpeg"
             alt=""
           />
         </div>
         <div class="secand-img">
           <div class="s-left-img">
             <img
-              src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg"
+              src="../../assets/image/c_l.jpeg"
               alt=""
             />
           </div>
           <div class="s-right-img">
             <img
-              src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg"
+              src="../../assets/image/c_r.jpeg"
               alt=""
             />
           </div>
@@ -74,13 +74,13 @@
         <div class="last-img">
           <div class="l-left-img">
             <img
-              src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg"
+              src="../../assets/image/b_l.jpeg"
               alt=""
             />
           </div>
           <div class="l-right-img">
             <img
-              src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg"
+              src="../../assets/image/t_r.jpeg"
               alt=""
             />
           </div>

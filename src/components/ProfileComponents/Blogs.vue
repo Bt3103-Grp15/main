@@ -2,7 +2,7 @@
   <div id="container">
     <div class="blog-details">
       <h1>{{ blogs.title }}</h1>
-      <p class="information">{{ blogs.description }}</p>
+      <p class="information">{{ blogs.description.substring(0,100) }} ...</p>
       <div class="control">
         <p>{{ blogs.city }}</p>
         <p>Likes: {{ blogs.likes }}</p>

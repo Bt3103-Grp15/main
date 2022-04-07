@@ -14,15 +14,15 @@
           </li>
           <li>
             <div class="icon-block shoucang">
-              <svg-icon class="svg-icon" iconClass="shoucang"></svg-icon>
+              <svg-icon class="svg-icon" iconClass="shoucang" @click="jumpPage('attractionListPage')"></svg-icon>
             </div>
-            <h2>Attractions</h2>
+            <h2 @click="jumpAttraction()" >Attractions</h2>
           </li>
           <li>
             <div class="icon-block qianbi">
-              <svg-icon class="svg-icon" iconClass="qianbi"></svg-icon>
+              <svg-icon class="svg-icon" iconClass="qianbi" @click="jumpPage('blog-main')"></svg-icon>
             </div>
-            <h2>Blogs</h2>
+            <h2 @click="jumpPage('blog-main')">Blogs</h2>
           </li>
           <li>
             <div class="icon-block shouji">
@@ -132,6 +132,7 @@ import { db } from "../../firebase/index";
 import { collection, addDoc, query, orderBy, limit, getDocs, getDoc, doc } from "firebase/firestore";
 import { ref } from "vue";
 import { Timestamp } from "firebase/firestore";
+import { useRouter } from "vue-router";
 
 export default {
   data() {
@@ -164,8 +165,13 @@ export default {
       alert("Comments successfully!");
       this.commentarea = "";
     },
+
+    jumpAttraction() {
+      this.$router.push({ name: "attractionListPage", params: {cityname: this.cityname}})
+    }
   },
   setup(props) {
+    const router = useRouter();
     const cityinfo = ref({});
     const loadcity = async() => {
       const res = await getDoc(doc(db, "cities/", props.cityname))
@@ -183,9 +189,17 @@ export default {
       });
     };
     load();
-    return { comments, load, cityinfo };
+
+    const jumpPage = (name) => {
+    router.push({
+      name,
+    });
+  };
+
+    return { comments, load, cityinfo, jumpPage };
   },
 };
+
 </script>
 
 <style lang="less" scoped>

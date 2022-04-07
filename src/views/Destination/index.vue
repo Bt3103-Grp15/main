@@ -10,7 +10,7 @@
         <div class="input-block">
           <form id="form" role="search" @submit.prevent="index">
             <input id="query" name="q" placeholder="Search here..." aria-label="Search through site content">
-            <button class="searchbtn" @click="searchforcity()">
+            <button class="searchbtn" @click="updatedestination()">
               <svg viewBox="0 0 1024 1024">
                 <path class="path1" d="M848.471 928l-263.059-263.059c-48.941
                 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 
@@ -65,15 +65,23 @@
 </template>
 
 <script setup>
+import { getDoc, doc } from "@firebase/firestore";
 import {ref} from "vue";
 import {useRouter} from "vue-router";
+import { db } from "../../firebase";
 
-const searchforcity = () => {
+const updatedestination = async () => {
   let destination = document.querySelector("input[name=q]").value;
-  destination = destination.charAt(0).toUpperCase() + destination.slice(1);
-  router.push({
+  const docRef = doc(db, "cities/"+destination);
+  const res = await getDoc(docRef);
+  if(res.exists()) {
+    router.push({
     name: 'cityPage', params: {cityname : destination}
   });
+  } else {
+    alert("There is no" + destination)
+  }
+  
 };
 
 const router = useRouter();

@@ -7,12 +7,12 @@
             <h2>
               Trip Planning
               <br />
-              - Hong Kong
+              - {{city.cityname}}
             </h2>
           </div>
           <div class="back-block">
-            <svg-icon iconClass="fanhui"></svg-icon>
-            <span> Learn more about Hong Kong </span>
+            <svg-icon iconClass="fanhui" @click="jumpPage(city.cityname)"></svg-icon>
+            <span @click="jumpPage(city.cityname)"> Learn more about {{city.cityname}} </span>
           </div>
         </div>
         <div class="top-right-block">
@@ -64,17 +64,20 @@
 </template>
 
 <script>
+import { useRouter } from "vue-router";
 import { db } from "../../firebase/index";
 import { ref } from "vue";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, doc, getDoc } from "firebase/firestore";
 export default {
-  data() {},
-  setup() {
+  props: ["cityname"],
+  setup(props) {
+    const router = useRouter();
     const attractions = ref([]);
+    const city = ref("");
     const load = async () => {
       try {
         const res = await getDocs(
-          collection(db, "cities/Hong-Kong/attractions")
+          collection(db, "cities/" + props.cityname +"/attractions")
         );
         var index = 0;
         attractions.value = res.docs.map((doc) => {
@@ -82,24 +85,38 @@ export default {
           index++;
           return { ...doc.data(), id: doc.id, attindex: index };
         });
+
+        const cityres = await getDoc(
+          doc(db, "cities", props.cityname)
+        );
+        city.value = cityres.data()
       } catch (err) {
         alert(err.message);
       }
     };
 
+    const jumpPage = (cityname) => {
+    router.push({
+      name: 'cityPage', params: { cityname: cityname}
+    });
+  };
+
     load();
     return {
       attractions,
+      jumpPage,
+      city
     };
   },
 
   methods: {
     seeAttraction(attid) {
-      this.$router.push({ name: "indivAttraction", params: { id: attid } });
+      this.$router.push({ name: "indivAttractionPage", params: { cityname: this.cityname, id: attid } });
     },
   },
 };
 </script>
+
 
 <style lang="less" scoped>
 .attraction-list-page {

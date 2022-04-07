@@ -95,6 +95,7 @@ const previous = () => {
     return
   }
   currImg.value = list[--index.value]
+
 }
 </script>
 

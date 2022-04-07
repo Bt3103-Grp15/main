@@ -53,9 +53,10 @@ const routes = [
                 component: () => import("../views/attractionListPage"),
             },
             {
-                path: "indivAttractionPage",
+                path: "indivAttractionPage/:id",
                 name: "indivAttractionPage",
                 component: () => import("../views/indivAttractionPager"),
+                props: true
             },
             {
                 path: "attractionListPage/:id",

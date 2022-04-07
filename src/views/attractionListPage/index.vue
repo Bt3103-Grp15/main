@@ -11,7 +11,7 @@
             </h2>
           </div>
           <div class="back-block">
-            <svg-icon iconClass="fanhui" @click="jumpPage('cityPage/Hong-Kong')"></svg-icon>
+            <svg-icon iconClass="fanhui" @click="jumpPage('Hong-Kong')"></svg-icon>
             <span @click="jumpPage('Hong-Kong')"> Learn more about Hong Kong </span>
           </div>
         </div>
@@ -69,7 +69,6 @@ import { db } from "../../firebase/index";
 import { ref } from "vue";
 import { getDocs, collection } from "firebase/firestore";
 export default {
-  data() {},
   setup() {
     const router = useRouter();
     const attractions = ref([]);
@@ -89,9 +88,9 @@ export default {
       }
     };
 
-    const jumpPage = (name) => {
+    const jumpPage = (cityname) => {
     router.push({
-      name,
+      name: 'cityPage', params: { cityname: cityname}
     });
   };
 
@@ -104,12 +103,13 @@ export default {
 
   methods: {
     seeAttraction(attid) {
-      this.$router.push({ name: "indivAttraction", params: { id: attid } });
+      this.$router.push({ name: "indivAttractionPage", params: { id: attid } });
     },
   },
 };
 </script>
-import { useRouter } from "vue-router";
+
+
 <style lang="less" scoped>
 .attraction-list-page {
   background: url(../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg);

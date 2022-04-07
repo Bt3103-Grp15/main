@@ -1,14 +1,14 @@
 <template>
   <div class="indiv-attraction-pager">
     <div class="top-bg">
-      <div class="Victoria">Victoria Peak</div>
+      <div class="Victoria">{{attraction.name}}</div>
       <div class="Webinar">
         A Free Webinar on How to Unleash Your Inner Entrepreneur.
       </div>
     </div>
     <div class="image-list">
       <div class="mbx">
-        <span @click="jumpPage('index')">destination</span> > <span @click="jumpPage('trip-plan-list')">Hongkong</span> > <span>attraction</span>
+        <!-- <span @click="jumpPage('index')">destination</span> > <span @click="jumpPage('trip-plan-list')">Hongkong</span> > <span>attraction</span> -->
       </div>
       <div class="image-main">
         <img src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg" alt="">
@@ -27,7 +27,7 @@
         <h2>
           Users' Comments on this City
         </h2>
-        <div @click="Readmore" class="More">
+        <div class="More">
           Read More >
         </div>
       </div>
@@ -46,7 +46,33 @@
   </div>
 </template>
 
-<script setup>
+<script>
+import { doc, getDoc } from "firebase/firestore";
+import { ref } from "vue";
+import { db } from "../../firebase/index";
+export default {
+  props: ["id"],
+  setup(props) {
+    const attraction = ref("");
+    const load = async () => {
+      try {
+        const res = await getDoc(
+          doc(db, "cities/Hong-Kong/attractions", props.id)
+        );
+        attraction.value = res.data();
+        console.log(res.data());
+      } catch (err) {
+        alert(err.message);
+        console.log(err)
+      }
+    };
+
+    load();
+    return {
+      attraction,
+    };
+  },
+};
 
 </script>
 

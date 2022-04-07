@@ -1,5 +1,5 @@
 <template>
-    <user-header/>
+    <UserHeader :name="this.$store.state.username" imgpath=""/>
     <profile-nav/>
     <div class="container" v-for="blog in myblogs" :key="blog.id">
     <Blogs :blogs="blog" />

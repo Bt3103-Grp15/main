@@ -2,6 +2,7 @@
   <div class="layout">
     <header>
       <div class="logo">
+        <img src="../assets/image/headericon.png" alt="">
         <h2>WExplorer</h2>
       </div>
       <nav>
@@ -63,12 +64,12 @@
     <footer>
       <h2>
         <div>
-          <div class="item">About World Explorer</div>
+          <div class="item" >About World Explorer</div>
           <div class="item">Do Business With Us</div>
           <div class="item">Explore</div>
         </div>
         <div class="second">
-          <div class="item">About Us</div>
+          <div @click="jumpPage('AboutUs')" class="item">About Us</div>
           <div class="item">Owners</div>
           <div class="item">Write a Review</div>
         </div>
@@ -91,22 +92,10 @@
           <h2>WExplorer</h2>
         </div>
         <div class="logo-list">
-          <img
-            src="../assets/image/01ab6619093f45388d66736ec22e5885.png"
-            alt=""
-          />
-          <img
-            src="../assets/image/23fd2a2be53141ed810f4d3dcdcd01fa.png"
-            alt=""
-          />
-          <img
-            src="../assets/image/81af6121f84c41a5b4391d7d37fce12a.png"
-            alt=""
-          />
-          <img
-            src="../assets/image/9c486556465843c5850fabfd68dfae49.png"
-            alt=""
-          />
+          <img @click="jump3page('https://twitter.com')" src="../assets/image/01ab6619093f45388d66736ec22e5885.png" alt="">
+          <img @click="jump3page('http://www.facebook.com')" src="../assets/image/23fd2a2be53141ed810f4d3dcdcd01fa.png" alt="">
+          <img @click="jump3page('https://www.instagram.com')" src="../assets/image/81af6121f84c41a5b4391d7d37fce12a.png" alt="">
+          <img src="../assets/image/9c486556465843c5850fabfd68dfae49.png" alt="">
         </div>
       </div>
     </footer>
@@ -197,16 +186,24 @@ export default {
   },
 ];
 
-    const wordKey = ref("1");
-    const jumpPage = (name, index) => {
-  router.push({
-    name,
-  });
-  wordKey.value = index;
-};
-    return {router,menuList, wordKey, jumpPage}
+  const wordKey = ref("1");
+  
+  const jumpPage = (name, index) => {
+    router.push({
+      name,
+    });
+    wordKey.value = index;
+  };
+
+    const jump3page = (url) => {
+      window.open(url, '_blank')
+  };
+
+
+    return {router,menuList, wordKey, jumpPage, jump3page}
   }
 }
+
 </script>
 
 
@@ -349,18 +346,16 @@ export default {
     padding-bottom: 0;
     background: #5581b0;
     height: 279px;
-    color: #fff;
-    font-family: avenir-lt-w01_85-heavy1475544, avenir-lt-w05_85-heavy,
-      sans-serif;
     // font-weight: 700;
     letter-spacing: 0.2em;
     h2 {
       > div {
         display: flex;
         padding-bottom: 5px;
-        &.second {
+        &.second{
           > div.item {
             font-size: 15px !important;
+            color: #fff !important;
           }
         }
         > div.item {
@@ -368,6 +363,11 @@ export default {
           margin-right: 100px;
           width: 287px;
           font-size: 20px;
+          color: #fff !important;
+          cursor: pointer;
+          &:hover {
+            color: #000 !important;
+          }
         }
       }
     }
@@ -380,10 +380,12 @@ export default {
           width: 61px;
           margin-right: 10px;
         }
+
       }
       h2 {
         font-size: 25px;
         letter-spacing: 0.2em;
+        color: #fff;
       }
       .logo-list {
         margin-left: 40px;
@@ -391,6 +393,9 @@ export default {
           height: 21px;
           width: 21px;
           margin-right: 3px;
+        };
+        &:hover {
+        color: #000 !important;
         }
       }
     }

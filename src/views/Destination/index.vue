@@ -65,14 +65,23 @@
 </template>
 
 <script setup>
+import { getDoc, doc } from "@firebase/firestore";
 import {ref} from "vue";
 import {useRouter} from "vue-router";
+import { db } from "../../firebase";
 
-const updatedestination = () => {
+const updatedestination = async () => {
   let destination = document.querySelector("input[name=q]").value;
-  router.push({
+  const docRef = doc(db, "cities/"+destination);
+  const res = await getDoc(docRef);
+  if(res.exists()) {
+    router.push({
     name: 'cityPage', params: {cityname : destination}
   });
+  } else {
+    alert("There is no" + destination)
+  }
+  
 };
 
 const router = useRouter();

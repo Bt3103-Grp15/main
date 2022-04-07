@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { db } from '@/firebase/index'
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, limit } from 'firebase/firestore';
 
 const getPosts = () => {
     const posts = ref([]);
@@ -8,7 +8,8 @@ const getPosts = () => {
 
     const load = async () => {
         try {
-            const res = await getDocs(collection(db, 'blogs'))
+            const q = query(collection(db, 'blogs'), orderBy("date"), limit(5))
+            const res = await getDocs(q)
             posts.value = res.docs.map(doc => {
                 
                 // console.log(doc.data())

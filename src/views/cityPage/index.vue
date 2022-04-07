@@ -2,7 +2,7 @@
   <div class="cityPage">
     <div class="top-block">
       <div class="city-name">
-        <h1>Hong Kong</h1>
+        <h1>{{cityinfo.cityname}}</h1>
       </div>
       <div class="Routes-block">
         <ul>
@@ -52,7 +52,7 @@
     <div class="main-content">
       <div class="map-block">
         <div class="title-block">
-          <h2>Classic Trip Plans in Hong Kong</h2>
+          <h2>Classic Trip Plans in {{cityinfo.cityname}}</h2>
         </div>
         <div class="map-content">
           <div>
@@ -73,7 +73,7 @@
           </div>
           <div>
             <div class="hongTit">
-              4 Days Trip Plan in Hong Kong
+              4 Days Trip Plan in {{cityinfo.cityname}}
             </div>
             <div class="mapmain">
               <iframe
@@ -129,7 +129,7 @@
 <script>
 import Comments from "../../components/Comments.vue";
 import { db } from "../../firebase/index";
-import { collection, addDoc, query, orderBy, limit, getDocs } from "firebase/firestore";
+import { collection, addDoc, query, orderBy, limit, getDocs, getDoc, doc } from "firebase/firestore";
 import { ref } from "vue";
 import { Timestamp } from "firebase/firestore";
 
@@ -142,6 +142,7 @@ export default {
   components: {
     Comments,
   },
+  props: ["cityname"],
   methods: {
     async submitCom() {
       if (!this.commentarea) {
@@ -149,7 +150,7 @@ export default {
         return;
       }
       try {
-        await addDoc(collection(db, "cities/Hong-Kong/comments"), {
+        await addDoc(collection(db, "cities/" + this.cityname + "/comments"), {
           date: Timestamp.fromDate(new Date()),
           username: this.$store.state.username,
           userId: this.$store.state.user.uid,
@@ -164,9 +165,15 @@ export default {
       this.commentarea = "";
     },
   },
-  setup() {
+  setup(props) {
+    const cityinfo = ref({});
+    const loadcity = async() => {
+      const res = await getDoc(doc(db, "cities/", props.cityname))
+      cityinfo.value = res.data()
+    }
+    loadcity()
     const comments = ref([]);
-    const dbRef = collection(db, "cities/Hong-Kong/comments")
+    const dbRef = collection(db, "cities/" + props.cityname+"/comments")
     const load = async () => {
       const q = query(dbRef, orderBy("date", "desc"), limit(3));
       const res = await getDocs(q);
@@ -176,7 +183,7 @@ export default {
       });
     };
     load();
-    return { comments, load };
+    return { comments, load, cityinfo };
   },
 };
 </script>

@@ -65,9 +65,10 @@ const routes = [
         component: () => import('../views/blogListPage'),
       },
       {
-        path: 'cityPage',
+        path: 'cityPage/:cityname',
         name: 'cityPage',
         component: () => import('../views/cityPage'),
+        props: true
       },
       {
         path: 'blog-main',

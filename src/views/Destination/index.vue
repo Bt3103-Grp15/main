@@ -32,8 +32,7 @@
           <div class="blog-list-item" v-for="cityInfo in item.child" :key="cityInfo.id"
                :style="{background: 'url(' + cityInfo.img + ')'}">
             <div class="city-name">{{ cityInfo.cityName }}</div>
-            <div class="read-more" v-if="cityInfo.id === 1-3" @click="jumpPage('cityPage')">Read More</div>
-            <div class="read-more" v-if="cityInfo.id !== 1-3">Read More</div>
+            <div class="read-more" @click="jumpPage(cityInfo.cityName)">Read More</div>
           </div>
         </div>
       </div>
@@ -77,17 +76,17 @@ const list = [
     id: 1,
     child: [
       {
-        cityName: 'Kuala Lumpur',
+        cityName: 'Kuala-Lumpur',
         id: 1 - 1,
         img: require('../../assets/image/9_0.jpeg')
       },
       {
-        cityName: 'Japan',
+        cityName: 'Tokyo',
         id: 1 - 2,
         img: require('../../assets/image/9_1.jpeg')
       },
       {
-        cityName: 'Hong Kong',
+        cityName: 'Hong-Kong',
         id: 1 - 3,
         img: require('../../assets/image/9_2.jpeg')
       }
@@ -141,9 +140,9 @@ const list = [
 
 
 const wordKey = ref("1");
-const jumpPage = (name, index) => {
+const jumpPage = (cityname, index) => {
   router.push({
-    name,
+    name: 'cityPage', params: {cityname : cityname}
   });
   wordKey.value = index;
 };

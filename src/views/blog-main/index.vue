@@ -13,7 +13,7 @@
             City >
           </div>
           <div class="input-block">
-            <input placeholder="Enter search term" type="text">
+            <input name="blogmain" placeholder="Enter search term" type="text">
             <button class="searchbtn" @click="searchforcityblog()">
             <svg-icon class="svg-icon" iconClass="sousuo"></svg-icon>
             </button>
@@ -68,8 +68,9 @@ import {useRouter} from "vue-router";
 
 const router = useRouter();
 
-const searchforcityblog = () => {
-  let searchresult = document.querySelector("input[name=q]").value;
+const searchforcityblog = async () => {
+  let searchresult = document.querySelector("input[name=blogmain]").value;
+  console.log(searchresult)
   router.push({
     name: 'blogListPage', params: {city : searchresult}
   });

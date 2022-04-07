@@ -72,6 +72,7 @@ import { db } from "../../firebase";
 
 const updatedestination = async () => {
   let destination = document.querySelector("input[name=q]").value;
+  destination = destination.charAt(0).toUpperCase() + destination.slice(1);
   const docRef = doc(db, "cities/"+destination);
   const res = await getDoc(docRef);
   if(res.exists()) {

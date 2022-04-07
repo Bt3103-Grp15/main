@@ -1,7 +1,7 @@
 <template>
   <div class="blogListPage">
     <div class="type-area">
-      <div class="form-div">
+      <!-- <div class="form-div">
         <form id="form" role="search" @submit.prevent="index">
           <input
             id="query"
@@ -21,9 +21,9 @@
             </svg>
           </button>
         </form>
-      </div>
+      </div> -->
       <div class="title-block">
-        <h2>All Results for "Hong Kong"</h2>
+        <h2>All Results for {{city}} </h2>
       </div>
       <div class="selects-box">
         <DropDown
@@ -131,7 +131,7 @@ export default {
 
     const load = async () => {
       try{
-        const q = query(dbRef, where("city", "==", props.searchresult));
+        const q = query(dbRef, where("city", "==", props.city));
         const res = await getDocs(q);
         posts.value = res.docs.map((doc) => {
           return { ...doc.data(), id: doc.id };

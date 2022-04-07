@@ -48,13 +48,11 @@ export default {
 <style scoped>
 .container {
     text-align: left;
+    padding: 1vh 0vw 1vh 0vw;
 }
 
 .change-display {
   margin-bottom: 40px;
-}
-.form-control {
-  margin: 20px 0;
 }
 .form-control label {
   display: block;
@@ -62,7 +60,8 @@ export default {
 .form-control input {
   width: 30%;
   height: 30px;
-  margin-top: 5px ;
+  margin-top: 10px ;
+  margin-bottom: 5px ;
   padding: 3px 7px;
   font-size: 17px;
 }

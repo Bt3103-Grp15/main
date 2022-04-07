@@ -1,9 +1,13 @@
 <template>
-    <user-header/>
+    <UserHeader :name="this.$store.state.username" imgpath=""/>
     <profile-nav/>
-    <div class="container" v-for="blog in myblogs" :key="blog.id">
-    <Blogs :blogs="blog" />
+    <div class="container">
+        <div  v-for="blog in myblogs" :key="blog.id">
+        <Blogs :blogs="blog" />
     </div>
+
+    </div>
+    
 </template>
 
 <script>
@@ -50,6 +54,6 @@ export default {
 .container {
     padding-left: 5vw;
     padding-right:5vw;
-    background-color: rgb(220,220,220)
 }
+
 </style>

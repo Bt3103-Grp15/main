@@ -46,6 +46,7 @@ export default {
 .container {
     padding-left: 5vw;
     padding-right:5vw;
+    padding: 1vh 5vw 1vh 5vw;
     background-color: rgb(220,220,220)
 }
 

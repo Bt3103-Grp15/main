@@ -40,7 +40,10 @@ export default {
   text-align: center;
   border-radius: 5px;
   overflow: hidden;
-  margin: 50px auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
   height: 350px;
   width: 700px;
 }

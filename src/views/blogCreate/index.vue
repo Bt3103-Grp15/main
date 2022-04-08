@@ -209,6 +209,7 @@ export default {
     text-align: justify;
     display: inline-block;
     width: 200px;
+    vertical-align: top;
   }
   
   input{

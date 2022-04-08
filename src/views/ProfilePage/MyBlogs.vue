@@ -29,6 +29,9 @@ export default {
       userid: this.$store.state.user.uid,
     };
   },
+  methods() {
+
+  },
   setup() {
     const myblogs = ref([]);
 

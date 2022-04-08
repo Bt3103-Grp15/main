@@ -18,8 +18,8 @@
         <h2>Description</h2>
         <ul>
           <!-- <li><strong>Post Time : </strong> {{blogs.date}} </li> -->
-          <li><strong>Travel Days : </strong>7 days</li>
-          <li><strong>Average Spending: </strong>3000HKD</li>
+          <li><strong>Travel Days : </strong>{{blogs.traveldays}}</li>
+          <li><strong>Average Spending: </strong>{{blogs.spending}}</li>
         </ul>
       </div>
     </div>
@@ -28,6 +28,7 @@
 
 <script>
 import { getDownloadURL, ref } from '@firebase/storage';
+import {  } from "@firebase/firestore";
 import { storage } from '../../firebase';
 import { ref as Ref } from 'vue';
 export default {

@@ -24,6 +24,5 @@ export default {
     padding: 3vh 0vw 1vh 0vw;
     margin: 2vh 0vw 2vh 0vw;
     text-align: left;
-    background-color: lightgrey;
 }
 </style>

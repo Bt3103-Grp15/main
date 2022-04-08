@@ -69,9 +69,9 @@
           <div class="item">Explore</div>
         </div>
         <div class="second">
-          <div @click="jumpPage('AboutUs')" class="item">About Us</div>
+          <div @click="jumpPage('About')" class="item">About Us</div>
           <div class="item">Owners</div>
-          <div class="item">Write a Review</div>
+          <div @click="jumpPage('Review')" class="item">Write a Review</div>
         </div>
         <div class="second">
           <div class="item">Trust&Safety</div>
@@ -168,12 +168,12 @@ export default {
     level: "3",
     child: [
       {
-        name: "cityPage",
+        name: "About",
         label: "About Us",
         level: "3-1",
       },
       {
-        name: "indivAttractionPager",
+        name: "Review",
         label: "Write A Review",
         level: "3-2",
       },

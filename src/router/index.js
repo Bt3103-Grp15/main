@@ -4,14 +4,7 @@ import NotFound from "@/components/NotFound.vue";
 import layout from "@/layout"; // 主页
 
 const routes = [
-    {
-        path: "/about",
-        name: "About",
-        component: () => import("../views/AboutPage/About.vue"),
-        meta: {
-            reqiresAuth: true,
-        },
-    },
+
     {
         path: "/:catchAll(.*)",
         name: "NotFound",
@@ -24,6 +17,14 @@ const routes = [
         component: layout,
         redirect: "/index",
         children: [
+            {
+                path: "/about",
+                name: "About",
+                component: () => import("../views/AboutPage/About.vue"),
+                meta: {
+                    reqiresAuth: true,
+                },
+            },
             {
                 path: "profile",
                 name: "Profile",

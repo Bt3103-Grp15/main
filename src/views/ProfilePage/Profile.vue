@@ -46,7 +46,7 @@ export default {
 .container-profile {
     padding-left: 5vw;
     padding-right:5vw;
-    padding: 1vh 5vw 1vh 5vw;
+    padding: 1vh 10vw 1vh 10vw;
     background: url(../../assets/image/bc3ec7bc825c4e6ca746c659189cea83.jpeg);
 }
 

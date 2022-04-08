@@ -2,7 +2,7 @@
   <div id="container">
     <div class="blog-details">
       <h1>{{ blogs.title }}</h1>
-      <p class="information">{{ blogs.description.substring(0,100) }} ...</p>
+      <p class="information">{{ blogs.description.substring(0, 100) }} ...</p>
       <div class="control">
         <p>{{ blogs.city }}</p>
         <p>Likes: {{ blogs.likes }}</p>
@@ -10,7 +10,8 @@
     </div>
 
     <div class="blog-image">
-      <img src="@/assets/hongkong1.jpeg" />
+      <!-- <img src="@/assets/hongkong1.jpeg" /> -->
+      <img id="myimg" v-bind:src=imgurl />
       <!-- <img :src="require(`@/assets/${blogs.bimage}`)" alt="" /> -->
 
       <div class="info">
@@ -26,8 +27,22 @@
 </template>
 
 <script>
+import { getDownloadURL, ref } from '@firebase/storage';
+import { storage } from '../../firebase';
+import { ref as Ref } from 'vue';
 export default {
   props: ["blogs"],
+  setup(props) {
+    const imgurl = Ref("");
+    // const img = document.getElementById("myimg");
+    const load = async () => {
+      getDownloadURL(ref(storage, props.blogs.coverPhoto)).then((url) => {
+      imgurl.value = url
+    });
+    }
+    load()
+    return { imgurl }
+  },
 };
 </script>
 

@@ -25,4 +25,11 @@ export default {
     margin: 2vh 0vw 2vh 0vw;
     text-align: left;
 }
+h2{
+    font-size: 18px;
+    font-weight:bold
+}
+p{
+    font-size: 15px;
+}
 </style>

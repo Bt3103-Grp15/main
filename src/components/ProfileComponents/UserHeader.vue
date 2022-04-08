@@ -23,15 +23,14 @@ export default {
 <style scoped>
 h1 {
     float:left;
-    color: black;
+    color: white;
     height: 80px;
     display: flex;
     align-items: center;
-    padding-left: 10px;
     font-size:25px
 }
 .Container {
-    background-color: rgb(229, 231, 232);
+    background-color: rgb(30,30,30);
     padding: 2vh 10vw 2vh 10vw;
     display: flex;
 }

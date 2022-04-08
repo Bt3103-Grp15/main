@@ -58,7 +58,6 @@ export default {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
-  margin-top: 20px;
   height: 350px;
   width: 700px;
 }

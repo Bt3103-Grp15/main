@@ -14,6 +14,23 @@
         <label>Description</label>
         <input placeholder="Enter your description" v-model="des" />
       </div>
+      <div class="upload-file">
+        <label for="blog-photo">Upload Cover Photo</label>
+        <input
+          type="file"
+          ref="blogPhoto"
+          id="blog-photo"
+          @change="fileChange"
+          accept=".png, .jpg, ,jpeg"
+        />
+        <!-- <button
+          class="preview"
+          :class="{ 'button-inactive': !this.fileURL }"
+        >
+          Preview Photo
+        </button> -->
+        <!-- <span>File Chosen: {{ this.fileName }}</span> -->
+      </div>
     </div>
     <div class="editcontainer">
       <QuillEditor
@@ -30,7 +47,8 @@
 
 <script>
 import { collection, addDoc, doc, setDoc, Timestamp } from "firebase/firestore";
-import { db } from "../../firebase/index";
+import { db, storage } from "../../firebase/index";
+import { ref, uploadBytes } from "firebase/storage";
 
 export default {
   components: {
@@ -43,7 +61,10 @@ export default {
       title: null,
       city: null,
       isEditing: true,
-      des: null
+      des: null,
+      file: null,
+      fileURL: null,
+      fileName: null,
     };
   },
 
@@ -56,6 +77,13 @@ export default {
   },
 
   methods: {
+    fileChange() {
+      this.file = this.$refs.blogPhoto.files[0];
+      this.fileName = this.file.name;
+      this.fileURL = URL.createObjectURL(this.file);
+      // this.$store.commit("fileNameChange", fileName);
+      // this.$store.commit("createFileURL", URL.createObjectURL(this.file));
+    },
     onEditorReady() {
       console.log(this.qeditor);
       // this.qeditor.setText("Please enter enter your blogs here...")
@@ -70,6 +98,19 @@ export default {
           return;
         }
 
+        if (!this.file) {
+          alert("Please choose a cover photo");
+        }
+
+        const imgRef = ref(
+          storage,
+          "blogs/" + this.$store.state.user.uid + "/" + this.fileName
+        );
+        uploadBytes(imgRef, this.file).then((snapshot) => {
+          console.log("Uploaded a blob or file!");
+          console.log(snapshot);
+        });
+
         const res = await addDoc(collection(db, "blogs"), {
           author: this.$store.state.username,
           authorId: this.$store.state.user.uid,
@@ -79,12 +120,17 @@ export default {
           likes: 0,
           description: this.des,
           date: Timestamp.fromDate(new Date()),
+          coverPhoto:
+            "blogs/" + this.$store.state.user.uid + "/" + this.fileName,
         });
 
         // console.log(res.id)
-        await setDoc(doc(db, "users/"+this.$store.state.user.uid+"/blogs", res.id), {
+        await setDoc(
+          doc(db, "users/" + this.$store.state.user.uid + "/blogs", res.id),
+          {
             id: res.id,
-        })
+          }
+        );
 
         alert("Upload successfully!");
         this.title = null;
@@ -92,6 +138,10 @@ export default {
         this.qeditor.setText("");
         this.qeditor.root.dataset.placeholder =
           "Please enter enter your blogs here...";
+        
+        this.$refs.blogPhoto.value = null;
+        this.fileURL=null;
+        this.des = null;
       } catch (e) {
         console.error("Error adding document: ", e);
         alert("Sth went wrong");

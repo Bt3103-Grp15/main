@@ -2,12 +2,11 @@
     <UserHeader :name="this.$store.state.username" imgpath=""/>
     <profile-nav/>
     <div class="container">
-        <div  v-for="blog in myblogs" :key="blog.id">
-        <Blogs :blogs="blog" />
+        <div  v-for="blog in myblogs.slice(0,len)" :key="blog.id">
+            <Blogs :blogs="blog" />
+        </div>
     </div>
-
-    </div>
-    
+    <button class="readbtn" @click="len++">Read More</button> <br> <br> <br>    
 </template>
 
 <script>
@@ -22,12 +21,9 @@ import { db } from '../../firebase';
 
 export default {
   components: { UserHeader, Blogs, ProfileNav },
-  data () {
+    data() {
         return {
-            bloglist: [
-                { bimage: "hongkong1.jpeg", title: "First Blog" , description: "the thhhdhdhd description of my first trip to Hong Kong", date: "Dec 11 2022", username: "Dora Zhu", place: "HongKong", likes: 1000, state: false},
-                { bimage: "hongkong2.jpeg", title: "Second Blog", description: "the detailed description of my second trip to Hong Kong", date: "Jan 23 2021", username: "Kelly Zhou", place: "HongKong", likes: 1300, state: true},
-            ],
+            len: 3,
         }
     },
     setup() {
@@ -50,10 +46,49 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container {
     padding-left: 5vw;
     padding-right:5vw;
 }
 
+.readbtn{
+    width: 200px;
+    height: 80px;
+    border: none;
+    outline: none;
+    background: #2f2f2f;
+    color: #fff;
+    font-size: 22px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.readbtn {
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	color: black;
+	background: white;
+	border: 2px solid black;
+	box-shadow: 5px 5px 0 black,
+		-5px -5px 0 black,
+		-5px 5px 0 black,
+		5px -5px 0 black;
+	transition: 500ms ease-in-out;
+}
+
+.readbtn:hover {
+	box-shadow: 20px 5px 0 black, -20px -5px 0 black;
+}
+
+.readbtn:focus {
+	outline: none;
+}
 </style>

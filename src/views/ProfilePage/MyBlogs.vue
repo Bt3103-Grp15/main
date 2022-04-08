@@ -13,10 +13,15 @@
             </p>
         </div>
         <div  v-else>
+            
             <div v-for="blog in myblogs.slice(0,len)" :key="blog.id">
                 <Blogs :blogs="blog" />
             </div>
-            <button class="readbtn" @click="len++">Read More</button> <br> <br> <br>
+
+            <div v-if="len < myblogs.length">
+                <button class="readbtn" @click="len++">Read More</button> <br> <br> <br>
+            </div>
+            
         </div>
         
         

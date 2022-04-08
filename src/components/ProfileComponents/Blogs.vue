@@ -17,7 +17,7 @@
       <div class="info">
         <h2>Description</h2>
         <ul>
-          <!-- <li><strong>Post Time : </strong> {{blogs.date}} </li> -->
+          <!-- <li><strong>Post Time : </strong> {{blogs.date.toDate()}} </li>  -->
           <li><strong>Travel Days : </strong>{{blogs.traveldays}}</li>
           <li><strong>Average Spending: </strong>{{blogs.spending}}</li>
         </ul>

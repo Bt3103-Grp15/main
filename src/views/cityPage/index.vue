@@ -1,6 +1,6 @@
 <template>
   <div class="cityPage">
-    <div class="top-block">
+    <div class="top-block"  :style="{backgroundImage: 'url(' + require('../../assets/image/cities-main-img/'+cityinfo.cityname+'.jpg') + ')' }">
       <div class="city-name">
         <h1>{{cityinfo.cityname}}</h1>
       </div>
@@ -205,8 +205,9 @@ export default {
 <style lang="less" scoped>
 .cityPage {
   .top-block {
-    background: url(../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg)
-      no-repeat;
+    // background: url(../../assets/image/63a0e8_b5538adaddce4208b3cf6dff62640d6e_mv2.jpeg)
+    //   no-repeat;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     .city-name {

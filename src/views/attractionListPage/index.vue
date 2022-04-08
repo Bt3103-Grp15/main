@@ -11,8 +11,8 @@
             </h2>
           </div>
           <div class="back-block">
-            <svg-icon iconClass="fanhui" @click="jumpPage(city.cityname)"></svg-icon>
-            <span @click="jumpPage(city.cityname)"> Learn more about {{city.cityname}} </span>
+            <svg-icon iconClass="fanhui" @click="jumpPage(cityname)"></svg-icon>
+            <span @click="jumpPage(cityname)"> Learn more about {{city.cityname}} </span>
           </div>
         </div>
         <div class="top-right-block">
@@ -147,6 +147,7 @@ export default {
           }
         }
         .back-block {
+          cursor: pointer;
           display: flex;
           align-items: center;
           padding: 20px 40px;
@@ -217,6 +218,7 @@ export default {
         }
         .index-title {
           h2 {
+            cursor: pointer;
             font-size: 25px;
             color: rgb(41, 41, 41);
             // letter-spacing: normal !important;

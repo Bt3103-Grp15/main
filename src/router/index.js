@@ -105,6 +105,14 @@ const routes = [
                     reqiresAuth: true,
                 },
             },
+            {
+                path: "review",
+                name: "Review",
+                component: () => import("../views/ReviewPage/index.vue"),
+                meta: {
+                    reqiresAuth: true,
+                },
+            },
         ],
     },
 ];

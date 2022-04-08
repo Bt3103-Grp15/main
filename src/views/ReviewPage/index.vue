@@ -5,7 +5,7 @@
           <h2>Write a review to us!</h2>
           <p>Tell us some features that you would like to see in our website </p>
           <textarea name="review" id="review" class="textbox"></textarea>
-          <button :click="submitReview"> sumbit </button>
+          <button @click="submitReview()"> sumbit </button>
           
       </section>
     </div>
@@ -16,7 +16,7 @@
 export default {
   methods: {
     submitReview() {
-      this.$router.push({name: "SubmitReview"})
+      this.$router.push({name: "ReviewFeedback"})
     }
   }
 }
@@ -40,7 +40,9 @@ h2 {
   font-weight: bold;
 }
 
-
+p{
+    font-size: 15px;
+}
 .form {
   padding: 20px;
   margin: 20px;

@@ -56,7 +56,7 @@
         <div class="second">
           <div class="item">About Us</div>
           <div class="item">Owners</div>
-          <div class="item"><router-link to='review'>Write a Review</router-link></div>
+          <div class="item"><router-link to='/review'>Write a Review</router-link></div>
         </div>
         <div class="second">
           <div class="item">Trust&Safety</div>

@@ -109,9 +109,12 @@ const routes = [
                 path: "review",
                 name: "Review",
                 component: () => import("../views/ReviewPage/index.vue"),
-                meta: {
-                    reqiresAuth: true,
-                },
+            },
+            {
+                path: "review-feedback",
+                name: "ReviewFeedback",
+                component: () => import("../views/ReviewPage/feedback.vue"),
+               
             },
         ],
     },

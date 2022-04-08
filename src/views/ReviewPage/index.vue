@@ -18,7 +18,7 @@
   padding:10vh;
   height: 60%;
   display: flex;
-  background-image: url("../assets/login.webp");
+  background-image: url("../../assets/login.webp");
   background-color: white;
   background-size: 100% 100%;
 }
@@ -101,12 +101,4 @@ img {
   float: right;
 }
 
-.background-login {
-    display: none;
-    flex: 2;
-    background-size: cover;
-    background-image: url("../assets/login.jpeg");
-    width: 100%;
-    height: 100%;
-  }
 </style>

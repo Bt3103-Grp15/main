@@ -1,7 +1,7 @@
 <template>
     <UserHeader :name="this.$store.state.username" imgpath=""/>
     <ProfileNav/>
-    <div class="container">
+    <div class="container-profile">
         <sectionHeader title="My Account" instruction="View and edit your personal info below. "/>
         <hr/>
         <sectionHeader title="Display Info" instruction="Change your display name here. "/>
@@ -43,11 +43,11 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.container-profile {
     padding-left: 5vw;
     padding-right:5vw;
     padding: 1vh 5vw 1vh 5vw;
-    background-color: rgb(220,220,220)
+    background: url(../../assets/image/bc3ec7bc825c4e6ca746c659189cea83.jpeg);
 }
 
 hr {

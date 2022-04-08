@@ -2,10 +2,24 @@
     <UserHeader :name="this.$store.state.username" imgpath=""/>
     <profile-nav/>
     <div class="container-blog">
-        <div  v-for="blog in myblogs.slice(0,len)" :key="blog.id">
-            <Blogs :blogs="blog" />
+        <div v-if="myblogs.length === 0" class="reminder-text">
+            <p>
+                You haven't write any blog yet!
+            </p>
+            <br>
+            <p>
+                <router-link to="/createblog">
+                Upload your first blog now.</router-link>
+            </p>
         </div>
-        <button class="readbtn" @click="len++">Read More</button> <br> <br> <br>
+        <div  v-else>
+            <div v-for="blog in myblogs.slice(0,len)" :key="blog.id">
+                <Blogs :blogs="blog" />
+            </div>
+            <button class="readbtn" @click="len++">Read More</button> <br> <br> <br>
+        </div>
+        
+        
     </div>
         
 </template>
@@ -28,9 +42,6 @@ export default {
       len: 3,
       userid: this.$store.state.user.uid,
     };
-  },
-  methods() {
-
   },
   setup() {
     const myblogs = ref([]);
@@ -60,6 +71,12 @@ export default {
     background-size: 100% 100%;
     background-image: url(../../assets/image/bc3ec7bc825c4e6ca746c659189cea83.jpeg);
 
+}
+
+.reminder-text {
+    padding: 100px;
+    font-size: 20px; 
+    height:70vh
 }
 
 .readbtn {

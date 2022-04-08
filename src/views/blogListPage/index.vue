@@ -27,7 +27,7 @@
         <h2 v-else>All Results for {{this.destination}} </h2>
       </div>
       <div class="selects-box">
-        <DropDown
+        <!-- <DropDown
           class="select-block"
           :options="arrayOfObjects1"
           :selected="object1"
@@ -36,7 +36,7 @@
           :closeOnOutsideClick="boolean"
           @updateOption ="updateorder($event)"
         >
-        </DropDown>
+        </DropDown> -->
 
         <DropDown
           class="select-block"
@@ -98,6 +98,7 @@ export default {
     data () {
         return {
             listlen: 3,
+            order: "date",
             destination: "Singapore",
             arrayOfObjects1: [{name: "Most Recent"}, {name: "Most Popular Blog"}],
             arrayOfObjects2: [{name: "2022"}, {name: "2021"}],
@@ -134,14 +135,18 @@ export default {
         console.log(err)
       }
     },
-    async updateorder(x) {
-      try{
-        this.order = x.name
-        this.filter()
-      } catch (err) {
-        console.log(err)
-      }
-    },
+    // async updateorder(x) {
+    //   try{
+    //     if (x.name == "Most Recent") {
+    //       this.order = "date"
+    //     } else {
+    //       this.order = "likes"
+    //     }
+    //     this.filter()
+    //   } catch (err) {
+    //     console.log(err)
+    //   }
+    // },
     async reload() {
       try{
         const q = query(collection(db, 'blogs'), where("city", "==", this.destination), limit(3));
@@ -157,6 +162,7 @@ export default {
     },
     async filter() {
       try{
+        console.log(this.order)
         const q = query(collection(db, 'blogs'), where("city", "==", this.destination), limit(3), where("yearoftravel", "==", this.year));
         const res = await getDocs(q);
         posts.value = res.docs.map((doc) => {

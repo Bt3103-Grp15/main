@@ -133,23 +133,23 @@ export default {
       //   label: "Indiv Attraction Pager",
       //   level: "1-1",
       // },
-      {
-        name: "attractionListPage",
-        label: "attractionListPage",
-        level: "1-2",
-      },
+      // {
+      //   name: "attractionListPage",
+      //   label: "attractionListPage",
+      //   level: "1-2",
+      // },
     ],
   },
   {
     name: "blog-main",
     label: "Blog",
     level: "2",
-    // child: [
-    //   {
-    //     name: "blogListPage",
-    //     label: "Blog List Page",
-    //     level: "2-1",
-    //   },
+    child: [
+      {
+        name: "blogListPage",
+        label: "Blog List Page",
+        level: "2-1",
+      },
       // {
       //   name: "indivAttractionPager",
       //   label: "Search Results",
@@ -160,28 +160,28 @@ export default {
       //   label: "Indiv Blog Page",
       //   level: "2-3",
       // },
-    // ],
+    ],
   },
   {
     name: "blog",
-    label: "Routes",
+    label: "Others",
     level: "3",
     child: [
       {
         name: "cityPage",
-        label: "City Page",
+        label: "About Us",
         level: "3-1",
       },
       {
         name: "indivAttractionPager",
-        label: "Design Routes",
+        label: "Write A Review",
         level: "3-2",
       },
-      {
-        name: "indivBlogPage",
-        label: "Indiv Route Page",
-        level: "3-3",
-      },
+      // {
+      //   name: "indivBlogPage",
+      //   label: "Indiv Route Page",
+      //   level: "3-3",
+      // },
     ],
   },
 ];

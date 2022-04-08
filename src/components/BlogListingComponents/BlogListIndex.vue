@@ -1,7 +1,7 @@
 <template>
   <div class="blog-itme" @click="seeblog(bloglistingitem.id)">
     <div class="blog-img">
-      <img src="../../assets/image/FLtJ2nDVEAAyZ2Y.jpeg" alt="" />
+      <img v-bind:src="imgurl" />
     </div>
     <div class="blog-right">
       <div class="title-block">
@@ -32,22 +32,35 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref as Ref } from "vue";
+import { getDownloadURL, ref } from "firebase/storage";
+import { storage } from "../../firebase/index";
+
 export default {
   name: "bloglistindex",
   props: ["bloglistingitem"],
   setup(props) {
-    const description = ref("")
-    description.value = props.bloglistingitem.description.substring(0, 200) + "...";
+    const imgurl = Ref("");
+    const loadimg = async () => {
+      getDownloadURL(ref(storage, props.bloglistingitem.coverPhoto)).then(
+        (url) => {
+          imgurl.value = url;
+        }
+      );
+    };
+    loadimg();
+    const description = Ref("");
+    description.value =
+      props.bloglistingitem.description.substring(0, 200) + "...";
 
-    return { description };
+    return { description, imgurl };
   },
 
   methods: {
     seeblog(bid) {
-      this.$router.push({name: 'indivBlogPage', params: { id: bid}})
-    }
-  }
+      this.$router.push({ name: "indivBlogPage", params: { id: bid } });
+    },
+  },
 };
 </script>
 

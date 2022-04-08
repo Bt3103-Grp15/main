@@ -29,11 +29,13 @@
           </div>
 
           <input class="btn" type="submit" value="Log in" />
+          <div class="textContainer">
+              <h3>or</h3>
+          </div>
+          <div id="firebaseui-auth-container"></div>
         </form>
       </section>
     </div>
-    <div class = "background-login"></div>
-    <div id="firebaseui-auth-container"></div>
   </main>
 </template>
 
@@ -41,21 +43,33 @@
 import { ref } from "vue";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/index";
+import {firebase} from '@/firebase/uifire.js';
+import 'firebase/compat/auth';
+import * as firebaseui from 'firebaseui';
+import 'firebaseui/dist/firebaseui.css';
 
 export default {
   setup() {
     const login_form = ref({});
-
-    // const login = () => {
-    //     this.$store.dispatch('login', login_form.value);
-    // }
-
     return {
       login_form,
     };
   },
 
-  mounted() {},
+  mounted() {
+    var ui = firebaseui.auth.AuthUI.getInstance();
+    if(!ui) {
+        ui = new firebaseui.auth.AuthUI(firebase.auth());
+     }
+    var uiConfig = {
+        signInSuccessUrl: '/index',
+        signInOptions: [
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+         ]
+     };
+     ui.start("#firebaseui-auth-container", uiConfig)
+
+  },
   methods: {
     async login() {
       try {
@@ -67,7 +81,7 @@ export default {
       } catch (error) {
         switch (error.code) {
           case "auth/user-not-found":
-            alert("User not found");
+            alert("User not found"); 
             break;
           case "auth/wrong-password":
             alert("Wrong password");
@@ -130,7 +144,9 @@ h2 {
 
 }
 
-
+p {
+  font-size: 20;
+}
 .input {
   position: relative;
   display: flex;
@@ -172,6 +188,11 @@ img {
   display: block;
   float: right;
 }
+
+.textContainer {
+  padding-top: 10px;
+}
+
 
 .background-login {
     display: none;

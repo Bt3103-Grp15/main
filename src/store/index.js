@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 import router from "../router";
 import { db, auth } from "../firebase/index";
 import { signOut, signInWithPopup } from "firebase/auth";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc} from "firebase/firestore";
 
 export default createStore({
     state: {
@@ -65,11 +65,22 @@ export default createStore({
                     commit("CLEAR_USER");
                 } else {
                     commit("SET_USER", user);
+                    //check if this is first time user
+
                     //get user document
                     const userDocRef = doc(db, "users", auth.currentUser.uid);
                     const docSnap = await getDoc(userDocRef);
                     const data = await docSnap.data();
-                    commit("SET_PROFILE", data);
+                    if (data) { //if user exist
+                        commit("SET_PROFILE", data);
+                    } else {
+                        setDoc(userDocRef, {
+                            name: "Traveler"
+                        })
+
+                        const data2 = await docSnap.data();
+                        commit("SET_PROFILE", data2);
+                    }
 
                     if (
                         router.isReady() &&
@@ -90,5 +101,6 @@ export default createStore({
 
             commit("SET_USERNAME", newName);
         },
+
     },
 });

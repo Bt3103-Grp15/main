@@ -15,7 +15,7 @@
     "ant-design-vue": "^2.2.8",
     "core-js": "^3.6.5",
     "firebase": "^9.6.9",
-    "firebaseui": "^6.0.1",
+    "firebaseui": "^0.600.0",
     "leancloud-storage": "^4.12.2",
     "svg-sprite-loader": "^6.0.11",
     "vue": "^3.0.0",

@@ -1,7 +1,7 @@
 <template>
   <div class="blogListPage">
     <div class="type-area">
-      <!-- <div class="form-div">
+      <div class="form-div">
         <form id="form" role="search" @submit.prevent="index">
           <input
             id="query"
@@ -21,7 +21,7 @@
             </svg>
           </button>
         </form>
-      </div> -->
+      </div>
       <div class="title-block">
         <h2>All Results for {{city}} </h2>
       </div>
@@ -88,6 +88,9 @@ import {ref} from "vue"
 import { db } from '@/firebase/index'
 import { collection, getDocs, where, query } from 'firebase/firestore';
 
+const posts = ref([]);
+const error = ref(null);
+
 export default {
     name: 'blogListPage',
     props: ["city"],
@@ -116,20 +119,31 @@ export default {
     async updatedestination() {
       try{
         this.destination = document.querySelector("input[name=q]").value;
-        this.load()
+        this.reload()
       } catch (err) {
         console.log(err);
       }
     },
     updateinfo(x){
       alert(x.name)
+    },
+    async reload() {
+      try{
+        alert(this.destination)
+        const q = query(collection(db, 'blogs'), where("city", "==", this.destination));
+        const res = await getDocs(q);
+        posts.value = res.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id };
+        });
+      }
+      catch (err) {
+        error.value = err.message
+        alert(error.value)
+      }
     }
   },
 
   setup(props) {
-    const posts = ref([]);
-    const error = ref(null);
-
     const load = async () => {
       try{
         const q = query(collection(db, 'blogs'), where("city", "==", props.city));

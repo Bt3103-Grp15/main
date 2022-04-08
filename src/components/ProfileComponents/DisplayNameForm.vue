@@ -51,6 +51,10 @@ export default {
     padding: 1vh 0vw 1vh 0vw;
 }
 
+label{
+    font-size:15px
+}
+
 .change-display {
   margin-bottom: 40px;
 }

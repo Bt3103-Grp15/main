@@ -1,14 +1,13 @@
 <template>
-  <UserHeader :name="this.$store.state.username" imgpath="" />
-  <profile-nav />
-  <div class="container">
-    <div v-for="blog in myblogs.slice(0, len)" :key="blog.id">
-      <Blogs :blogs="blog" />
+    <UserHeader :name="this.$store.state.username" imgpath=""/>
+    <profile-nav/>
+    <div class="container-blog">
+        <div  v-for="blog in myblogs.slice(0,len)" :key="blog.id">
+            <Blogs :blogs="blog" />
+        </div>
+        <button class="readbtn" @click="len++">Read More</button> <br> <br> <br>
     </div>
-  </div>
-  <button class="readbtn" @click="len++">Read More</button> <br />
-  <br />
-  <br />
+        
 </template>
 
 <script>
@@ -51,9 +50,13 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  padding-left: 5vw;
-  padding-right: 5vw;
+.container-blog {
+    padding-left: 5vw;
+    padding-right:5vw;
+    padding-top: 20px;
+    background-size: 100% 100%;
+    background-image: url(../../assets/image/bc3ec7bc825c4e6ca746c659189cea83.jpeg);
+
 }
 
 .readbtn {

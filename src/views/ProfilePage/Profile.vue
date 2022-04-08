@@ -7,8 +7,7 @@
         <sectionHeader title="Display Info" instruction="Change your display name here. "/>
         <DisplayNameForm @change-name="changeName"/>
         <hr/>
-        <sectionHeader title="Account" instruction="Update and Edit the information you share with the community "/>
-  </div>
+        </div>
 
 </template>
 
@@ -44,10 +43,12 @@ export default {
 
 <style scoped>
 .container-profile {
+    height: 75vh;
     padding-left: 5vw;
     padding-right:5vw;
-    padding: 1vh 5vw 1vh 5vw;
-    background: url(../../assets/image/bc3ec7bc825c4e6ca746c659189cea83.jpeg);
+    padding: 1vh 10vw 1vh 10vw;
+    background-size: 100% 100%;
+    background-image: url(../../assets/image/bc3ec7bc825c4e6ca746c659189cea83.jpeg);
 }
 
 hr {

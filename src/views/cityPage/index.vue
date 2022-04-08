@@ -57,7 +57,7 @@
         <div class="map-content">
           <div>
             <div class="hongTit">
-              3 Days Trip Plan in Hong Kong
+              3 Days Trip Plan in {{cityinfo.cityname}}
             </div>
             <div class="mapmain">
               <iframe

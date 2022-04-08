@@ -24,40 +24,8 @@
         v-for="attraction in attractions"
         :key="attraction.id"
       >
-        <div class="attraction-item" >
-          <div class="attraction-info">
-            <div class="attraction-title">
-              <div class="index">{{ attraction.attindex }}</div>
-              <div class="index-title">
-                <h2 @click="seeAttraction(attraction.id)">{{ attraction.name }}</h2>
-              </div>
-            </div>
-            <div class="Central">
-              {{ attraction.address }}
-            </div>
-            <div class="East" v-for="line in attraction.info" :key="line.index">
-              <ul>
-                <li>{{ line }}</li>
-              </ul>
-            </div>
-          </div>
-          <div class="imageList">
-            <div class="ImagebyDanFreeman">
-              <img src="../../assets/image/ImagebyDanFreeman.jpeg" alt="" />
-            </div>
-            <div class="rightimg">
-              <div>
-                <img
-                  src="../../assets/image/ImagebySébastienGoldberg.jpeg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img src="../../assets/image/HongKongSkyline.jpeg" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
+      <Attraction :attraction="attraction" />
+        
       </div>
     </div>
   </div>
@@ -68,7 +36,11 @@ import { useRouter } from "vue-router";
 import { db } from "../../firebase/index";
 import { ref } from "vue";
 import { getDocs, collection, doc, getDoc } from "firebase/firestore";
+import Attraction from "../../components/Attraction/attractionListCom.vue"
 export default {
+  components: {
+    Attraction
+  },
   props: ["cityname"],
   setup(props) {
     const router = useRouter();

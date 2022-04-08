@@ -144,12 +144,12 @@ export default {
     name: "blog-main",
     label: "Blog",
     level: "2",
-    child: [
-      {
-        name: "blogListPage",
-        label: "Blog List Page",
-        level: "2-1",
-      },
+    // child: [
+    //   {
+    //     name: "blogListPage",
+    //     label: "Blog List Page",
+    //     level: "2-1",
+    //   },
       // {
       //   name: "indivAttractionPager",
       //   label: "Search Results",
@@ -160,7 +160,7 @@ export default {
       //   label: "Indiv Blog Page",
       //   level: "2-3",
       // },
-    ],
+    // ],
   },
   {
     name: "blog",

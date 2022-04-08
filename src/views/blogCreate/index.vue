@@ -14,6 +14,18 @@
         <label>Description</label>
         <input placeholder="Enter your description" v-model="des" />
       </div>
+      <div class="inputbox">
+        <label>Average Spending</label>
+        <input placeholder="Enter the average spending" v-model="spend" />
+      </div>
+      <div class="inputbox">
+        <label>Duration</label>
+        <input placeholder="Enter your travel days" v-model="days" />
+      </div>
+      <div class="inputbox">
+        <label>Year of Traveling</label>
+        <input placeholder="Enter the year you went to travel" v-model="year" />
+      </div>
       <div class="upload-file">
         <label for="blog-photo">Upload Cover Photo</label>
         <input
@@ -119,6 +131,9 @@ export default {
           title: this.title,
           likes: 0,
           description: this.des,
+          spending: this.spend,
+          traveldays: this.days,
+          yearoftravel: this.year,
           date: Timestamp.fromDate(new Date()),
           coverPhoto:
             "blogs/" + this.$store.state.user.uid + "/" + this.fileName,

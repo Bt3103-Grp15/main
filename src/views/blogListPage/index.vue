@@ -23,7 +23,8 @@
         </form>
       </div>
       <div class="title-block">
-        <h2>All Results for {{city}} </h2>
+        <h2 v-if="this.destinaion == ''">All Results for {{this.city}} </h2>
+        <h2 v-else>All Results for {{this.destination}} </h2>
       </div>
       <div class="selects-box">
         <DropDown
@@ -33,7 +34,7 @@
           v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
           :closeOnOutsideClick="boolean"
-          @updateOption ="updateinfo($event)"
+          @updateOption ="updateorder($event)"
         >
         </DropDown>
 
@@ -44,11 +45,11 @@
           v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
           :closeOnOutsideClick="boolean"
-          @updateOption ="updateinfo($event)"
+          @updateOption ="updateyearinfo($event)"
         >
         </DropDown>
 
-        <DropDown
+        <!-- <DropDown
           class="select-block"
           :options="arrayOfObjects3"
           :selected="object3"
@@ -68,7 +69,7 @@
           :closeOnOutsideClick="boolean"
           @updateOption ="updateinfo($event)"
         >
-        </DropDown>
+        </DropDown> -->
       </div>
 
       <div v-for="post in posts.slice(0,listlen)" :key="post.id">
@@ -86,7 +87,7 @@ import BlogListIndex from "../../components/BlogListingComponents/BlogListIndex.
 import DropDown from "../../components/BlogListingComponents/DropDown.vue";
 import {ref} from "vue"
 import { db } from '@/firebase/index'
-import { collection, getDocs, where, query } from 'firebase/firestore';
+import { collection, getDocs, where, query, limit } from 'firebase/firestore';
 
 const posts = ref([]);
 const error = ref(null);
@@ -97,7 +98,8 @@ export default {
     data () {
         return {
             listlen: 3,
-            arrayOfObjects1: [{name: "Most Viewed"}, {name: "Most Popular Blog"}],
+            destination: "Singapore",
+            arrayOfObjects1: [{name: "Most Recent"}, {name: "Most Popular Blog"}],
             arrayOfObjects2: [{name: "2022"}, {name: "2021"}],
             arrayOfObjects3: [{name: "10 days"}, {name: "20 days"}],
             arrayOfObjects4: [{name: "1000HKD"}, {name: "2000HKD"}],
@@ -124,13 +126,25 @@ export default {
         console.log(err);
       }
     },
-    updateinfo(x){
-      alert(x.name)
+    async updateyearinfo(x){
+      try{
+        this.year = x.name
+        this.filter()
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async updateorder(x) {
+      try{
+        this.order = x.name
+        this.filter()
+      } catch (err) {
+        console.log(err)
+      }
     },
     async reload() {
       try{
-        alert(this.destination)
-        const q = query(collection(db, 'blogs'), where("city", "==", this.destination));
+        const q = query(collection(db, 'blogs'), where("city", "==", this.destination), limit(3));
         const res = await getDocs(q);
         posts.value = res.docs.map((doc) => {
         return { ...doc.data(), id: doc.id };
@@ -140,13 +154,26 @@ export default {
         error.value = err.message
         alert(error.value)
       }
-    }
+    },
+    async filter() {
+      try{
+        const q = query(collection(db, 'blogs'), where("city", "==", this.destination), limit(3), where("yearoftravel", "==", this.year));
+        const res = await getDocs(q);
+        posts.value = res.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id };
+        });
+      }
+      catch (err) {
+        error.value = err.message
+        alert(error.value)
+      }
+    },
   },
 
   setup(props) {
     const load = async () => {
       try{
-        const q = query(collection(db, 'blogs'), where("city", "==", props.city));
+        const q = query(collection(db, 'blogs'), where("city", "==", props.city), limit(3));
         const res = await getDocs(q);
         posts.value = res.docs.map((doc) => {
           return { ...doc.data(), id: doc.id };

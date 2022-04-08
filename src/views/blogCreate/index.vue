@@ -1,49 +1,60 @@
 <template>
   <!-- <editor-content class="eidtor" :editor="editor" /> -->
   <div class="page">
+    <div class="container-header">
+        <p class="header">Create A Blog </p>
+    </div>
+    
     <div class="editone">
-      <div class="inputbox">
-        <label>Your Title</label>
-        <input placeholder="Enter your title" v-model="title" />
+      <div class="box1">
+        <div class="inputbox">
+        <label>Blog Title: </label>
+        <input placeholder="e.g. Tokyo trip" v-model="title" />
       </div>
       <div class="inputbox">
-        <label>City</label>
-        <input placeholder="Enter your city" v-model="city" />
+        <label>City: </label>
+        <input placeholder="e.g. tokyo" v-model="city" />
       </div>
       <div class="inputbox">
-        <label>Description</label>
-        <input placeholder="Enter your description" v-model="des" />
+        <label>Year of Traveling: </label>
+        <input placeholder="e.g. 2022" v-model="year" />
+      </div>
+      
+      
+
+      </div>
+      <div class="box2">
+        <div class="inputbox">
+        <label>Spending in trips: </label>
+        <input placeholder="e.g. 10000yan" v-model="spend" />
+      </div>
+        <div class="inputbox">
+        <label>Duration: </label>
+        <input placeholder="e.g. 3 days" v-model="days" />
       </div>
       <div class="inputbox">
-        <label>Average Spending</label>
-        <input placeholder="Enter the average spending" v-model="spend" />
+        <label>Description: </label>
+        <textarea placeholder="e.g. 3 attractions that you must visit in tokyo!" v-model="des" />
       </div>
-      <div class="inputbox">
-        <label>Duration</label>
-        <input placeholder="Enter your travel days" v-model="days" />
+      
+      
       </div>
-      <div class="inputbox">
-        <label>Year of Traveling</label>
-        <input placeholder="Enter the year you went to travel" v-model="year" />
-      </div>
-      <div class="upload-file">
-        <label for="blog-photo">Upload Cover Photo</label>
+    </div>
+    <div class="box3">
+    <label for="blog-photo">Upload Cover Photo</label>
         <input
           type="file"
           ref="blogPhoto"
           id="blog-photo"
           @change="fileChange"
           accept=".png, .jpg, ,jpeg"
-        />
-        <!-- <button
-          class="preview"
-          :class="{ 'button-inactive': !this.fileURL }"
-        >
-          Preview Photo
-        </button> -->
-        <!-- <span>File Chosen: {{ this.fileName }}</span> -->
-      </div>
+        /> 
+
     </div>
+
+
+    
+    
     <div class="editcontainer">
       <QuillEditor
         ref="qeditor"
@@ -167,25 +178,68 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.header{
+  float:left;
+    color: white;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-size:25px
+}
+.container-header{
+    background-color: rgb(30,30,30);
+    padding: 2vh 10vw 2vh 10vw;
+    display: flex;
+}
 .page {
   background: url(../../assets/image/bc3ec7bc825c4e6ca746c659189cea83.jpeg);
   background-attachment: fixed;
   background-size: cover;
   padding-bottom: 50px;
+  font-size:15px;
   .editone {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    
+
     .inputbox {
       margin: 20px;
+      label{
+    text-align: justify;
+    display: inline-block;
+    width: 200px;
+  }
+  
+  input{
+    border: 0;
+    background-color: rgba(255,255,255,0.6);
+    width:250px;
+    height:35px;
+    font-size: 13px;
+    padding: 5px;
+  }
+  textarea{
+    border: 0;
+    background-color: rgba(255,255,255,0.6);
+    width:250px;
+    font-size: 13px;
+    padding: 5px;
+
+  }
     }
   }
   .editcontainer {
     width: 80%;
     margin: 1% 10%;
-    height: 1000px;
+    height: 50vh;
     border-style: solid;
     border-width: 2px;
     border-color: black;
     padding-bottom: 40px;
     align-items: center;
+    text-align: center;
+    justify-content: center;
   }
 
   .editbutton {
@@ -194,6 +248,10 @@ export default {
   button.ql-bold {
     font: bold;
   }
+
+  
+  
+
 }
 </style>>
 

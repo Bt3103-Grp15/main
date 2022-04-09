@@ -94,7 +94,7 @@
       <div class="comments-block">
         <div class="title-block">
           <h2>Users' Comments on this City</h2>
-          <div class="More">Read More ></div>
+          <div class="More" @click="jumpCommentListing">Read More ></div>
         </div>
         <div v-if="comments.length === 0">
           <h2>There is no comments now</h2>
@@ -175,6 +175,10 @@ export default {
 
     jumpBlogListing() {
       this.$router.push({ name: "blogListPage", params: {city: this.cityname}})
+    },
+
+    jumpCommentListing() {
+      this.$router.push({ name: "commentslisting", params: {city: this.cityname}})
     }
   },
   setup(props) {

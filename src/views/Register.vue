@@ -53,7 +53,7 @@
 
 <script>
 import { ref } from 'vue';
-import { createUserWithEmailAndPassword} from 'firebase/auth'
+import { createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import { auth, db } from '../firebase/index'
 import {doc, setDoc} from "firebase/firestore"
 
@@ -70,6 +70,10 @@ export default {
         async register() {
             try {
                 await createUserWithEmailAndPassword(auth, this.register_form.email, this.register_form.password)
+                sendEmailVerification(auth.currentUser)
+                .then(() => {
+                  alert("Email verification sent!")
+                });
             } catch (error) {
              switch(error.code) {
                 case 'auth/email-already-in-use':

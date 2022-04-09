@@ -1,6 +1,6 @@
 <template>
   <div class="cityPage">
-    <div class="top-block"  :style="{backgroundImage: 'url(' + require('../../assets/image/cities-main-img/'+cityinfo.cityname+'.jpg') + ')' }">
+    <div class="top-block" :style="{backgroundImage: 'url(' + require('../../assets/image/cities-main-img/'+cityinfo.cityname+'.jpg') + ')' }">
       <div class="city-name">
         <h1>{{cityinfo.cityname}}</h1>
       </div>
@@ -249,6 +249,7 @@ export default {
           display: flex;
           align-items: center;
           .icon-block {
+            cursor: pointer;
             height: 62px;
             width: 62px;
             border-radius: 50%;
@@ -271,6 +272,7 @@ export default {
             }
           }
           .shoucang {
+            cursor: pointer;
             background: #b84c1f;
             &:hover {
               background: none;
@@ -280,6 +282,7 @@ export default {
             }
           }
           .qianbi {
+            cursor: pointer;
             background: #3a70d8;
             &:hover {
               background: none;

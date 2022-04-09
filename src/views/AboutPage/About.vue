@@ -25,9 +25,9 @@
 
           <br>
 
-          <h5>
+          <p>
             We hope you feel the same way as we intended.
-          </h5>
+          </p>
           
       </section>
     </div>
@@ -69,7 +69,7 @@ h5 {
   flex-direction: column;
   justify-content: center;
   text-align: justify;
-  align-items: center;
+  /* align-items: center; */
   height: auto;
   width:100%;
   background: rgba(255, 255, 255, 0.8);

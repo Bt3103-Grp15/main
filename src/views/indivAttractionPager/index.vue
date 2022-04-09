@@ -18,11 +18,7 @@
       </div>
       <div class="desc-main">
         <h2>
-          Victoria Peak (Tai Ping Shan in Chinese), also known as Mount Austin,
-          or locally as The Peak. It is the highest hill on Hong Kong Island
-          with an elevation of 552m. With around 7 million visitors per year,
-          the Peak is a major tourist attraction of Hong Kong. It has views of
-          the city and its waterfront.
+          {{attraction.des.substring(0,300)}} ...
         </h2>
         <div class="Ticket">Buy The Ticket</div>
       </div>
@@ -89,7 +85,7 @@ export default {
           doc(db, "cities/" + props.cityname+"/attractions", props.id)
         );
         attraction.value = res.data();
-        console.log(res.data());
+        // console.log(res.data());
       } catch (err) {
         alert(err.message);
         console.log(err);
@@ -114,6 +110,7 @@ export default {
     return {
       attraction,
       comments,
+      loadComm
     };
   },
   methods: {
@@ -126,7 +123,7 @@ export default {
         await addDoc(
           collection(
             db,
-            "cities/Hong-Kong" + "/attractions/" + this.id + "/comments"
+            "cities/" + this.cityname + "/attractions/" + this.id + "/comments"
           ),
           {
             date: Timestamp.fromDate(new Date()),

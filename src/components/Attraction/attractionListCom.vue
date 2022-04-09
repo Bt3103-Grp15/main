@@ -38,20 +38,28 @@ import { ref as Ref } from "vue";
 import { storage } from "../../firebase/index";
 export default {
   name: "Attraction",
-  props: ["attraction"],
+  props: ["attraction", "cityname"],
+  methods: {
+    seeAttraction(attid) {
+      this.$router.push({
+        name: "indivAttractionPage",
+        params: { cityname: this.cityname, id: attid },
+      });
+    },
+  },
   setup(props) {
     const imgurls = Ref([]);
 
     const load = async () => {
       props.attraction.images.forEach((img) => {
-          console.log(img)
-          getDownloadURL(ref(storage, img)).then((url) => {
-              imgurls.value.push(url)
-          }) 
-      })
-      console.log(imgurls.value)
-      }
-  
+        console.log(img);
+        getDownloadURL(ref(storage, img)).then((url) => {
+          imgurls.value.push(url);
+        });
+      });
+      console.log(imgurls.value);
+    };
+
     load();
 
     return {

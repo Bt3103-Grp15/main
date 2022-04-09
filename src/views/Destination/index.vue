@@ -284,6 +284,7 @@ const jumpPage = (cityname, index) => {
           }
 
           .read-more {
+            cursor:pointer;
             width: 110px;
             height: 36px;
             border: 1px solid #fff;

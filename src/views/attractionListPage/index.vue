@@ -24,7 +24,7 @@
         v-for="attraction in attractions"
         :key="attraction.id"
       >
-      <Attraction :attraction="attraction" />
+      <Attraction :attraction="attraction" :cityname="this.cityname" />
         
       </div>
     </div>
@@ -81,11 +81,7 @@ export default {
     };
   },
 
-  methods: {
-    seeAttraction(attid) {
-      this.$router.push({ name: "indivAttractionPage", params: { cityname: this.cityname, id: attid } });
-    },
-  },
+
 };
 </script>
 

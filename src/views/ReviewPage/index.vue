@@ -24,6 +24,21 @@ export default {
 
 <style scoped>
 
+button {
+  width: 250px;
+    height: 30px;
+    border: none;
+    background: #2f2f2f;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 25px;
+    display: block;
+    padding: auto;
+
+}
+
 .Container{
   padding:10vh;
   height: 60%;

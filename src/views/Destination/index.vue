@@ -93,7 +93,7 @@ const list = [
     id: 1,
     child: [
       {
-        cityName: 'Kuala-Lumpur',
+        cityName: 'KualaLumpur',
         id: 1 - 1,
         img: require('../../assets/image/9_0.jpeg')
       },
@@ -103,7 +103,7 @@ const list = [
         img: require('../../assets/image/9_1.jpeg')
       },
       {
-        cityName: 'Hong-Kong',
+        cityName: 'HongKong',
         id: 1 - 3,
         img: require('../../assets/image/9_2.jpeg')
       }

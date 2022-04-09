@@ -3,10 +3,6 @@
     <div class="blog-details">
       <h1>{{ blogs.title }}</h1>
       <p class="information">{{ blogs.description.substring(0, 100) }} ...</p>
-      <div class="control">
-        <p>{{ blogs.city }}</p>
-        <p>Likes: {{ blogs.likes }}</p>
-      </div>
     </div>
 
     <div class="blog-image">
@@ -18,8 +14,10 @@
         <h2>Description</h2>
         <ul>
           <!-- <li><strong>Post Time : </strong> {{blogs.date}} </li> -->
-          <li><strong>Travel Days : </strong>7 days</li>
-          <li><strong>Average Spending: </strong>3000HKD</li>
+          <li><strong>Travel Days : </strong> {{blogs.traveldays}} </li>
+          <li><strong>Average Spending: </strong> {{blogs.spending}} </li>
+          <li><strong>Likes: </strong> {{blogs.likes}} </li>
+          <li><strong>Destination: </strong> {{blogs.city}} </li>
         </ul>
       </div>
     </div>

@@ -164,7 +164,7 @@ export default {
       }
     },
     async filter() {
-      if (this.desitnation == "") {
+      if (!this.ifnodestination) {
           try{
           console.log(this.order)
           const q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("yearoftravel", "==", this.year));

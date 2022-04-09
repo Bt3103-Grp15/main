@@ -3,6 +3,8 @@
     <router-link to="/profile" class="navitems"> Setting </router-link>
     <p class="navitems"> </p>
     <router-link to="/myblogs" class="navitems">Blog</router-link>
+    <p class="navitems"> </p>
+    <router-link to="/likeblogs" class="navitems">FavBlogs</router-link>
 </div>
 </template>
 

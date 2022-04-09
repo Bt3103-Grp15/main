@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <div class="blog-details">
-      <h1>{{ blogs.title }}</h1>
+      <h1 @click="seeblog(blogs.id)">{{ blogs.title }}</h1>
       <p class="information">{{ blogs.description.substring(0, 100) }} ...</p>
     </div>
 
@@ -39,8 +39,9 @@ export default {
         //delete from blog collection 
         await deleteDoc(doc(db, "blogs", id ))
         this.$router.go()
-
-
+    },
+    seeblog(bid) {
+      this.$router.push({ name: "indivBlogPage", params: { id: bid } });
     }
   },
   setup(props) {

@@ -168,6 +168,10 @@ export default {
         this.$refs.blogPhoto.value = null;
         this.fileURL=null;
         this.des = null;
+        this.days = null;
+        this.years = null;
+
+        this.$router.push({ name: "indivBlogPage", params: { id: res.id } });
       } catch (e) {
         console.error("Error adding document: ", e);
         alert("Sth went wrong");

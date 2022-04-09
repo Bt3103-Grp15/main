@@ -96,6 +96,9 @@
           <h2>Users' Comments on this City</h2>
           <div class="More">Read More ></div>
         </div>
+        <div v-if="comments.length === 0">
+          <h2>There is no comments now</h2>
+        </div>
         <div class="commit-list">
           <Comments
             :comments="comment"

@@ -161,17 +161,32 @@ export default {
       }
     },
     async filter() {
-      try{
-        console.log(this.order)
-        const q = query(collection(db, 'blogs'), where("city", "==", this.destination), limit(3), where("yearoftravel", "==", this.year));
-        const res = await getDocs(q);
-        posts.value = res.docs.map((doc) => {
-        return { ...doc.data(), id: doc.id };
-        });
-      }
-      catch (err) {
-        error.value = err.message
-        alert(error.value)
+      if (this.desitnation == "") {
+          try{
+          console.log(this.order)
+          const q = query(collection(db, 'blogs'), where("city", "==", this.destination), limit(3), where("yearoftravel", "==", this.year));
+          const res = await getDocs(q);
+          posts.value = res.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+          });
+        }
+        catch (err) {
+          error.value = err.message
+          alert(error.value)
+        }
+      } else {
+        try{
+          console.log(this.order)
+          const q = query(collection(db, 'blogs'), where("city", "==", this.city), limit(3), where("yearoftravel", "==", this.year));
+          const res = await getDocs(q);
+          posts.value = res.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+          });
+        }
+        catch (err) {
+          error.value = err.message
+          alert(error.value)
+        }
       }
     },
   },

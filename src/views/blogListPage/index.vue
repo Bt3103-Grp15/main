@@ -23,7 +23,7 @@
         </form>
       </div>
       <div class="title-block">
-        <h2 v-if="this.destinaion == ''">All Results for {{this.city}} </h2>
+        <h2 v-if="ifnodestination">All Results for {{city}} </h2>
         <h2 v-else>All Results for {{this.destination}} </h2>
       </div>
       <div class="selects-box">
@@ -87,7 +87,7 @@ import BlogListIndex from "../../components/BlogListingComponents/BlogListIndex.
 import DropDown from "../../components/BlogListingComponents/DropDown.vue";
 import {ref} from "vue"
 import { db } from '@/firebase/index'
-import { collection, getDocs, where, query, limit } from 'firebase/firestore';
+import { collection, getDocs, where, query } from 'firebase/firestore';
 
 const posts = ref([]);
 const error = ref(null);
@@ -98,8 +98,7 @@ export default {
     data () {
         return {
             listlen: 3,
-            order: "date",
-            destination: "Singapore",
+            ifnodestination: true,
             arrayOfObjects1: [{name: "Most Recent"}, {name: "Most Popular Blog"}],
             arrayOfObjects2: [{name: "2022"}, {name: "2021"}],
             arrayOfObjects3: [{name: "10 days"}, {name: "20 days"}],
@@ -119,7 +118,11 @@ export default {
     methodToRunOnSelect(payload) {
       this.object = payload;
     },
+    telldestination() {
+      alert(this.destination)
+    },
     async updatedestination() {
+      this.ifnodestination = false
       try{
         this.destination = document.querySelector("input[name=q]").value;
         this.reload()
@@ -149,7 +152,7 @@ export default {
     // },
     async reload() {
       try{
-        const q = query(collection(db, 'blogs'), where("city", "==", this.destination), limit(3));
+        const q = query(collection(db, 'blogs'), where("city", "==", this.destination));
         const res = await getDocs(q);
         posts.value = res.docs.map((doc) => {
         return { ...doc.data(), id: doc.id };
@@ -161,17 +164,32 @@ export default {
       }
     },
     async filter() {
-      try{
-        console.log(this.order)
-        const q = query(collection(db, 'blogs'), where("city", "==", this.destination), limit(3), where("yearoftravel", "==", this.year));
-        const res = await getDocs(q);
-        posts.value = res.docs.map((doc) => {
-        return { ...doc.data(), id: doc.id };
-        });
-      }
-      catch (err) {
-        error.value = err.message
-        alert(error.value)
+      if (!this.ifnodestination) {
+          try{
+          console.log(this.order)
+          const q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("yearoftravel", "==", this.year));
+          const res = await getDocs(q);
+          posts.value = res.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+          });
+        }
+        catch (err) {
+          error.value = err.message
+          alert(error.value)
+        }
+      } else {
+        try{
+          console.log(this.order)
+          const q = query(collection(db, 'blogs'), where("city", "==", this.city), where("yearoftravel", "==", this.year));
+          const res = await getDocs(q);
+          posts.value = res.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+          });
+        }
+        catch (err) {
+          error.value = err.message
+          alert(error.value)
+        }
       }
     },
   },
@@ -179,7 +197,7 @@ export default {
   setup(props) {
     const load = async () => {
       try{
-        const q = query(collection(db, 'blogs'), where("city", "==", props.city), limit(3));
+        const q = query(collection(db, 'blogs'), where("city", "==", props.city));
         const res = await getDocs(q);
         posts.value = res.docs.map((doc) => {
           return { ...doc.data(), id: doc.id };

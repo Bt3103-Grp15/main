@@ -144,23 +144,23 @@ export default {
     name: "blog-main",
     label: "Blog",
     level: "2",
-    child: [
-      {
-        name: "blogListPage",
-        label: "Blog List Page",
-        level: "2-1",
-      },
-      // {
-      //   name: "indivAttractionPager",
-      //   label: "Search Results",
-      //   level: "2-2",
-      // },
-      // {
-      //   name: "indivBlogPage",
-      //   label: "Indiv Blog Page",
-      //   level: "2-3",
-      // },
-    ],
+    // child: [
+    //   {
+    //     name: "blogListPage",
+    //     label: "Blog List Page",
+    //     level: "2-1",
+    //   },
+    //   {
+    //     name: "indivAttractionPager",
+    //     label: "Search Results",
+    //     level: "2-2",
+    //   },
+    //   {
+    //     name: "indivBlogPage",
+    //     label: "Indiv Blog Page",
+    //     level: "2-3",
+    //   },
+    // ],
   },
   {
     name: "blog",

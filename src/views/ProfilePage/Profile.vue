@@ -7,7 +7,9 @@
         <sectionHeader title="Display Info" instruction="Change your display name here. "/>
         <DisplayNameForm @change-name="changeName"/>
         <hr/>
-        </div>
+        <sectionHeader title="Change your password" instruction="Send an email to change your password. "/>
+        <button class="btn" @click="changepassword">Change the password</button>
+    </div>
 
 </template>
 
@@ -16,7 +18,8 @@ import DisplayNameForm from '@/components/ProfileComponents/DisplayNameForm.vue'
 import sectionHeader from '@/components/ProfileComponents/sectionHeader.vue'
 import UserHeader from '@/components/ProfileComponents/UserHeader.vue'
 import ProfileNav from '@/components/ProfileComponents/ProfileNav.vue'
-
+import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from "../../firebase/index";
 export default {
     name: 'Profile',
     data () {
@@ -27,6 +30,20 @@ export default {
     methods: {
         changeName(name) {
             this.$store.dispatch("updateUsername", name)
+        },
+        async changepassword() {
+            sendPasswordResetEmail(auth, this.$store.state.user.email)
+            .then(() => {
+                alert("Password reset email sent!")
+                // ..
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage)
+                console.log(errorCode)
+            });
+
         }
     },
 
@@ -57,18 +74,17 @@ hr {
     size: 1;
 }
 
-.likesbtn{
-    width: 150px;
-    height: 60px;
+.btn {
+    width: 250px;
+    height: 30px;
     border: none;
-    outline: none;
     background: #2f2f2f;
     color: #fff;
     font-size: 13px;
     text-align: center;
-    box-shadow: 0 6px 20px -5px rgba(0,0,0,0);
-    position: relative;
-    overflow: hidden;
     cursor: pointer;
+    /* border-radius: 25px; */
+    display: block;
+    padding: auto;
 }
 </style>

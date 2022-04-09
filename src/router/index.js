@@ -34,6 +34,14 @@ const routes = [
                 },
             },
             {
+                path: "likeblogs",
+                name: "likeblogs",
+                component: () => import("../views/ProfilePage/LikeBlogs.vue"),
+                meta: {
+                    reqiresAuth: true,
+                },
+            },
+            {
                 path: "register",
                 name: "Register",
                 component: () => import("../views/Register.vue"),

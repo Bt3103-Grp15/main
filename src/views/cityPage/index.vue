@@ -20,9 +20,9 @@
           </li>
           <li>
             <div class="icon-block qianbi">
-              <svg-icon class="svg-icon" iconClass="qianbi" @click="jumpPage('blog-main')"></svg-icon>
+              <svg-icon class="svg-icon" iconClass="qianbi" @click="jumpPage('blogListPage')"></svg-icon>
             </div>
-            <h2 @click="jumpPage('blog-main')">Blogs</h2>
+            <h2 @click="jumpBlogListing()">Blogs</h2>
           </li>
           <li>
             <div class="icon-block shouji">
@@ -168,6 +168,10 @@ export default {
 
     jumpAttraction() {
       this.$router.push({ name: "attractionListPage", params: {cityname: this.cityname}})
+    },
+
+    jumpBlogListing() {
+      this.$router.push({ name: "blogListPage", params: {city: this.cityname}})
     }
   },
   setup(props) {

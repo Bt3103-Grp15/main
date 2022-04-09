@@ -23,7 +23,7 @@
         </form>
       </div>
       <div class="title-block">
-        <h2 v-if="this.destinaion == ''">All Results for {{this.city}} </h2>
+        <h2 v-if="ifnodestination">All Results for {{city}} </h2>
         <h2 v-else>All Results for {{this.destination}} </h2>
       </div>
       <div class="selects-box">
@@ -98,8 +98,7 @@ export default {
     data () {
         return {
             listlen: 3,
-            order: "date",
-            destination: "Singapore",
+            ifnodestination: true,
             arrayOfObjects1: [{name: "Most Recent"}, {name: "Most Popular Blog"}],
             arrayOfObjects2: [{name: "2022"}, {name: "2021"}],
             arrayOfObjects3: [{name: "10 days"}, {name: "20 days"}],
@@ -119,7 +118,11 @@ export default {
     methodToRunOnSelect(payload) {
       this.object = payload;
     },
+    telldestination() {
+      alert(this.destination)
+    },
     async updatedestination() {
+      this.ifnodestination = false
       try{
         this.destination = document.querySelector("input[name=q]").value;
         this.reload()

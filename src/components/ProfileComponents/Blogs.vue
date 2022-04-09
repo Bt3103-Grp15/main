@@ -21,15 +21,28 @@
         </ul>
       </div>
     </div>
+    <svg-icon class="icon" iconClass="bin" @click="deleteBlog(blogs.id)"></svg-icon>
   </div>
 </template>
 
 <script>
 import { getDownloadURL, ref } from '@firebase/storage';
+import { db } from "../../firebase/index";
 import { storage } from '../../firebase';
 import { ref as Ref } from 'vue';
+import {deleteDoc, doc} from "firebase/firestore";
+
 export default {
   props: ["blogs"],
+  methods: {
+    async deleteBlog(id) {
+        //delete from blog collection 
+        await deleteDoc(doc(db, "blogs", id ))
+        this.$router.go()
+
+
+    }
+  },
   setup(props) {
     const imgurl = Ref("");
     // const img = document.getElementById("myimg");
@@ -46,6 +59,13 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bree+Serif&family=EB+Garamond:ital,wght@0,500;1,800&display=swap");
+.icon {
+  width: 16px;
+  position: relative;
+  top:-20px;
+  left:30px;
+  cursor: pointer;
+}
 
 #container {
   box-shadow: 0 15px 30px 1px grey;

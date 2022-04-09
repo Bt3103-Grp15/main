@@ -99,6 +99,12 @@ const routes = [
                 props: true,
             },
             {
+                path: "indivattraccomments",
+                name: "indivattraccomments",
+                component: () => import("../views/indivAttractionPager/IndivAttracComments"),
+                props: true,
+            },
+            {
                 path: "indivblogcomment",
                 name: "indivblogcomment",
                 component: () => import("../views/indivBlogPage/indivBlogComment"),

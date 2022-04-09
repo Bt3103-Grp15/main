@@ -64,7 +64,7 @@ export default {
 };
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 .blog-itme {
   height: 317px;
   width: 100%;
@@ -93,9 +93,10 @@ export default {
     }
     .option {
       margin-top: 30px;
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      bottom: -40%;
       .user {
         display: flex;
         align-items: center;

@@ -28,28 +28,34 @@ export default {
         }
     },
 
-    props:["city"],
+    props:["id"],
 
     setup(props) {
-        const cityinfo = ref({});
-        const loadcity = async() => {
-        const res = await getDoc(doc(db, "cities/", props.city))
-        cityinfo.value = res.data()
-        }
-        loadcity()
-        const comments = ref([]);
-        const dbRef = collection(db, "cities/" + props.city +"/comments")
-        const load = async () => {
-        const q = query(dbRef, orderBy("date", "desc"));
-        const res = await getDocs(q);
-        comments.value = res.docs.map((doc) => {
-            // console.log(doc.data());
-            return { ...doc.data(), id: doc.id };
-        });
-        };
-        load();
+    const post = ref("");
 
-        return { comments, load, cityinfo };
+    const load = async () => {
+      try {
+        const res = await getDoc(doc(db, "blogs", props.id));
+        post.value = res.data();
+      } catch (err) {
+        alert(err.message);
+      }
+    };
+    load();
+
+    const comments = ref([]);
+    const dbRef = collection(db, "blogs/" + props.id + "/comments");
+    const loadComm = async () => {
+      const q = query(dbRef, orderBy("date", "desc"));
+      const res = await getDocs(q);
+      comments.value = res.docs.map((doc) => {
+        // console.log(doc.data());
+        return { ...doc.data(), id: doc.id };
+      });
+    };
+    loadComm();
+
+    return { post, load, loadComm, comments };
   },
 }
 </script>

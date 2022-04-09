@@ -95,7 +95,7 @@
         <div class="comments-block">
           <div class="title-block">
             <h2>Users' Comments on this Blog</h2>
-            <div class="More">Read More ></div>
+            <div class="More" @click="jumpCommentListing">Read More ></div>
           </div>
           <div class="commit-list">
             <Comments
@@ -191,6 +191,9 @@ export default {
       }
 
       this.load();
+    },
+    jumpCommentListing() {
+      this.$router.push({ name: "indivblogcomment", params: {id: this.id}})
     },
     async submitCom() {
       if (!this.commentarea) {

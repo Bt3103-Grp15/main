@@ -91,6 +91,12 @@ const routes = [
                 props: true,
             },
             {
+                path: "indivblogcomment",
+                name: "indivblogcomment",
+                component: () => import("../views/indivBlogPage/indivBlogComment"),
+                props: true,
+            },
+            {
                 path: "indivBlogPage/:id",
                 name: "indivBlogPage",
                 component: () => import("../views/indivBlogPage"),

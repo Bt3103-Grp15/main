@@ -87,7 +87,7 @@ import BlogListIndex from "../../components/BlogListingComponents/BlogListIndex.
 import DropDown from "../../components/BlogListingComponents/DropDown.vue";
 import {ref} from "vue"
 import { db } from '@/firebase/index'
-import { collection, getDocs, where, query, limit } from 'firebase/firestore';
+import { collection, getDocs, where, query } from 'firebase/firestore';
 
 const posts = ref([]);
 const error = ref(null);
@@ -152,7 +152,7 @@ export default {
     // },
     async reload() {
       try{
-        const q = query(collection(db, 'blogs'), where("city", "==", this.destination), limit(3));
+        const q = query(collection(db, 'blogs'), where("city", "==", this.destination));
         const res = await getDocs(q);
         posts.value = res.docs.map((doc) => {
         return { ...doc.data(), id: doc.id };
@@ -167,7 +167,7 @@ export default {
       if (this.desitnation == "") {
           try{
           console.log(this.order)
-          const q = query(collection(db, 'blogs'), where("city", "==", this.destination), limit(3), where("yearoftravel", "==", this.year));
+          const q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("yearoftravel", "==", this.year));
           const res = await getDocs(q);
           posts.value = res.docs.map((doc) => {
           return { ...doc.data(), id: doc.id };
@@ -180,7 +180,7 @@ export default {
       } else {
         try{
           console.log(this.order)
-          const q = query(collection(db, 'blogs'), where("city", "==", this.city), limit(3), where("yearoftravel", "==", this.year));
+          const q = query(collection(db, 'blogs'), where("city", "==", this.city), where("yearoftravel", "==", this.year));
           const res = await getDocs(q);
           posts.value = res.docs.map((doc) => {
           return { ...doc.data(), id: doc.id };
@@ -197,7 +197,7 @@ export default {
   setup(props) {
     const load = async () => {
       try{
-        const q = query(collection(db, 'blogs'), where("city", "==", props.city), limit(3));
+        const q = query(collection(db, 'blogs'), where("city", "==", props.city));
         const res = await getDocs(q);
         posts.value = res.docs.map((doc) => {
           return { ...doc.data(), id: doc.id };

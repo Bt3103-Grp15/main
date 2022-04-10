@@ -73,7 +73,7 @@
       </div>
 
       <div v-for="post in posts.slice(0,listlen)" :key="post.id">
-        <BlogListIndex :bloglistingitem="post" />
+        <BlogListIndex style="cursor: pointer;" :bloglistingitem="post" />
       </div>
       
     </div>
@@ -224,6 +224,7 @@ export default {
     width: 980px;
     margin: 0 auto;
   }
+
   .search-block {
     width: 500px;
     height: 64px;

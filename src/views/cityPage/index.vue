@@ -10,25 +10,25 @@
             <div class="icon-block">
               <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
             </div>
-            <h2>Travel Routes</h2>
+            <h2 class="TravelIcon">Travel Routes</h2>
           </li>
           <li>
             <div class="icon-block shoucang">
               <svg-icon class="svg-icon" iconClass="shoucang" @click="jumpPage('attractionListPage')"></svg-icon>
             </div>
-            <h2 @click="jumpAttraction()" >Attractions</h2>
+            <h2 @click="jumpAttraction()" class = "AttractionIcon">Attractions</h2>
           </li>
           <li>
             <div class="icon-block qianbi">
               <svg-icon class="svg-icon" iconClass="qianbi" @click="jumpPage('blogListPage')"></svg-icon>
             </div>
-            <h2 @click="jumpBlogListing()">Blogs</h2>
+            <h2 @click="jumpBlogListing()" class = "BlogsIcon">Blogs</h2>
           </li>
           <li>
             <div class="icon-block shouji">
               <svg-icon class="svg-icon" iconClass="shouji"></svg-icon>
             </div>
-            <h2>Design Routes</h2>
+            <h2 class = "DesignIcon">Design Routes</h2>
           </li>
         </ul>
         <div class="title">
@@ -304,6 +304,7 @@ export default {
             font-size: 18px;
             font-family: fantasy;
             font-weight: bold;
+            cursor:pointer;
           }
         }
       }

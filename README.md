@@ -1,46 +1,15 @@
-# 0313-tips
+# About Us
+Many people have been experiencing the epidemic and its lockdown policies for too long in the light of the COVID-19. Fortunately, with more populations vaccinated, travel control has been eased, and people can embrace and enjoy their travel plans.
 
-### Remember to install vuex and add a src/firebase/index.js
-template should be like this:
-```
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+Then questions pop up. There are so many tourist attractions globally, which one should people choose? If multiple tourist attractions are ticked, are there any good suggestions to help visitors make a better travel plan? How can sightseers know more about the destination without any prior experience and knowledge of a country or city? How can people find the most popular and authentic local food in so many restaurants in this city? … No worries. For all travel-related questions, WExplorer can help to find the answer.
 
-const firebaseConfig = {
-    apiKey: "",
-    authDomain: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: ""
-  };
+Here, users can refer to the detailed travel blogs and great pictures shared by previous tourists to understand the local characteristics before their departure. It also helps them eliminate the fear of visiting an unknown place. Apart from that, WExplorer also provides a platform for users to see popular travel routes and allow users to design their daily plan before traveling. We also offer quick ticket purchase links for each attraction so that users no longer need to worry about queuing up for too long to buy tickets.
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+More importantly, in the world of WExplorer, users are consumers and contributors to this huge community. After the visits, users are encouraged to share their feelings, anecdotes, and experience on WExplorer. People can communicate with like-minded users on this platform.
 
-export { auth }
-```
+We hope you feel the same way as we intended.
 
-### Recommended Videos for Vuex
-https://www.youtube.com/watch?v=bUHVGPx6IMo&list=PL4cUxeGkcC9jveNu1TI0P62Dn9Me1j9tG&index=2
+# Our Website
+https://democpp-79630.web.app/
 
-# 0319-tips
-### Remember to add a uifire.js in folder firebase
-template is the same as what was given in the lecture
-
-# 0326-q
-1. Layout overwrite the router, then there is no need for a /router and also inside of the router there is no need a layout import
-
-
-# To-do
-- [ ] Fixed the ReadMore in blogList Page
-- [ ] Fixed the search on main page (allow key word)
-- [ ] Add Readmore in profile bloglist
-- [ ] Allow cancel the like feature, alert sth when not login
-- [ ] connect bloglist page to dynamic router
-- [ ] profile page change background  
-- [ ] Blog Page search => blog Listing Page; Three bottuns
-- [ ] Change Routes to Others(About us, Write Review)
-- [ ] Connect AttractionList to Firebase and change the picture
-- [ ] blog Create page three categories(depature time, average spending...)
 

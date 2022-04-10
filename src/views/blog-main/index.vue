@@ -43,17 +43,17 @@
         <div class="img-list">
           <div>
             <img src="../../assets/image/9_8.jpeg" alt="">
-            <div class="read-more">Read More</div>
+            <div class="read-more" @click="this.$router.push({ name : 'indivBlogPage', params:{ id : 'iAPM0Ipsa6vtQaEZUhLw'}})">Read More</div>
             <div class="diming">3 Days in Taipei</div>
           </div>
           <div>
             <img src="../../assets/image/9_4.jpeg" alt="">
-            <div class="read-more">Read More</div>
-            <div class="diming">5 Days in Singapore</div>
+            <div class="read-more" @click="this.$router.push({ name : 'indivBlogPage', params:{ id : 'flaixdiPFYFdnMCqq9qb'}})">Read More</div>
+            <div class="diming" >5 Days in Singapore</div>
           </div>
           <div>
             <img src="../../assets/image/9_9.jpeg" alt="">
-            <div class="read-more">Read More</div>
+            <div class="read-more" @click="this.$router.push({ name : 'indivBlogPage', params:{ id : 'DrISJnAngNjHakxD13WC'}})">Read More</div>
             <div class="diming">7 Days in Seoul</div>
           </div>
         </div>

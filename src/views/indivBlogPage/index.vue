@@ -103,6 +103,7 @@
               v-for="comment in comments"
               :key="comment.date"
             />
+            <h2 v-if="comments.length === 0">There is no comments for this blog now.</h2>
           </div>
         </div>
         <div>

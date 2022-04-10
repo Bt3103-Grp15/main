@@ -6,12 +6,14 @@
       <p>You haven't like any blog yet!</p>
       <br />
       <p>
-        <router-link to="/blog-main"> To read and like others blog first.</router-link>
+        <router-link to="/blog-main">
+          To read and like others blog first.</router-link
+        >
       </p>
     </div>
     <div v-else>
       <div v-for="blog in myblogs.slice(0, len)" :key="blog.id">
-        <Blogs :blogs="blog" />
+        <Blogs :blogs="blog" :delete="false" />
       </div>
 
       <div v-if="len < myblogs.length">
@@ -28,7 +30,7 @@ import Blogs from "../../components/ProfileComponents/Blogs.vue";
 import ProfileNav from "../../components/ProfileComponents/ProfileNav.vue";
 import UserHeader from "../../components/ProfileComponents/UserHeader.vue";
 import { ref } from "vue";
-import { collection, getDocs,getDoc,doc } from "@firebase/firestore";
+import { collection, getDocs, getDoc, doc } from "@firebase/firestore";
 import { db } from "../../firebase";
 import { useStore } from "vuex";
 import { computed } from "vue";
@@ -38,22 +40,25 @@ export default {
   data() {
     return {
       len: 3,
-      userid: this.$store.state.user.uid,
+      // userid: this.$store.state.user.uid,
     };
   },
   setup() {
     const myblogs = ref([]);
     const mylikes = ref([]);
+    const store = useStore();
+    const uid = computed(() => store.state.user.uid).value;
 
     const load = async () => {
-      const store = useStore();
-      const uid = computed(() => store.state.user.uid);
-      const dbRef = collection(db, "users/" + uid.value + "/likes");
+      const dbRef = collection(db, "users/" + uid + "/likes");
       const res = await getDocs(dbRef);
       mylikes.value = res.docs.map((ech) => {
-        getDoc(doc(db,"blogs/" + ech.id)).then((blog) =>
-        myblogs.value.push(blog.data())
-        )
+        getDoc(doc(db, "blogs/" + ech.id)).then((blog) => {
+          if (blog.data()) {
+            myblogs.value.push({ ...blog.data(), id: blog.id });
+          }
+        });
+        console.log(myblogs.value)
       });
     };
     load();

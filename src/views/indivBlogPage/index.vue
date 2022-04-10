@@ -193,7 +193,7 @@ export default {
         const dbRef = doc(db, "blogs/" + this.id);
         const res = await getDoc(dbRef);
         const like = res.data().likes;
-        console.log(like);
+        // console.log(like);
         await updateDoc(dbRef, { likes: like + 1 });
         await setDoc(
           doc(db, "users/" + this.$store.state.user.uid + "/likes/" + this.id),

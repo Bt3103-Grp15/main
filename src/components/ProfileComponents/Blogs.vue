@@ -7,53 +7,63 @@
 
     <div class="blog-image">
       <!-- <img src="@/assets/hongkong1.jpeg" /> -->
-      <img id="myimg" v-bind:src=imgurl />
+      <img id="myimg" v-bind:src="imgurl" />
       <!-- <img :src="require(`@/assets/${blogs.bimage}`)" alt="" /> -->
 
       <div class="info">
         <h2>Description</h2>
         <ul>
           <!-- <li><strong>Post Time : </strong> {{blogs.date}} </li> -->
-          <li><strong>Travel Days : </strong> {{blogs.traveldays}} </li>
-          <li><strong>Average Spending: </strong> {{blogs.spending}} </li>
-          <li><strong>Likes: </strong> {{blogs.likes}} </li>
-          <li><strong>Destination: </strong> {{blogs.city}} </li>
+          <li><strong>Travel Days : </strong> {{ blogs.traveldays }}</li>
+          <li><strong>Average Spending: </strong> {{ blogs.spending }}</li>
+          <li><strong>Likes: </strong> {{ blogs.likes }}</li>
+          <li><strong>Destination: </strong> {{ blogs.city }}</li>
         </ul>
       </div>
     </div>
-    <svg-icon class="icon" iconClass="bin" @click="deleteBlog(blogs.id)"></svg-icon>
+    <svg-icon class="icon" iconClass="bin" @click="deleteBlog()"></svg-icon>
   </div>
 </template>
 
 <script>
-import { getDownloadURL, ref } from '@firebase/storage';
+import { getDownloadURL, ref } from "@firebase/storage";
 import { db } from "../../firebase/index";
-import { storage } from '../../firebase';
-import { ref as Ref } from 'vue';
-import {deleteDoc, doc} from "firebase/firestore";
+import { storage } from "../../firebase";
+import { ref as Ref } from "vue";
+import { deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 
 export default {
-  props: ["blogs"],
+  props: ["blogs", "delete"],
   methods: {
-    async deleteBlog(id) {
-        //delete from blog collection 
-        await deleteDoc(doc(db, "blogs", id ))
-        this.$router.go()
+    async deleteBlog() {
+      //delete from blog collection
+      if (this.delete) {
+        await deleteDoc(doc(db, "blogs", this.blogs.id));
+        this.$router.go();
+      } else {
+        await deleteDoc(doc(db, "users/" + this.$store.state.user.uid +"/likes", this.blogs.id));
+        const dbRef = doc(db, "blogs/" + this.blogs.id);
+        const res = await getDoc(dbRef);
+        const like = res.data().likes;
+        // console.log(like);
+        await updateDoc(dbRef, { likes: like - 1 });
+        this.$router.go();
+      }
     },
     seeblog(bid) {
       this.$router.push({ name: "indivBlogPage", params: { id: bid } });
-    }
+    },
   },
   setup(props) {
     const imgurl = Ref("");
     // const img = document.getElementById("myimg");
     const load = async () => {
       getDownloadURL(ref(storage, props.blogs.coverPhoto)).then((url) => {
-      imgurl.value = url
-    });
-    }
-    load()
-    return { imgurl }
+        imgurl.value = url;
+      });
+    };
+    load();
+    return { imgurl };
   },
 };
 </script>
@@ -63,8 +73,8 @@ export default {
 .icon {
   width: 16px;
   position: relative;
-  top:-20px;
-  left:30px;
+  top: -20px;
+  left: 30px;
   cursor: pointer;
 }
 

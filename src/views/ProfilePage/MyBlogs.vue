@@ -15,7 +15,7 @@
         <div  v-else>
             
             <div v-for="blog in myblogs.slice(0,len)" :key="blog.id">
-                <Blogs :blogs="blog" />
+                <Blogs :blogs="blog" :delete="true" />
             </div>
 
             <div v-if="len < myblogs.length">

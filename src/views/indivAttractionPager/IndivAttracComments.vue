@@ -1,14 +1,16 @@
 <template>
-    <br> <br>
-    <div class="More" @click="$router.go(-1)"> Go back </div> <br> <br>
-    <div class="commit-list">
-        <Comments
-        :comments="comment"
-        v-for="comment in comments.slice(0,commentlen)"
-        :key="comment.date"
-        />
-    </div>
-    <button class="readbtn" @click="commentlen++">Read More</button> <br> <br> <br>
+  <div class="mainComment">
+      <br> <br>
+      <div class="More" @click="$router.go(-1)"> Go back </div> <br> <br>
+      <div class="commit-list">
+          <Comments
+          :comments="comment"
+          v-for="comment in comments.slice(0,commentlen)"
+          :key="comment.date"
+          />
+      </div>
+      <button class="readbtn" @click="commentlen++">Read More</button> <br> <br> <br>
+  </div>
 </template>
 
 <script>
@@ -70,6 +72,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.mainComment{
+    background: url(../../assets/view.jpg);
+}
+
 .commit-list {
     display: flex;
     flex-direction: column;

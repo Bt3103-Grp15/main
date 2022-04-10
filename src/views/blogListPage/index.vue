@@ -167,8 +167,8 @@ export default {
     },
     async reload() {
       try{
-        const q = query(collection(db, 'blogs'), where("city", "==", this.destination));
-        const res = await getDocs(q);
+        const qr = query(collection(db, 'blogs'), where("city", "==", this.destination));
+        const res = await getDocs(qr);
         posts.value = res.docs.map((doc) => {
         return { ...doc.data(), id: doc.id };
         });
@@ -183,10 +183,12 @@ export default {
         console.log(this.order)
         //destination year
         if (!this.ifnodestination && this.ifnospending && this.ifnodays && !this.ifnoyear){
+          console.log("destination year")
           q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("yearoftravel", "==", this.year));
         } 
         //destination year days
         else if (!this.ifnodestination && this.ifnospending && !this.ifnodays && !this.ifnoyear) {
+          console.log("destination year days")
           q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("yearoftravel", "==", this.year), where("traveldays", "==", this.days));
         } 
         //destination year days spending 
@@ -244,8 +246,8 @@ export default {
   setup(props) {
     const load = async () => {
       try{
-        const q = query(collection(db, 'blogs'), where("city", "==", props.city));
-        const res = await getDocs(q);
+        const qs = query(collection(db, 'blogs'), where("city", "==", props.city));
+        const res = await getDocs(qs);
         posts.value = res.docs.map((doc) => {
           return { ...doc.data(), id: doc.id };
         });

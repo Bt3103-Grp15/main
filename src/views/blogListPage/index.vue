@@ -49,14 +49,14 @@
         >
         </DropDown>
 
-        <!-- <DropDown
+        <DropDown
           class="select-block"
           :options="arrayOfObjects3"
           :selected="object3"
           v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
           :closeOnOutsideClick="boolean"
-          @updateOption ="updateinfo($event)"
+          @updateOption ="updatedaysinfo($event)"
         >
         </DropDown>
 
@@ -67,9 +67,9 @@
           v-on:updateOption="methodToRunOnSelect"
           :placeholder="'Select an Item'"
           :closeOnOutsideClick="boolean"
-          @updateOption ="updateinfo($event)"
+          @updateOption ="updatespendinginfo($event)"
         >
-        </DropDown> -->
+        </DropDown>
       </div>
 
       <div v-for="post in posts.slice(0,listlen)" :key="post.id">
@@ -78,7 +78,11 @@
       
     </div>
 
-    <button class="readbtn" @click="listlen++">Read More</button> <br> <br> <br>
+    <div v-if="len < posts.length">
+        <button class="readbtn" @click="len++">Read More</button> <br> <br> <br>
+    </div>
+<!-- 
+    <button class="readbtn" @click="listlen++">Read More</button> <br> <br> <br> -->
   </div>
 </template>
 
@@ -91,6 +95,7 @@ import { collection, getDocs, where, query } from 'firebase/firestore';
 
 const posts = ref([]);
 const error = ref(null);
+let q;
 
 export default {
     name: 'blogListPage',
@@ -99,10 +104,13 @@ export default {
         return {
             listlen: 3,
             ifnodestination: true,
+            ifnoyear: true,
+            ifnospending: true,
+            ifnodays: true,
             arrayOfObjects1: [{name: "Most Recent"}, {name: "Most Popular Blog"}],
             arrayOfObjects2: [{name: "2022"}, {name: "2021"}],
-            arrayOfObjects3: [{name: "10 days"}, {name: "20 days"}],
-            arrayOfObjects4: [{name: "1000HKD"}, {name: "2000HKD"}],
+            arrayOfObjects3: [{name: "7 days"}, {name: "5 days"}],
+            arrayOfObjects4: [{name: "1000"}, {name: "2000"}],
             object1: {  name: 'Category', },
             object2: {  name: 'Depature Time', },
             object3: {  name: 'Travel Days', },
@@ -133,23 +141,30 @@ export default {
     async updateyearinfo(x){
       try{
         this.year = x.name
+        this.ifnoyear = false
         this.filter()
       } catch (err) {
         console.log(err)
       }
     },
-    // async updateorder(x) {
-    //   try{
-    //     if (x.name == "Most Recent") {
-    //       this.order = "date"
-    //     } else {
-    //       this.order = "likes"
-    //     }
-    //     this.filter()
-    //   } catch (err) {
-    //     console.log(err)
-    //   }
-    // },
+    async updatespendinginfo(x){
+      try{
+        this.spending = x.name
+        this.ifnospending = false
+        this.filter()
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async updatedaysinfo(x){
+      try{
+        this.days = x.name
+        this.ifnodays = false
+        this.filter()
+      } catch (err) {
+        console.log(err)
+      }
+    },
     async reload() {
       try{
         const q = query(collection(db, 'blogs'), where("city", "==", this.destination));
@@ -164,32 +179,64 @@ export default {
       }
     },
     async filter() {
-      if (!this.ifnodestination) {
-          try{
-          console.log(this.order)
-          const q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("yearoftravel", "==", this.year));
-          const res = await getDocs(q);
-          posts.value = res.docs.map((doc) => {
-          return { ...doc.data(), id: doc.id };
-          });
+      try{
+        console.log(this.order)
+        //destination year
+        if (!this.ifnodestination && this.ifnospending && this.ifnodays && !this.ifnoyear){
+          q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("yearoftravel", "==", this.year));
+        } 
+        //destination year days
+        else if (!this.ifnodestination && this.ifnospending && !this.ifnodays && !this.ifnoyear) {
+          q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("yearoftravel", "==", this.year), where("traveldays", "==", this.days));
+        } 
+        //destination year days spending 
+        else if (!this.ifnodestination && !this.ifnospending && !this.ifnodays && !this.ifnoyear) {
+          q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("yearoftravel", "==", this.year), where("traveldays", "==", this.days), where("spending", "==", this.spending));
+        } 
+        //destination spending 
+        else if (!this.ifnodestination && !this.ifnospending && this.ifnodays && this.ifnoyear) {
+          q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("spending", "==", this.spending));
+        } 
+        //destination days
+        else if (!this.ifnodestination && this.ifnospending && !this.ifnodays && this.ifnoyear) {
+          q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("traveldays", "==", this.days));
+        } 
+        //destination days spending
+        else if (!this.ifnodestination && !this.ifnospending && !this.ifnodays && this.ifnoyear) {
+          q = query(collection(db, 'blogs'), where("city", "==", this.destination), where("traveldays", "==", this.days), where("spending", "==", this.spending));
+        } 
+        //city year
+        else if (this.ifnodestination && this.ifnospending && this.ifnodays && !this.ifnoyear){
+          q = query(collection(db, 'blogs'), where("city", "==", this.city), where("yearoftravel", "==", this.year));
+        } 
+        //city year days
+        else if (this.ifnodestination && this.ifnospending && !this.ifnodays && !this.ifnoyear) {
+          q = query(collection(db, 'blogs'), where("city", "==", this.city), where("yearoftravel", "==", this.year), where("traveldays", "==", this.days));
+        } 
+        //city year days spending 
+        else if (this.ifnodestination && !this.ifnospending && !this.ifnodays && !this.ifnoyear) {
+          q = query(collection(db, 'blogs'), where("city", "==", this.city), where("yearoftravel", "==", this.year), where("traveldays", "==", this.days), where("spending", "==", this.spending));
+        } 
+        //city spending 
+        else if (this.ifnodestination && !this.ifnospending && this.ifnodays && this.ifnoyear) {
+          q = query(collection(db, 'blogs'), where("city", "==", this.city), where("spending", "==", this.spending));
+        } 
+        //city days
+        else if (this.ifnodestination && this.ifnospending && !this.ifnodays && this.ifnoyear) {
+          q = query(collection(db, 'blogs'), where("city", "==", this.city), where("traveldays", "==", this.days));
+        } 
+        //city days spending
+        else if (this.ifnodestination && !this.ifnospending && !this.ifnodays && this.ifnoyear) {
+          q = query(collection(db, 'blogs'), where("city", "==", this.city), where("traveldays", "==", this.days), where("spending", "==", this.spending));
         }
-        catch (err) {
-          error.value = err.message
-          alert(error.value)
-        }
-      } else {
-        try{
-          console.log(this.order)
-          const q = query(collection(db, 'blogs'), where("city", "==", this.city), where("yearoftravel", "==", this.year));
-          const res = await getDocs(q);
-          posts.value = res.docs.map((doc) => {
-          return { ...doc.data(), id: doc.id };
-          });
-        }
-        catch (err) {
-          error.value = err.message
-          alert(error.value)
-        }
+        const res = await getDocs(q);
+        posts.value = res.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id };
+        });
+      }
+      catch (err) {
+        error.value = err.message
+        alert(error.value)
       }
     },
   },

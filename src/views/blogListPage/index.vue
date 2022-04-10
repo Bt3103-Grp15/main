@@ -78,8 +78,8 @@
       
     </div>
 
-    <div v-if="len < posts.length">
-        <button class="readbtn" @click="len++">Read More</button> <br> <br> <br>
+    <div v-if="listlen < posts.length">
+        <button class="readbtn" @click="listlen++">Read More</button> <br> <br> <br>
     </div>
 <!-- 
     <button class="readbtn" @click="listlen++">Read More</button> <br> <br> <br> -->

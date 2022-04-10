@@ -25,7 +25,7 @@
     </div>
     <div class="comments-block">
       <div class="title-block">
-        <h2>Users' Comments on this City</h2>
+        <h2>Users' Comments on this attraction</h2>
         <div class="More" @click="jumpCommentListing">Read More ></div>
       </div>
       <div class="commit-list">

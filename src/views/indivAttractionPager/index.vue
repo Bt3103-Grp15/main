@@ -1,6 +1,6 @@
 <template>
   <div class="indiv-attraction-pager">
-    <div class="top-bg">
+    <div class="top-bg" :style="{backgroundImage: 'url(' + require('../../assets/image/cities-main-img/'+this.cityname+'.jpg') + ')' }">
       <div class="Victoria">{{ attraction.name }}</div>
       <div class="Webinar">
         A Free Webinar on How to Unleash Your Inner Entrepreneur.
@@ -12,7 +12,7 @@
       </div>
       <div class="image-main">
         <img
-          src="../../assets/image/4bc7041ef2e94013a1802911c4c70070.jpeg"
+          :src="imgurl"
           alt=""
         />
       </div>
@@ -64,9 +64,10 @@ import {
   limit,
   getDocs,
 } from "firebase/firestore";
-import { ref } from "vue";
-import { db } from "../../firebase/index";
+import { ref as Ref } from "vue";
+import { db, storage } from "../../firebase/index";
 import Comments from "../../components/Comments.vue";
+import { getDownloadURL, ref } from '@firebase/storage';
 export default {
   props: ["id", "cityname"],
   data() {
@@ -78,20 +79,23 @@ export default {
     Comments,
   },
   setup(props) {
-    const attraction = ref("");
+    const attraction = Ref("");
+    const imgurl = Ref("");
     const load = async () => {
       try {
         const res = await getDoc(
           doc(db, "cities/" + props.cityname+"/attractions", props.id)
         );
         attraction.value = res.data();
-        // console.log(res.data());
+        getDownloadURL(ref(storage, res.data().images[0])).then((url) => {
+          imgurl.value = url;
+        })
       } catch (err) {
         alert(err.message);
         console.log(err);
       }
     };
-    const comments = ref([]);
+    const comments = Ref([]);
     const dbRef = collection(
       db,
       "cities/"+ props.cityname + "/attractions/" + props.id + "/comments"
@@ -110,7 +114,8 @@ export default {
     return {
       attraction,
       comments,
-      loadComm
+      loadComm,
+      imgurl
     };
   },
   methods: {
@@ -155,8 +160,9 @@ export default {
   background-size: cover;
   padding-bottom: 30px;
   .top-bg {
-    background: url(../../assets/image/bigimg.jpeg) no-repeat;
-    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     height: 560px;
     width: 100%;
     display: flex;

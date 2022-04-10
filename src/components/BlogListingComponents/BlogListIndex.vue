@@ -83,6 +83,7 @@ export default {
   }
   .blog-right {
     padding-left: 30px;
+    position: relative;
     .title-block {
       padding: 0;
     }
@@ -92,11 +93,12 @@ export default {
       letter-spacing: normal !important;
     }
     .option {
+      position: absolute;
+      bottom: 8px;
       margin-top: 30px;
-      position: relative;
+      height: 60px;
       display: flex;
       align-items: center;
-      bottom: -40%;
       .user {
         display: flex;
         align-items: center;

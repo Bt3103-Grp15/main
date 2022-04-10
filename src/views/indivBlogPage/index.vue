@@ -52,7 +52,7 @@
       </div>
       <div class="img-list">
         <div class="filst-img">
-          <img src="../../assets/image/t_1.jpeg" alt="" />
+          <img :src="imgurl" alt="" />
         </div>
         <div class="secand-img">
           <div class="s-left-img">
@@ -125,7 +125,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref as Ref } from "vue";
 import { db } from "@/firebase/index.js";
 import { query, orderBy, limit, getDocs } from "firebase/firestore";
 import Comments from "../../components/Comments.vue";
@@ -138,25 +138,37 @@ import {
   setDoc,
   Timestamp,
 } from "firebase/firestore";
+import { getDownloadURL, ref } from '@firebase/storage';
+import { storage } from '../../firebase';
 export default {
   props: ["id"],
+  data() {
+    return {
+      commentarea: null
+    }
+  },
   components: {
     Comments,
   },
   setup(props) {
-    const post = ref("");
+    const post = Ref("");
+    const imgurl = Ref("")
 
     const load = async () => {
       try {
         const res = await getDoc(doc(db, "blogs", props.id));
         post.value = res.data();
+        // console.log(res.data().coverPhoto)
+        getDownloadURL(ref(storage, res.data().coverPhoto)).then((url) => {
+          imgurl.value = url;
+        })
       } catch (err) {
         alert(err.message);
       }
     };
     load();
 
-    const comments = ref([]);
+    const comments = Ref([]);
     const dbRef = collection(db, "blogs/" + props.id + "/comments");
     const loadComm = async () => {
       const q = query(dbRef, orderBy("date", "desc"), limit(3));
@@ -168,7 +180,7 @@ export default {
     };
     loadComm();
 
-    return { post, load, loadComm, comments };
+    return { post, load, loadComm, comments, imgurl };
   },
   methods: {
     async likeBlog() {
@@ -214,7 +226,7 @@ export default {
       }
 
       alert("Comments successfully!");
-      this.commentarea = "";
+      this.commentarea = null;
     },
   },
 };

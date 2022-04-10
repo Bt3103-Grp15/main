@@ -216,6 +216,7 @@ export default {
       bottom: -80px;
       padding: 20px;
       padding-top: 80px;
+      font-display: justify;
       h2 {
         font-size: 16px;
         line-height: 1.8;

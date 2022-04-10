@@ -32,18 +32,10 @@
           </li>
         </ul>
         <div class="title">
-          A vibrant harbour city with an unbeatable food scene
+          {{cityinfo.title}}
         </div>
         <div class="content">
-          Delectable dim sum, floating islands, and a one-of-a-kind skyline are
-          just some of Hong Kong’s enchanting features. Eat your way across
-          Temple Street Night Market with its fish balls and stinky tofu, or
-          settle in for dim sum at Michelin-starred venues like Tim Ho Wan. For
-          traditional Chinese architecture, head to Ngong Ping Village, then
-          take the tram to the tippity-top of Victoria Peak for skyscraper
-          views. The gentle hills of Nan Lian Garden will deliver serenity, but
-          a detour through the city’s cocktail bars will bring back Hong Kong’s
-          urban buzz.
+          {{cityinfo.des}}
         </div>
       </div>
     </div>
@@ -319,7 +311,7 @@ export default {
         font-size: 20px;
         letter-spacing: normal !important;
         line-height: 25px;
-        text-align: left;
+        text-align: justify;
 
       }
     }

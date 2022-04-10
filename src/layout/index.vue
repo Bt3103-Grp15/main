@@ -3,7 +3,7 @@
     <header>
       <div class="logo">
         <img src="../assets/image/headericon.png" alt="">
-        <h2 @click="this.$router.push({ name : 'layout' })">WExplorer</h2>
+        <h2 class="WExplorer" @click="this.$router.push({ name : 'layout' } )">WExplorer</h2>
       </div>
       <nav>
         <h2>
@@ -210,6 +210,9 @@ export default {
 
 
 <style lang="less" scoped>
+.WExplorer{
+  cursor:pointer;
+}
 .link {
   color:black;
   padding:30px;

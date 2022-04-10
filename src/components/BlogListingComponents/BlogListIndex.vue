@@ -13,7 +13,7 @@
       </div>
       <div class="option">
         <div class="user">
-          <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
+          <svg-icon class="svg-icon" iconClass="touxiang"></svg-icon>
           <h2>{{ bloglistingitem.author }}</h2>
         </div>
         <div class="right-icon">
@@ -22,7 +22,7 @@
             <p>{{ bloglistingitem.city }}</p>
           </div>
           <div class="weizhi">
-            <svg-icon class="svg-icon" iconClass="dingwei"></svg-icon>
+            <svg-icon class="svg-icon" iconClass="shoucang"></svg-icon>
             <p>{{ bloglistingitem.likes }}</p>
           </div>
         </div>

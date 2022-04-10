@@ -47,7 +47,6 @@
 
       </section>
       <div class = "background-login"></div>
-      <div id="firebaseui-auth-container"></div>
   </main>
 </template>
 
